@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Programming，面向切面编程)。 什么是 Spring：1). Spring 是一个轻量级的 DI / IoC 和 AOP 容器的开源框架，来源于 Rod Johnson 在其">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识Spring框架">
+<meta property="og:url" content="http://easyblog.top/2019/08/05/认识Spring框架/index.html">
+<meta property="og:site_name" content="EasyBlog">
+<meta property="og:description" content="Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Programming，面向切面编程)。 什么是 Spring：1). Spring 是一个轻量级的 DI / IoC 和 AOP 容器的开源框架，来源于 Rod Johnson 在其">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=spring%E5%9B%BE%E6%A0%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&hd=undefined&latest=undefined&copyright=undefined&cs=3462317778,3873716593&os=3955912653,85125293&simid=0,0&pn=1&rn=1&di=71830&ln=592&fr=&fmq=1565014176066_R&fm=rs1&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&oriquery=spring&objurl=http%3A%2F%2Ftoxsl.com%2Fblog%2Fimage%2F106%2Fpost-image_file-Why-Spring-Boot-is-the-Preferred-Java-Framework.png&rpstart=0&rpnum=0&adpicid=0&force=undefined">
+<meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206103240788-1769881977.png">
+<meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206101318569-352180177.png">
+<meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102118366-1545880227.png">
+<meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102441772-1998211727.png">
+<meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102753335-1304605445.png">
+<meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206103031929-91169155.png">
+<meta property="og:updated_time" content="2019-08-05T14:10:23.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="认识Spring框架">
+<meta name="twitter:description" content="Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Programming，面向切面编程)。 什么是 Spring：1). Spring 是一个轻量级的 DI / IoC 和 AOP 容器的开源框架，来源于 Rod Johnson 在其">
+<meta name="twitter:image" content="http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=spring%E5%9B%BE%E6%A0%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&hd=undefined&latest=undefined&copyright=undefined&cs=3462317778,3873716593&os=3955912653,85125293&simid=0,0&pn=1&rn=1&di=71830&ln=592&fr=&fmq=1565014176066_R&fm=rs1&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&oriquery=spring&objurl=http%3A%2F%2Ftoxsl.com%2Fblog%2Fimage%2F106%2Fpost-image_file-Why-Spring-Boot-is-the-Preferred-Java-Framework.png&rpstart=0&rpnum=0&adpicid=0&force=undefined">
+  <link rel="canonical" href="http://easyblog.top/2019/08/05/认识Spring框架/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>认识Spring框架 | EasyBlog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3b26557457e046bcc561ba2a4b40401e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-right">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">EasyBlog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Huangxin</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/05/认识Spring框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huangxin">
+      <meta itemprop="description" content="欢迎访问我的个人博客">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EasyBlog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">认识Spring框架
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-05 19:24:59 / 修改时间：22:10:23" itemprop="dateCreated datePublished" datetime="2019-08-05T19:24:59+08:00">2019-08-05</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <center>
+<img src="http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=spring%E5%9B%BE%E6%A0%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&hd=undefined&latest=undefined&copyright=undefined&cs=3462317778,3873716593&os=3955912653,85125293&simid=0,0&pn=1&rn=1&di=71830&ln=592&fr=&fmq=1565014176066_R&fm=rs1&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&oriquery=spring&objurl=http%3A%2F%2Ftoxsl.com%2Fblog%2Fimage%2F106%2Fpost-image_file-Why-Spring-Boot-is-the-Preferred-Java-Framework.png&rpstart=0&rpnum=0&adpicid=0&force=undefined">
+</center>
+
+
+<p>Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Programming，面向切面编程)。</p>
+<h4 id="什么是-Spring："><a href="#什么是-Spring：" class="headerlink" title="什么是 Spring："></a>什么是 Spring：</h4><p>1). Spring 是一个轻量级的 DI / IoC 和 AOP 容器的开源框架，来源于 Rod Johnson 在其著作《Expert one on one J2EE design and development》中阐述的部分理念和原型衍生而来。<br>2).Spring 提倡以“最少侵入”的方式来管理应用中的代码，这意味着我们可以随时安装或者卸载 Spring<br>3).适用范围：任何 Java 应用<br>4).Spring 的根本使命：简化 Java 开发</p>
+<h4 id="Spring-中常用术语："><a href="#Spring-中常用术语：" class="headerlink" title="Spring 中常用术语："></a>Spring 中常用术语：<ul></ul></h4><li><strong><font color="red">框架</font></strong>：是能完成一定功能的半成品。框架能够帮助我们完成的是：项目的整体框架、一些基础功能、规定了类和对象如何创建，如何协作等，当我们开发一个项目时，框架帮助我们完成了一部分功能，我们自己再完成一部分，那这个项目就完成了。</li>
+<li><strong><font color="red">非侵入式设计</font></strong>：
+从框架的角度可以理解为：无需继承框架提供的任何类这样我们在更换框架时，之前写过的代码几乎可以继续使用。</li>
+<li><strong><font color="red">轻量级和重量级</font></strong>：
+轻量级是相对于重量级而言的，轻量级一般就是非入侵性的、所依赖的东西非常少、资源占用非常少、部署简单等等，其实就是比较容易使用，而重量级正好相反。</li>
+<li><strong><font color="red">JavaBean</font></strong>：
+即符合 JavaBean 规范的 Java 类</li>
+<li><strong><font color="red">POJO</font></strong>：即 Plain Old Java Objects，简单老式 Java 对象它可以包含业务逻辑或持久化逻辑，但不担当任何特殊角色且不继承或不实现任何其它Java框架的类或接口。</li>
+> 注意：bean 的各种名称——虽然 Spring 用 bean 或者 JavaBean 来表示应用组件，但并不意味着 Spring 组件必须遵循 JavaBean 规范，一个 Spring 组件可以是任意形式的 POJO。
+
+<li><strong><font color="red">容器</font></strong>：
+在日常生活中容器就是一种盛放东西的器具，从程序设计角度看就是装对象的的对象，因为存在放入、拿出等操作，所以容器还要管理对象的生命周期。
+
+<h4 id="Spring-的优势"><a href="#Spring-的优势" class="headerlink" title="Spring 的优势"></a>Spring 的优势<ul></ul></h4></li><li><strong><font color="red">低侵入 / 低耦合</font></strong> （降低组件之间的耦合度，实现软件各层之间的解耦）
+</li><li><strong><font color="red">声明式事务管理</font></strong>（基于切面和惯例）
+</li><li><strong><font color="red">方便集成其他框架</font></strong>（如MyBatis、Hibernate）
+</li><li><strong><font color="red">降低 Java 开发难度</font></strong>
+</li><li>Spring 框架中包括了 J2EE 三层的每一层的解决方案（一站式）</li>
+
+<h4 id="Spring能帮我们做什么"><a href="#Spring能帮我们做什么" class="headerlink" title="Spring能帮我们做什么"></a>Spring能帮我们做什么</h4><p>①.Spring 能帮我们根据配置文件<strong><font color="red">创建及组装对象之间的依赖关系。</font></strong><br>②.Spring <strong><font color="red">面向切面编程能帮助我们无耦合的实现日志记录，性能统计，安全控制。</font></strong><br>③.Spring 能非常简单的帮我们<strong><font color="red">管理数据库事务。</font></strong><br>④.Spring 还<strong><font color="red">提供了与第三方数据访问框架</font></strong>（如Hibernate、JPA）无缝集成，而且自己也提供了一套JDBC访问模板来方便数据库访问。<br>⑤.Spring 还<strong><font color="red">提供与第三方Web（如Struts1/2、JSF）框架无缝集成，而且自己也提供了一套Spring MVC框架，来方便web层搭建。</font></strong><br>⑥.Spring 能方便的与Java EE（如Java Mail、任务调度）整合，与更多技术整合（比如缓存框架）。</p>
+<h4 id="Spring的框架体系结构："><a href="#Spring的框架体系结构：" class="headerlink" title="Spring的框架体系结构："></a><font color="green">Spring的框架体系结构：</font></h4><center><img src="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206103240788-1769881977.png"></center>
+
+<blockquote>
+<ul>
+<li>Data Access/Integration层包含有JDBC、ORM、OXM、JMS和Transaction模块。</li>
+<li>Web层包含了Web、Web-Servlet、WebSocket、Web-Porlet模块。</li>
+<li>AOP模块提供了一个符合AOP联盟标准的面向切面编程的实现。</li>
+<li>Core Container(核心容器)：包含有Beans、Core、Context和SpEL模块。</li>
+<li>Test模块支持使用JUnit和TestNG对Spring组件进行测试。</li>
+</ul>
+</blockquote>
+<p>下面介绍这5个部分的jar以及依赖关系</p>
+<h5 id="Core"><a href="#Core" class="headerlink" title="Core"></a><strong><font size="5">Core</font></strong></h5><p>core部分包含4个模块:<br>spring-core：依赖注入IoC与DI的最基本实现<br>spring-beans：Bean工厂与bean的装配<br>spring-context：spring的context上下文即IoC容器<br>spring-expression：spring表达式语言<br>它们的依赖关系</p>
+<center><img src="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206101318569-352180177.png"></center>
+
+<h5 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a><strong><font size="5">AOP</font></strong></h5><p>aop部分包含4个模块:<br>spring-aop：面向切面编程<br>spring-aspects：集成AspectJ<br>spring-instrument：提供一些类级的工具支持和ClassLoader级的实现，用于服务器<br>spring-instrument-tomcat：针对tomcat的instrument实现<br>它们的依赖关系</p>
+<center><img src="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102118366-1545880227.png"></center>
+
+<h5 id="Data-Access"><a href="#Data-Access" class="headerlink" title="Data Access"></a><strong><font size="5">Data Access</font></strong></h5><p>data access部分包含5个模块<br>spring-jdbc：jdbc的支持<br>spring-tx：事务控制<br>spring-orm：对象关系映射，集成orm框架<br>spring-oxm：对象xml映射<br>spring-jms：java消息服务<br>它们的依赖关系</p>
+<center><img src="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102441772-1998211727.png"></center>
+
+<h5 id="Web"><a href="#Web" class="headerlink" title="Web"></a><strong><font size="5">Web</font></strong></h5><p>web部分包含4个模块<br>spring-web：基础web功能，如文件上传<br>spring-webmvc：mvc实现<br>spring-webmvc-portlet：基于portlet的mvc实现<br>spring-struts：与struts的集成，不推荐，spring4不再提供<br>它们的依赖关系</p>
+<center><img src="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102753335-1304605445.png"></center>
+
+<h5 id="Test"><a href="#Test" class="headerlink" title="Test"></a><strong><font size="5">Test</font></strong></h5><p>test部分只有一个模块，我将spring-context-support也放在这吧<br>spring-test：spring测试，提供junit与mock测试功能<br>spring-context-support：spring额外支持包，比如邮件服务、视图解析等<br>它们的依赖关系</p>
+<center><img src="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206103031929-91169155.png"></center>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/06/Springmvc/" rel="prev" title="SpringMVC获取请求参数">
+                SpringMVC获取请求参数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Huangxin</p>
+  <div class="site-description motion-element" itemprop="description">欢迎访问我的个人博客</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/LoverITer" title="GitHub &rarr; https://github.com/LoverITer" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-Spring："><span class="nav-number">1.</span> <span class="nav-text">什么是 Spring：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-中常用术语："><span class="nav-number">2.</span> <span class="nav-text">Spring 中常用术语：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-的优势"><span class="nav-number">3.</span> <span class="nav-text">Spring 的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring能帮我们做什么"><span class="nav-number">4.</span> <span class="nav-text">Spring能帮我们做什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring的框架体系结构："><span class="nav-number">5.</span> <span class="nav-text">Spring的框架体系结构：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Core"><span class="nav-number">5.1.</span> <span class="nav-text">Core</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AOP"><span class="nav-number">5.2.</span> <span class="nav-text">AOP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Data-Access"><span class="nav-number">5.3.</span> <span class="nav-text">Data Access</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Web"><span class="nav-number">5.4.</span> <span class="nav-text">Web</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Test"><span class="nav-number">5.5.</span> <span class="nav-text">Test</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huangxin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/vendors/canvas-nest/canvas-nest.min.js"></script>
+  <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>

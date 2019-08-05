@@ -4,7 +4,7 @@
 
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="generator" content="Hexo 3.9.0">
@@ -19,17 +19,17 @@
 <link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '7.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
@@ -55,22 +55,22 @@
   };
 </script>
 
-  <meta name="description" content="SpringMVC获取请求参数第一种方式：方法的形参上给一个和请求参数同名的参数1.获得普通类型的参数值示例代码 123456789101112131415/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我们自动注入参数值 * @param username * @param model * @return */@RequestMa">
+  <meta name="description" content="第一种方式：方法的形参上给一个和请求参数同名的参数1.获得普通类型的参数值示例代码 123456789101112131415/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我们自动注入参数值 * @param username * @param model * @return */@RequestMapping(value = &quot;">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EasyBlog">
-<meta property="og:url" content="http://easyblog.top/2019/08/05/Springmvc/index.html">
+<meta property="og:title" content="SpringMVC获取请求参数">
+<meta property="og:url" content="http://easyblog.top/2019/08/06/Springmvc/index.html">
 <meta property="og:site_name" content="EasyBlog">
-<meta property="og:description" content="SpringMVC获取请求参数第一种方式：方法的形参上给一个和请求参数同名的参数1.获得普通类型的参数值示例代码 123456789101112131415/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我们自动注入参数值 * @param username * @param model * @return */@RequestMa">
+<meta property="og:description" content="第一种方式：方法的形参上给一个和请求参数同名的参数1.获得普通类型的参数值示例代码 123456789101112131415/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我们自动注入参数值 * @param username * @param model * @return */@RequestMapping(value = &quot;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://easyblog.top/2019/08/05/Springmvc/QQ%E6%88%AA%E5%9B%BE20190804124754.png">
-<meta property="og:image" content="http://easyblog.top/2019/08/05/Springmvc/QQ%E6%88%AA%E5%9B%BE20190804124807.png">
-<meta property="og:updated_time" content="2019-08-05T09:19:16.622Z">
+<meta property="og:image" content="http://easyblog.top/2019/08/06/Springmvc/QQ%E6%88%AA%E5%9B%BE20190804124754.png">
+<meta property="og:image" content="http://easyblog.top/2019/08/06/Springmvc/QQ%E6%88%AA%E5%9B%BE20190804124807.png">
+<meta property="og:updated_time" content="2019-08-05T11:26:55.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EasyBlog">
-<meta name="twitter:description" content="SpringMVC获取请求参数第一种方式：方法的形参上给一个和请求参数同名的参数1.获得普通类型的参数值示例代码 123456789101112131415/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我们自动注入参数值 * @param username * @param model * @return */@RequestMa">
-<meta name="twitter:image" content="http://easyblog.top/2019/08/05/Springmvc/QQ%E6%88%AA%E5%9B%BE20190804124754.png">
-  <link rel="canonical" href="http://easyblog.top/2019/08/05/Springmvc/">
+<meta name="twitter:title" content="SpringMVC获取请求参数">
+<meta name="twitter:description" content="第一种方式：方法的形参上给一个和请求参数同名的参数1.获得普通类型的参数值示例代码 123456789101112131415/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我们自动注入参数值 * @param username * @param model * @return */@RequestMapping(value = &quot;">
+<meta name="twitter:image" content="http://easyblog.top/2019/08/06/Springmvc/QQ%E6%88%AA%E5%9B%BE20190804124754.png">
+  <link rel="canonical" href="http://easyblog.top/2019/08/06/Springmvc/">
 
 
 <script id="page-configurations">
@@ -84,10 +84,19 @@
   };
 </script>
 
-  <title> | EasyBlog</title>
+  <title>SpringMVC获取请求参数 | EasyBlog</title>
   
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3b26557457e046bcc561ba2a4b40401e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -123,7 +132,7 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  <div class="container sidebar-position-left">
+  <div class="container sidebar-position-right">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -162,7 +171,40 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>分类</a>
 
   </li>
       
@@ -173,12 +215,10 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>归档</a>
 
   </li>
   </ul>
-
-    
 
 </nav>
 </div>
@@ -190,6 +230,8 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+            
+
           <div id="content" class="content page-post-detail">
             
 
@@ -201,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/05/Springmvc/">
+    <link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/06/Springmvc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Huangxin">
@@ -215,7 +257,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">SpringMVC获取请求参数
 
             
           </h1>
@@ -232,11 +274,19 @@
                 
               
 
-              <time title="创建时间：2019-08-05 17:05:43 / 修改时间：17:19:16" itemprop="dateCreated datePublished" datetime="2019-08-05T17:05:43+08:00">2019-08-05</time>
+              <time title="创建时间：2019-08-06 19:24:59" itemprop="dateCreated datePublished" datetime="2019-08-06T19:24:59+08:00">2019-08-06</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-05 19:26:55" itemprop="dateModified" datetime="2019-08-05T19:26:55+08:00">2019-08-05</time>
+              </span>
             
           
 
@@ -251,7 +301,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="SpringMVC获取请求参数"><a href="#SpringMVC获取请求参数" class="headerlink" title="SpringMVC获取请求参数"></a>SpringMVC获取请求参数</h2><h4 id="第一种方式：方法的形参上给一个和请求参数同名的参数"><a href="#第一种方式：方法的形参上给一个和请求参数同名的参数" class="headerlink" title="第一种方式：方法的形参上给一个和请求参数同名的参数"></a>第一种方式：方法的形参上给一个和请求参数同名的参数</h4><h5 id="1-获得普通类型的参数值"><a href="#1-获得普通类型的参数值" class="headerlink" title="1.获得普通类型的参数值"></a>1.获得普通类型的参数值</h5><p><font size="4">示例代码</font></p>
+        <h4 id="第一种方式：方法的形参上给一个和请求参数同名的参数"><a href="#第一种方式：方法的形参上给一个和请求参数同名的参数" class="headerlink" title="第一种方式：方法的形参上给一个和请求参数同名的参数"></a>第一种方式：方法的形参上给一个和请求参数同名的参数</h4><h5 id="1-获得普通类型的参数值"><a href="#1-获得普通类型的参数值" class="headerlink" title="1.获得普通类型的参数值"></a>1.获得普通类型的参数值</h5><p><font size="4">示例代码</font></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数，</span></span><br><span class="line"><span class="comment"> *  之后SpringMVC会帮我们自动注入参数值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> username</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/welcome"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">welcome</span><span class="params">(String username, Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">"用户名："</span>+username);</span><br><span class="line">    model.addAttribute(<span class="string">"username"</span>,username);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="2-获得POJO类型的值"><a href="#2-获得POJO类型的值" class="headerlink" title="2.获得POJO类型的值"></a>2.获得POJO类型的值</h5><p><font size="4">示例代码：</font><br>新建Book.java以及Address.java两个POJO<br><code>Book.java</code></p>
@@ -295,8 +345,8 @@
     <footer class="post-footer">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/05/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/08/05/认识Spring框架/" rel="next" title="认识Spring框架">
+                <i class="fa fa-chevron-left"></i> 认识Spring框架
               </a>
             
           </div>
@@ -353,7 +403,7 @@
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/archives/">
+          <a href="/archives">
         
           <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
@@ -361,6 +411,19 @@
       </div>
     
   </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/LoverITer" title="GitHub &rarr; https://github.com/LoverITer" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+      </span>
+    
+  </div>
 
 
 
@@ -376,7 +439,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC获取请求参数"><span class="nav-number">1.</span> <span class="nav-text">SpringMVC获取请求参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种方式：方法的形参上给一个和请求参数同名的参数"><span class="nav-number">1.0.1.</span> <span class="nav-text">第一种方式：方法的形参上给一个和请求参数同名的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-获得普通类型的参数值"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1.获得普通类型的参数值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-获得POJO类型的值"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">2.获得POJO类型的值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种方式：使用Spring提供的注解"><span class="nav-number">1.0.2.</span> <span class="nav-text">第二种方式：使用Spring提供的注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-使用-RequestParam-获取参数"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1. 使用@RequestParam 获取参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用-RequestHeader获得请求的头部信息"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.使用@RequestHeader获得请求的头部信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用CookieValue获得请求头部的JSESSIONID"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3.使用CookieValue获得请求头部的JSESSIONID</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种方式：方法的形参上给一个和请求参数同名的参数"><span class="nav-number">1.</span> <span class="nav-text">第一种方式：方法的形参上给一个和请求参数同名的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-获得普通类型的参数值"><span class="nav-number">1.1.</span> <span class="nav-text">1.获得普通类型的参数值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-获得POJO类型的值"><span class="nav-number">1.2.</span> <span class="nav-text">2.获得POJO类型的值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种方式：使用Spring提供的注解"><span class="nav-number">2.</span> <span class="nav-text">第二种方式：使用Spring提供的注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-使用-RequestParam-获取参数"><span class="nav-number">2.1.</span> <span class="nav-text">1. 使用@RequestParam 获取参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用-RequestHeader获得请求的头部信息"><span class="nav-number">2.2.</span> <span class="nav-text">2.使用@RequestHeader获得请求的头部信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用CookieValue获得请求头部的JSESSIONID"><span class="nav-number">2.3.</span> <span class="nav-text">3.使用CookieValue获得请求头部的JSESSIONID</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -402,7 +465,7 @@
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
 
         
 
@@ -418,6 +481,8 @@
     </footer>
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
 
     
@@ -425,15 +490,21 @@
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/vendors/canvas-nest/canvas-nest.min.js"></script>
+  <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
 
 <script src="/js/utils.js?v=7.3.0"></script>
   <script src="/js/motion.js?v=7.3.0"></script>
 
 
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
 
 
 <script src="/js/next-boot.js?v=7.3.0"></script>
