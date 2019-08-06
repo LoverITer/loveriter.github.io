@@ -20,6 +20,8 @@
 
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <script src="/vendors/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/vendors/pace/pace-theme-minimal.min.css?v=1.0.2">
 
 
 <script id="hexo-configurations">
@@ -43,8 +45,8 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -56,11 +58,11 @@
 </script>
 
   <meta name="description" content="Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Programming，面向切面编程)。 什么是 Spring：1). Spring 是一个轻量级的 DI / IoC 和 AOP 容器的开源框架，来源于 Rod Johnson 在其">
-<meta name="keywords" content="blog">
+<meta name="keywords" content="Spring框架,Spring MVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="认识Spring框架">
 <meta property="og:url" content="http://easyblog.top/2019/08/05/认识Spring框架/index.html">
-<meta property="og:site_name" content="EasyBlog">
+<meta property="og:site_name" content="LoveITer">
 <meta property="og:description" content="Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Programming，面向切面编程)。 什么是 Spring：1). Spring 是一个轻量级的 DI / IoC 和 AOP 容器的开源框架，来源于 Rod Johnson 在其">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=spring%E5%9B%BE%E6%A0%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&hd=undefined&latest=undefined&copyright=undefined&cs=3462317778,3873716593&os=3955912653,85125293&simid=0,0&pn=1&rn=1&di=71830&ln=592&fr=&fmq=1565014176066_R&fm=rs1&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&oriquery=spring&objurl=http%3A%2F%2Ftoxsl.com%2Fblog%2Fimage%2F106%2Fpost-image_file-Why-Spring-Boot-is-the-Preferred-Java-Framework.png&rpstart=0&rpnum=0&adpicid=0&force=undefined">
@@ -70,11 +72,12 @@
 <meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102441772-1998211727.png">
 <meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206102753335-1304605445.png">
 <meta property="og:image" content="https://github.com/LoverITer/Img/blob/master/20190805/797930-20161206103031929-91169155.png">
-<meta property="og:updated_time" content="2019-08-05T14:10:23.673Z">
+<meta property="og:updated_time" content="2019-08-06T06:06:17.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识Spring框架">
 <meta name="twitter:description" content="Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而不是技术本身，它的理念包括 IoC (Inversion of Control，控制反转) 和 AOP(Aspect Oriented Programming，面向切面编程)。 什么是 Spring：1). Spring 是一个轻量级的 DI / IoC 和 AOP 容器的开源框架，来源于 Rod Johnson 在其">
 <meta name="twitter:image" content="http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=spring%E5%9B%BE%E6%A0%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&hd=undefined&latest=undefined&copyright=undefined&cs=3462317778,3873716593&os=3955912653,85125293&simid=0,0&pn=1&rn=1&di=71830&ln=592&fr=&fmq=1565014176066_R&fm=rs1&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&oriquery=spring&objurl=http%3A%2F%2Ftoxsl.com%2Fblog%2Fimage%2F106%2Fpost-image_file-Why-Spring-Boot-is-the-Preferred-Java-Framework.png&rpstart=0&rpnum=0&adpicid=0&force=undefined">
+  <link rel="alternate" href="/atom.xml" title="LoveITer" type="application/atom+xml">
   <link rel="canonical" href="http://easyblog.top/2019/08/05/认识Spring框架/">
 
 
@@ -89,7 +92,7 @@
   };
 </script>
 
-  <title>认识Spring框架 | EasyBlog</title>
+  <title>认识Spring框架 | LoveITer</title>
   
 
 
@@ -147,11 +150,11 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">EasyBlog</span>
+        <span class="site-title">LoveITer</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">Huangxin</p>
+        <p class="site-subtitle">欢迎访问我的个人博客</p>
       
   </div>
 
@@ -175,8 +178,10 @@
         <li class="menu-item menu-item-home">
       
     
+      
+    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
       
@@ -186,8 +191,10 @@
         <li class="menu-item menu-item-about">
       
     
+      
+    
 
-    <a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
       
@@ -197,8 +204,10 @@
         <li class="menu-item menu-item-tags">
       
     
+      
+    
 
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
 
   </li>
       
@@ -208,8 +217,10 @@
         <li class="menu-item menu-item-categories">
       
     
+      
+    
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">0</span></a>
 
   </li>
       
@@ -219,12 +230,54 @@
         <li class="menu-item menu-item-archives">
       
     
+      
+    
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">2</span></a>
 
   </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-sitemap">
+      
+    
+      
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
   </ul>
 
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
 </nav>
 </div>
     </header>
@@ -251,13 +304,13 @@
     <link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/05/认识Spring框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Huangxin">
-      <meta itemprop="description" content="欢迎访问我的个人博客">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="黄鑫">
+      <meta itemprop="description" content="弱小和无知，不是生存的障碍，傲慢才是">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="EasyBlog">
+      <meta itemprop="name" content="LoveITer">
     </span>
       <header class="post-header">
 
@@ -279,14 +332,30 @@
                 
               
 
-              <time title="创建时间：2019-08-05 19:24:59 / 修改时间：22:10:23" itemprop="dateCreated datePublished" datetime="2019-08-05T19:24:59+08:00">2019-08-05</time>
+              <time title="创建时间：2019-08-05 19:24:59" itemprop="dateCreated datePublished" datetime="2019-08-05T19:24:59+08:00">2019-08-05</time>
             </span>
           
             
 
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-06 14:06:17" itemprop="dateModified" datetime="2019-08-06T14:06:17+08:00">2019-08-06</time>
+              </span>
+            
           
 
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
         </div>
@@ -358,8 +427,31 @@
     
     
     
+      <div>
+        
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>黄鑫</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://easyblog.top/2019/08/05/认识Spring框架/" title="认识Spring框架">http://easyblog.top/2019/08/05/认识Spring框架/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
 
     <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Spring框架/" rel="tag"><i class="fa fa-tag"></i> Spring框架</a>
+          
+            <a href="/tags/Spring-MVC/" rel="tag"><i class="fa fa-tag"></i> Spring MVC</a>
+          
+        </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
           </div>
@@ -375,6 +467,14 @@
         </div>
     </footer>
   </div>
+                <span title="post.wordcount">
+                  1.2k 字
+                </span>
+
+		<span title="post.min2read">
+                  4 分钟
+                </span>
+
   
   
   
@@ -414,20 +514,43 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Huangxin</p>
-  <div class="site-description motion-element" itemprop="description">欢迎访问我的个人博客</div>
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="黄鑫">
+  <p class="site-author-name" itemprop="name">黄鑫</p>
+  <div class="site-description motion-element" itemprop="description">弱小和无知，不是生存的障碍，傲慢才是</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/archives">
+          <a href="/archives/">
         
           <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
     
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
   </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
       
@@ -437,7 +560,7 @@
       
         
       
-        <a href="https://github.com/LoverITer" title="GitHub &rarr; https://github.com/LoverITer" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+        <a href="https://github.com/LoverITer" title="GitHub &rarr; https://github.com/LoverITer" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
     
   </div>
@@ -474,17 +597,57 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-06</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Huangxin</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("08/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
 
 
 
@@ -510,10 +673,15 @@
     
     
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/vendors/canvas-nest/canvas-nest.min.js"></script>
+    
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/vendors/canvas-nest/canvas-nest.min.js"></script>
   <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
   <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  <script defer src="/vendors/three/three.min.js"></script>
+  <script defer src="/vendors/three/three-waves.min.js"></script>
 
 <script src="/js/utils.js?v=7.3.0"></script>
   <script src="/js/motion.js?v=7.3.0"></script>
@@ -547,6 +715,8 @@
 
 
 
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
 
 
 
@@ -572,5 +742,5 @@
 <script src="/js/post-details.js?v=7.3.0"></script>
 
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

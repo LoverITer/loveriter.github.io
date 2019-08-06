@@ -1531,6 +1531,13 @@ pre .javascript .function {
 .page-post-detail .post-type-quote .post-tags {
   display: none;
 }
+.post-copyright {
+  background-color: #f9f9f9;
+  border-left: 3px solid #ff1700;
+  list-style: none;
+  margin: 2em 0 0;
+  padding: 0.5em 1em;
+}
 .sidebar {
   background: #222;
   bottom: 0;
@@ -1590,6 +1597,13 @@ pre .javascript .function {
   margin: 0 auto;
   max-width: 120px;
   padding: 2px;
+  border-radius: 50%;
+}
+.site-author-image {
+  transition: transform 1s ease-out;
+}
+.site-author-image:hover {
+  transform: rotateZ(360deg);
 }
 .site-author-name {
   color: #222;
@@ -1614,10 +1628,13 @@ pre .javascript .function {
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffbd6f;
+  background: #e737b9;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1927,6 +1944,112 @@ pre .javascript .function {
   50%, 70% {
     transform: scale(1.1);
   }
+}
+.local-search-pop-overlay {
+  background-color: rgba(0,0,0,0.3);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2080;
+}
+.local-search-popup {
+  background: #fff;
+  border-radius: 5px;
+  color: #333;
+  display: none;
+  height: 80%;
+  left: 50%;
+  margin-left: -350px;
+  padding: 0;
+  position: fixed;
+  top: 10%;
+  width: 700px;
+  z-index: 9999;
+}
+@media (max-width: 767px) {
+  .local-search-popup {
+    border-radius: 0;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+.local-search-popup ul.search-result-list {
+  margin: 0 5px;
+  padding: 0;
+}
+.local-search-popup p.search-result {
+  border-bottom: 1px dashed #ccc;
+  padding: 5px 0;
+}
+.local-search-popup a.search-result-title {
+  font-weight: bold;
+}
+.local-search-popup .search-keyword {
+  border-bottom: 1px dashed #f00;
+  color: #f00;
+  font-weight: bold;
+}
+.local-search-popup .local-search-header {
+  background: #f5f5f5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 36px;
+  padding: 5px;
+}
+.local-search-popup #local-search-result {
+  height: calc(100% - 55px);
+  overflow: auto;
+  padding: 5px 25px;
+  position: relative;
+}
+.local-search-popup .local-search-input-wrapper {
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 5px;
+  position: absolute;
+  width: calc(100% - 90px);
+}
+.local-search-popup .local-search-input-wrapper input {
+  background: transparent;
+  border: none;
+  display: block;
+  height: 20px;
+  outline: none;
+  padding: 8px 0;
+  vertical-align: middle;
+  width: 100%;
+}
+.local-search-popup .search-icon,
+.local-search-popup .popup-btn-close {
+  color: #999;
+  display: inline-block;
+  font-size: 18px;
+  height: 36px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 18px;
+}
+.local-search-popup .search-icon {
+  float: left;
+}
+.local-search-popup .popup-btn-close {
+  border-left: 1px solid #eee;
+  cursor: pointer;
+  float: right;
+}
+.local-search-popup #no-result {
+  color: #ccc;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .page-archive .posts-collapse .archive-move-on {
   background: #999;
@@ -2331,19 +2454,6 @@ ul.breadcrumb li+li:last-child {
   background: #f9f9f9;
   border-bottom-color: #fff;
 }
-.menu-item-active a::after,
-.menu .menu-item a:hover::after,
-.menu .menu-item span.exturl:hover::after {
-  background-color: #bbb;
-  border-radius: 50%;
-  content: ' ';
-  height: 6px;
-  margin-top: -3px;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  width: 6px;
-}
 .menu .menu-item {
   display: block;
   margin: 0;
@@ -2414,9 +2524,6 @@ ul.breadcrumb li+li:last-child {
 .sub-menu .menu-item-active a:hover {
   background: #fff !important;
   border-bottom-color: #fc6423;
-}
-.sub-menu .menu-item-active a::after {
-  content: initial;
 }
 .use-motion .sidebar .motion-element {
   opacity: 1;
