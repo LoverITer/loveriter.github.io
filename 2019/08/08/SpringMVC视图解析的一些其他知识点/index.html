@@ -55,7 +55,24 @@
       copy_failure: '复制失败'
     }
   };
+
+
 </script>
+ <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #9fa6b3;    /*��������ɫ*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #225cc7, 0 0 5px #225cc7; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #9fa6b3;    /*�ϱ߿���ɫ*/
+        border-left-color: #9fa6b3;    /*��߿���ɫ*/
+    }
+</style>
 
   <meta name="description" content="视图解析的一些其他知识点JstlView支持便捷的国际化功能国际化的核心原理是：将资源文件配置给SpringMVC,让SpringMVC根据Loacl信息管理、调用资源文件。国际化的核心配置：使用ResourceBundleMessageSource,注意：这里的id后面的值一定要是messageSource，不这样写你试试看~ 123456789101112131415161718  &amp;lt;!">
 <meta name="keywords" content="SpringMVC">
@@ -68,7 +85,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/08/08/5oq9W4dIVhpGe1x.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/08/cohnJtLbQq2Wi6B.gif">
 <meta property="og:image" content="https://i.loli.net/2019/08/08/ko3CSMwgs1UAI6j.png">
-<meta property="og:updated_time" content="2019-08-11T16:11:46.077Z">
+<meta property="og:updated_time" content="2019-08-13T14:34:07.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC视图解析的一些其他知识点">
 <meta name="twitter:description" content="视图解析的一些其他知识点JstlView支持便捷的国际化功能国际化的核心原理是：将资源文件配置给SpringMVC,让SpringMVC根据Loacl信息管理、调用资源文件。国际化的核心配置：使用ResourceBundleMessageSource,注意：这里的id后面的值一定要是messageSource，不这样写你试试看~ 123456789101112131415161718  &amp;lt;!">
@@ -229,7 +246,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
 
   </li>
       
@@ -292,91 +309,91 @@
   <div id="posts" class="posts-expand">
     
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/08/SpringMVC视图解析的一些其他知识点/">
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="黄鑫">
-      <meta itemprop="description" content="弱小和无知，不是生存的障碍，傲慢才是">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LoveITer">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">SpringMVC视图解析的一些其他知识点
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/08/SpringMVC视图解析的一些其他知识点/">
 
-            
-          </h1>
-        
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="弱小和无知，不是生存的障碍，傲慢才是">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
 
-              
-                
-              
 
-              <time title="创建时间：2019-08-08 22:36:02" itemprop="dateCreated datePublished" datetime="2019-08-08T22:36:02+08:00">2019-08-08</time>
-            </span>
-          
-            
+<h1 class="post-title" itemprop="name headline">SpringMVC视图解析的一些其他知识点
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-12 00:11:46" itemprop="dateModified" datetime="2019-08-12T00:11:46+08:00">2019-08-12</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring框架/" itemprop="url" rel="index"><span itemprop="name">Spring框架</span></a></span>
 
-                
-                
-              
-            </span>
-          
+</h1>
 
-          
-            <span class="post-meta-item" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
 
-        </div>
-      </header>
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-        <h3 id="视图解析的一些其他知识点"><a href="#视图解析的一些其他知识点" class="headerlink" title="视图解析的一些其他知识点"></a>视图解析的一些其他知识点</h3><h4 id="JstlView支持便捷的国际化功能"><a href="#JstlView支持便捷的国际化功能" class="headerlink" title="JstlView支持便捷的国际化功能"></a>JstlView支持便捷的国际化功能</h4><p>国际化的核心原理是：将资源文件配置给SpringMVC,让SpringMVC根据Loacl信息管理、调用资源文件。<br>国际化的核心配置：使用<strong><font size="4"><code>ResourceBundleMessageSource</code></font>,</strong><strong><font size="4">注意：这里的id后面的值一定要是messageSource</font></strong>，不这样写你试试看<del>~</del></p>
+
+
+
+<time title="创建时间：2019-08-08 22:36:02" itemprop="dateCreated datePublished" datetime="2019-08-08T22:36:02+08:00">2019-08-08</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2019-08-13 22:34:07" itemprop="dateModified" datetime="2019-08-13T22:34:07+08:00">2019-08-13</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring框架/" itemprop="url" rel="index"><span itemprop="name">Spring框架</span></a></span>
+
+
+
+
+</span>
+
+
+
+<span class="post-meta-item" title="阅读次数">
+<span class="post-meta-item-icon">
+<i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读次数：</span>
+<span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+</span>
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+<h3 id="视图解析的一些其他知识点"><a href="#视图解析的一些其他知识点" class="headerlink" title="视图解析的一些其他知识点"></a>视图解析的一些其他知识点</h3><h4 id="JstlView支持便捷的国际化功能"><a href="#JstlView支持便捷的国际化功能" class="headerlink" title="JstlView支持便捷的国际化功能"></a>JstlView支持便捷的国际化功能</h4><p>国际化的核心原理是：将资源文件配置给SpringMVC,让SpringMVC根据Loacl信息管理、调用资源文件。<br>国际化的核心配置：使用<strong><font size="4"><code>ResourceBundleMessageSource</code></font>,</strong><strong><font size="4">注意：这里的id后面的值一定要是messageSource</font></strong>，不这样写你试试看<del>~</del></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">&lt;!--视图解析器--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"viewResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"WEB-INF/pages/"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--指定使用JSTL视图解析器--&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--   &lt;property name="viewNames" value="org.springframework.web.servlet.view.JstlView"&gt;&lt;/property&gt;--&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--springMVC管理国际化资源：把资源文件嫁给springMVC去管理--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ResourceBundleMessageSource"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 表示语言配置文件是以language开头的文件（language_zh_CN.properties）--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basenames"</span> <span class="attr">value</span>=<span class="string">"message"</span>/&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 语言区域里没有找到对应的国际化文件时，默认使用language.properties文件--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"useCodeAsDefaultMessage"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cacheSeconds"</span> <span class="attr">value</span>=<span class="string">"0"</span>/&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--配置字符编码为UTF-8：注意properties的编码格式也应该是UTF-8的，否者即使你设置了字符编码过滤器也会乱码--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>配指资源文件：</p>
@@ -415,13 +432,13 @@
 <li><strong>视图处理器除了要实现ViewReslover接口，还应该实现ordered接口，已给我们定义的视图解析器指定优先级，这个很关键.</strong></li>
 </ol>
 
-    </div>
+</div>
 
-    
-    
-    
-      <div>
-        
+
+
+
+<div>
+
 
 <ul class="post-copyright">
   <li class="post-copyright-author">
@@ -434,46 +451,49 @@
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
 </ul>
 
-      </div>
+</div>
 
-    <footer class="post-footer">
-          
-        
-        <div class="post-tags">
-            <a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
-          
-        </div>
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/07/SpringMVC视图解析/" rel="next" title="SpringMVC视图解析">
-                <i class="fa fa-chevron-left"></i> SpringMVC视图解析
-              </a>
-            
-          </div>
+<footer class="post-footer">
 
-          <span class="post-nav-divider"></span>
 
-          <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/09/SpringMVC 数据绑定&数据格式化&数据校验/" rel="prev" title="SpringMVC 数据绑定&数据格式化&数据校验">
-                SpringMVC 数据绑定&数据格式化&数据校验 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-    </footer>
-  </div>
-                <span title="post.wordcount">
-                  1.7k 字
-                </span>
+<div class="post-tags">
+<a href="/tags/SpringMVC/" rel="tag"><i class="fa fa-tag"></i> SpringMVC</a>
 
-		<span title="post.min2read">
-                  7 分钟
-                </span>
+</div>
+<div class="post-nav">
+<div class="post-nav-next post-nav-item">
+<a href="/2019/08/07/SpringMVC视图解析/" rel="next" title="SpringMVC视图解析">
+<i class="fa fa-chevron-left"></i> SpringMVC视图解析
+</a>
 
-  
-  
-  
-  </article>
+</div>
+
+<span class="post-nav-divider"></span>
+
+<div class="post-nav-prev post-nav-item">
+<a href="/2019/08/09/SpringMVC 数据绑定&数据格式化&数据校验/" rel="prev" title="SpringMVC 数据绑定&数据格式化&数据校验">
+SpringMVC 数据绑定&数据格式化&数据校验 <i class="fa fa-chevron-right"></i>
+</a>
+
+</div>
+</div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.7k 字
+</span>
+
+<span title="post.min2read">
+  7 分钟
+</span>
+
+
+
+
+
+
+
+</article>
 
   </div>
 
@@ -520,7 +540,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -613,7 +633,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-12</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-14</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -692,7 +712,8 @@ setInterval("createtime()",250);
     
     
   
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/vendors/canvas-nest/canvas-nest.min.js"></script>
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='100' src="/vendors/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/vendors/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
   <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
@@ -752,11 +773,16 @@ setInterval("createtime()",250);
 
   
 
+  
+
 
   
   <script src="/js/scrollspy.js?v=7.3.0"></script>
 <script src="/js/post-details.js?v=7.3.0"></script>
 
+
+
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
