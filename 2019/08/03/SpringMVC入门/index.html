@@ -78,18 +78,18 @@
 <meta name="keywords" content="SpringMVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC的运行流程">
-<meta property="og:url" content="http://easyblog.top/2019/08/05/SpringMVC入门/index.html">
+<meta property="og:url" content="http://easyblog.top/2019/08/03/SpringMVC入门/index.html">
 <meta property="og:site_name" content="LoveITer">
 <meta property="og:description" content="Spring MVC体系结构：SpringMVC 是基于 Model2 实现的技术框架     一个请求在SpringMVC中经历的过程：  请求旅程的第一站是 Spring 的 DispatcherServlet。与大多数基于 Java 的 Web 框架一样，Spring MVC 所有的请求都会通过一个前端控制器（front controller）Servlet。前端控制器是常用的 Web 应用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/08/16/QWYzvTlIxsoaUKF.jpg"">
-<meta property="og:updated_time" content="2019-08-16T09:03:27.215Z">
+<meta property="og:updated_time" content="2019-08-17T10:13:05.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC的运行流程">
 <meta name="twitter:description" content="Spring MVC体系结构：SpringMVC 是基于 Model2 实现的技术框架     一个请求在SpringMVC中经历的过程：  请求旅程的第一站是 Spring 的 DispatcherServlet。与大多数基于 Java 的 Web 框架一样，Spring MVC 所有的请求都会通过一个前端控制器（front controller）Servlet。前端控制器是常用的 Web 应用">
 <meta name="twitter:image" content="https://i.loli.net/2019/08/16/QWYzvTlIxsoaUKF.jpg"">
   <link rel="alternate" href="/atom.xml" title="LoveITer" type="application/atom+xml">
-  <link rel="canonical" href="http://easyblog.top/2019/08/05/SpringMVC入门/">
+  <link rel="canonical" href="http://easyblog.top/2019/08/03/SpringMVC入门/">
 
 
 <script id="page-configurations">
@@ -218,7 +218,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">2</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span></a>
 
   </li>
       
@@ -231,7 +231,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">1</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
 
   </li>
       
@@ -244,7 +244,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">13</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
 
   </li>
       
@@ -312,7 +312,7 @@
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/05/SpringMVC入门/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/03/SpringMVC入门/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -343,7 +343,7 @@
 
 
 
-<time title="创建时间：2019-08-05 23:24:58" itemprop="dateCreated datePublished" datetime="2019-08-05T23:24:58+08:00">2019-08-05</time>
+<time title="创建时间：2019-08-03 23:24:58" itemprop="dateCreated datePublished" datetime="2019-08-03T23:24:58+08:00">2019-08-03</time>
 </span>
 
 
@@ -354,7 +354,7 @@
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2019-08-16 17:03:27" itemprop="dateModified" datetime="2019-08-16T17:03:27+08:00">2019-08-16</time>
+<time title="修改时间：2019-08-17 18:13:05" itemprop="dateModified" datetime="2019-08-17T18:13:05+08:00">2019-08-17</time>
 </span>
 
 
@@ -437,7 +437,7 @@
 <p><font color="black">Spring MVC 下Web项目的运行流程：</font><br><font color="black">1).点击<a href="http://localhost/SpringMVC_01_war_exploded/后浏览器把请求给服务器" target="_blank" rel="noopener">http://localhost/SpringMVC_01_war_exploded/后浏览器把请求给服务器</a></font><br><font color="black">2).服务器中由于配置了SpringMVC的Dispatcherservlet，他可以拦截到所有的请求</font><br><font color="black">3).Dispatcherservlet拦截到请求后查看请求地址和@RequestMapping()中的那个地址(对应的方法)匹配，如果没找到，又没有配置<code>&lt;mvc:defalut-servlet-handler/&gt;</code>那就“炸了”!</font><br><font color="black">4).如果前端控制器找到目标处理器和方法后，在执行目标方法前拦截器的preHnalde方法会执行，然后利用反射调用方法</font><br><font color="black">5).方法执行完成会有返回值（视图名），SpringMVC认为这就是方法执行完后要去的页面，最终会把它封装成一个ModelAndView对象</font><br><font color="black">6).拿到ModelAndView对象后，视图解析器(ViewResolver)会根据ModelAndView解析出实际的视图(View)对象</font><br><font color="black">7).得到视图对象后，调用该View对象的render方法来渲染视图，视图渲染完成后前段控制器就会使用转发的方式到目标页面，之后拦截器的afterCompletion方法会被调用</font></p>
 </blockquote>
 <p>2.<br><font color="black">关于springmvc.xml配置文件的配置：</font><br><font color="black">在web.xml配置前段控制器又这么一段配置，他的作用是告诉服务器去哪里加载对于前端控制器的配置文件：</font></p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;init-<span class="built_in">param</span>&gt;</span><br><span class="line">  &lt;<span class="built_in">param</span>-name&gt;contextConfigLocation&lt;/<span class="built_in">param</span>-name&gt;</span><br><span class="line">  &lt;<span class="built_in">param</span>-<span class="built_in">value</span>&gt;classpath:springmvc.xml&lt;/<span class="built_in">param</span>-<span class="built_in">value</span>&gt;</span><br><span class="line">&lt;/init-<span class="built_in">param</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;init-param&gt;</span><br><span class="line">  &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">  &lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;</span><br><span class="line">&lt;/init-param&gt;</span><br></pre></td></tr></table></figure>
 
 <p><font color="black">如果我们没有写他会发生什么呢？会发生异常：</font></p>
 <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2019</span>-<span class="number">08</span>-<span class="number">03</span> <span class="number">15</span>:<span class="number">07</span>:<span class="number">16</span> <span class="string">[INFO]</span>-<span class="string">[org.springframework.web.servlet.DispatcherServlet]</span> Initializing Servlet 'app'</span><br><span class="line">  <span class="number">2019</span>-<span class="number">08</span>-<span class="number">03</span> <span class="number">15</span>:<span class="number">07</span>:<span class="number">16</span> <span class="string">[ERROR]</span>-<span class="string">[org.springframework.web.servlet.DispatcherServlet]</span> Context initialization failed</span><br><span class="line">  org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from ServletContext resource <span class="string">[/WEB-INF/app-servlet.xml]</span>; nested exception is java.io.FileNotFoundException: Could not open ServletContext resource <span class="string">[/WEB-INF/app-servlet.xml]</span></span><br><span class="line">	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:<span class="number">344</span>)</span><br><span class="line">	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:<span class="number">304</span>)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:<span class="number">188</span>)</span><br><span class="line">	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:<span class="number">224</span>)</span><br></pre></td></tr></table></figure>
@@ -457,7 +457,7 @@
     <strong>本文作者： </strong>黄鑫</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://easyblog.top/2019/08/05/SpringMVC入门/" title="SpringMVC的运行流程">http://easyblog.top/2019/08/05/SpringMVC入门/</a>
+    <a href="http://easyblog.top/2019/08/03/SpringMVC入门/" title="SpringMVC的运行流程">http://easyblog.top/2019/08/03/SpringMVC入门/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -483,8 +483,8 @@
 <span class="post-nav-divider"></span>
 
 <div class="post-nav-prev post-nav-item">
-<a href="/2019/08/06/Springmvc/" rel="prev" title="SpringMVC获取请求参数">
-SpringMVC获取请求参数 <i class="fa fa-chevron-right"></i>
+<a href="/2019/08/04/SpringMVC RequestMapping注解/" rel="prev" title="RequestMapping注解">
+RequestMapping注解 <i class="fa fa-chevron-right"></i>
 </a>
 
 </div>
@@ -552,7 +552,7 @@ SpringMVC获取请求参数 <i class="fa fa-chevron-right"></i>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -569,7 +569,9 @@ SpringMVC获取请求参数 <i class="fa fa-chevron-right"></i>
         
           
         
-        <span class="site-state-item-count">1</span>
+          
+        
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -588,7 +590,9 @@ SpringMVC获取请求参数 <i class="fa fa-chevron-right"></i>
         
           
         
-        <span class="site-state-item-count">2</span>
+          
+        
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -645,7 +649,7 @@ SpringMVC获取请求参数 <i class="fa fa-chevron-right"></i>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-17</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-18</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
