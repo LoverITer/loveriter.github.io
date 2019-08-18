@@ -153,8 +153,8 @@ template {
 body {
   background: #eee;
   color: #555;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1em;
+  font-family: 'Lato', "Microsoft YaHei", "PingFang SC", sans-serif;
+  font-size: 16px;
   line-height: 2;
   position: relative;
 }
@@ -169,7 +169,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "Microsoft YaHei", "PingFang SC", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -422,14 +422,14 @@ body {
 }
 pre,
 .highlight {
-  background: #000;
-  color: #eaeaea;
+  background: #f7f7f7;
+  color: #4d4d4c;
   line-height: 1.6;
   margin: 20px 0;
 }
 pre,
 code {
-  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
 }
 code {
   overflow-wrap: break-word;
@@ -445,12 +445,12 @@ pre {
 }
 pre code {
   background: none;
-  color: #eaeaea;
+  color: #4d4d4c;
   padding: 0;
   text-shadow: none;
 }
 .highlight *::selection {
-  background: #424242;
+  background: #d6d6d6;
 }
 .highlight pre {
   border: none;
@@ -469,7 +469,7 @@ pre code {
 .highlight figcaption {
   background: #eee;
   border-bottom: 1px solid #e9e9e9;
-  color: #eaeaea;
+  color: #4d4d4c;
   line-height: 1em;
   margin: 0;
   padding: 0.5em;
@@ -483,21 +483,21 @@ pre code {
   clear: both;
 }
 .highlight figcaption a {
-  color: #eaeaea;
+  color: #4d4d4c;
   float: right;
 }
 .highlight figcaption a:hover {
-  border-bottom-color: #eaeaea;
+  border-bottom-color: #4d4d4c;
 }
 .highlight .gutter pre {
-  background-color: #292929;
-  color: #666;
+  background-color: #eff2f3;
+  color: #869194;
   padding-left: 10px;
   padding-right: 10px;
   text-align: right;
 }
 .highlight .code pre {
-  background-color: #000;
+  background-color: #f7f7f7;
   padding-left: 10px;
   width: 100%;
 }
@@ -514,20 +514,20 @@ pre code {
   border: none;
 }
 pre .deletion {
-  background: #800000;
+  background: #fdd;
 }
 pre .addition {
-  background: #008000;
+  background: #dfd;
 }
 pre .meta {
-  color: #e7c547;
+  color: #eab700;
   user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
 }
 pre .comment {
-  color: #969896;
+  color: #8e908c;
 }
 pre .variable,
 pre .attribute,
@@ -542,7 +542,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #d54e53;
+  color: #c82829;
 }
 pre .number,
 pre .preprocessor,
@@ -552,7 +552,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #e78c45;
+  color: #f5871f;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute,
@@ -565,11 +565,11 @@ pre .ruby .symbol,
 pre .xml .cdata,
 pre .special,
 pre .formula {
-  color: #b9ca4a;
+  color: #718c00;
 }
 pre .title,
 pre .css .hexcolor {
-  color: #70c0b1;
+  color: #3e999f;
 }
 pre .function,
 pre .python .decorator,
@@ -579,11 +579,11 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #7aa6da;
+  color: #4271ae;
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c397d8;
+  color: #8959a8;
 }
 .blockquote-center,
 .page-home .post-type-quote blockquote,
@@ -1040,7 +1040,7 @@ pre .javascript .function {
 }
 .site-title {
   display: inline-block;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "Microsoft YaHei", "PingFang SC", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1048,7 +1048,7 @@ pre .javascript .function {
 }
 .site-subtitle {
   color: #ddd;
-  font-size: 0.8125em;
+  font-size: 14px;
   margin-top: 10px;
 }
 .use-motion .brand {
@@ -1116,7 +1116,7 @@ pre .javascript .function {
 .menu .menu-item span.exturl {
   border-bottom: 1px solid transparent;
   display: block;
-  font-size: 0.8125em;
+  font-size: 14px;
   line-height: inherit;
   transition-property: border-color;
   transition-delay: 0s;
@@ -1136,7 +1136,7 @@ pre .javascript .function {
 .post-body {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "Georgia", "sans";
 }
 .post-body span.exturl .fa {
   font-size: 0.875em;
@@ -1233,7 +1233,7 @@ pre .javascript .function {
   left: 0;
   margin-left: -4px;
   position: absolute;
-  top: 0.75em;
+  top: 10px;
   width: 6px;
   transition-delay: 0s;
   transition-duration: 0.2s;
@@ -1251,7 +1251,7 @@ pre .javascript .function {
   font-weight: normal;
   line-height: inherit;
   margin-bottom: 0;
-  margin-left: 3.75em;
+  margin-left: 50px;
 }
 .posts-collapse .post-title::after {
   margin-left: 3px;
@@ -1263,7 +1263,7 @@ pre .javascript .function {
   color: #666;
 }
 .posts-collapse .post-meta {
-  font-size: 0.75em;
+  font-size: 10px;
   left: 20px;
   position: absolute;
   top: 5px;
@@ -1380,7 +1380,7 @@ pre .javascript .function {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "Georgia", "sans";
   margin: 3px 0 60px 0;
   text-align: center;
 }
@@ -1397,7 +1397,7 @@ pre .javascript .function {
   margin: 0 0.5em;
 }
 .post-meta .post-meta-item {
-  font-size: 0.75em;
+  font-size: 10px;
 }
 .post-meta-divider {
   margin: 0 0.5em;
@@ -1447,7 +1447,7 @@ pre .javascript .function {
   top: 2px;
 }
 .post-nav-item .fa {
-  font-size: 0.75em;
+  font-size: 10px;
   margin-right: 5px;
 }
 .post-nav-next a {
@@ -1485,7 +1485,7 @@ pre .javascript .function {
 }
 .posts-expand .post-tags a {
   display: inline-block;
-  font-size: 0.8125em;
+  font-size: 14px;
   margin-right: 10px;
 }
 .posts-expand .post-title {
@@ -1613,7 +1613,7 @@ pre .javascript .function {
 }
 .site-description {
   color: #999;
-  font-size: 0.8125em;
+  font-size: 14px;
   margin-top: 0;
   text-align: center;
 }
@@ -1624,7 +1624,7 @@ pre .javascript .function {
 .links-of-author span.exturl {
   border-bottom-color: #555;
   display: inline-block;
-  font-size: 0.8125em;
+  font-size: 14px;
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;
@@ -1634,7 +1634,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8eb0ff;
+  background: #e2ccff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1669,7 +1669,7 @@ pre .javascript .function {
   color: #fff;
 }
 .links-of-blogroll {
-  font-size: 0.8125em;
+  font-size: 14px;
   margin-top: 10px;
 }
 .links-of-blogroll-title {
@@ -1868,7 +1868,7 @@ pre .javascript .function {
 }
 .site-state-item-name {
   color: #999;
-  font-size: 0.8125em;
+  font-size: 14px;
 }
 .footer {
   color: #999;
@@ -2251,7 +2251,7 @@ pre .javascript .function {
   }
 }
 ul.breadcrumb {
-  font-size: 0.75em;
+  font-size: 10px;
   list-style: none;
   margin: 1em 0;
   padding: 0 2em;
