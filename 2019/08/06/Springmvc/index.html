@@ -166,7 +166,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">欢迎访问我的个人博客</p>
+        <h1 class="site-subtitle" itemprop="description">欢迎访问我的个人博客</h1>
       
   </div>
 
@@ -327,10 +327,10 @@
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">SpringMVC获取请求参数
+<h2 class="post-title" itemprop="name headline">SpringMVC获取请求参数
 
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -443,7 +443,7 @@
     <a href="http://easyblog.top/2019/08/06/Springmvc/" title="SpringMVC获取请求参数">http://easyblog.top/2019/08/06/Springmvc/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
 </ul>
 
 </div>
@@ -599,7 +599,7 @@ SpringMVC处理模型参数 <i class="fa fa-chevron-right"></i>
       
         
       
-        <a href="https://github.com/LoverITer" title="GitHub &rarr; https://github.com/LoverITer" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0xvdmVySVRlcg==" title="GitHub &rarr; https://github.com/LoverITer"><i class="fa fa-fw fa-github"></i>GitHub</span>
       </span>
     
   </div>
@@ -636,11 +636,14 @@ SpringMVC处理模型参数 <i class="fa fa-chevron-right"></i>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-20</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Huangxin</span>
+        <div class="copyright">
+ &copy; 
+ <span itemprop="copyrightYear">2019</span> 
+ 
+ <span class="with-love" id="animate">
+  <i class="fa fa-heart"></i>
+ </span>
+<span class="author" itemprop="copyrightHolder">Huangxin</span>
 </div>
 
 
@@ -653,7 +656,7 @@ SpringMVC处理模型参数 <i class="fa fa-chevron-right"></i>
 <script>
     var now = new Date();
     function createtime() {
-        var grt= new Date("08/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        var grt= new Date("08/01/2019 00:00:00");   //此处修改你的建站时间或者网站上线时间
         now.setTime(now.getTime()+250);
         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
@@ -735,6 +738,7 @@ setInterval("createtime()",250);
 <script src="/js/next-boot.js?v=7.3.0"></script>
 
 
+  <script src="/js/exturl.js?v=7.3.0"></script>
 
 
 

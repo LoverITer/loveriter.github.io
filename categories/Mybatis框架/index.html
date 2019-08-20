@@ -162,7 +162,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">欢迎访问我的个人博客</p>
+        <h1 class="site-subtitle" itemprop="description">欢迎访问我的个人博客</h1>
       
   </div>
 
@@ -332,22 +332,22 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Mybatis框架<small>分类</small>
-        </h1>
+        <h2>Mybatis框架<small>分类</small>
+        </h2>
       </div>
         
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h2 class="post-title">
+      <h3 class="post-title">
           <a class="post-title-link" href="/2019/07/28/深理解MyBatis高级结果映射/" itemprop="url">
             
               <span itemprop="name">深入理解MyBatis高级结果映射</span>
             
           </a>
         
-      </h2>
+      </h3>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -367,14 +367,14 @@
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h2 class="post-title">
+      <h3 class="post-title">
           <a class="post-title-link" href="/2019/07/28/MyBatis缓存配置/" itemprop="url">
             
               <span itemprop="name">MyBatis缓存配置</span>
             
           </a>
         
-      </h2>
+      </h3>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -394,14 +394,14 @@
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h2 class="post-title">
+      <h3 class="post-title">
           <a class="post-title-link" href="/2019/07/27/Mybatis XML映射文件的配置/" itemprop="url">
             
               <span itemprop="name">Mybatis XML映射文件的配置</span>
             
           </a>
         
-      </h2>
+      </h3>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -421,14 +421,14 @@
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h2 class="post-title">
+      <h3 class="post-title">
           <a class="post-title-link" href="/2019/07/26/Mybatis动态SQL/" itemprop="url">
             
               <span itemprop="name">Mybatis 动态SQL</span>
             
           </a>
         
-      </h2>
+      </h3>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -448,14 +448,14 @@
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h2 class="post-title">
+      <h3 class="post-title">
           <a class="post-title-link" href="/2019/07/26/Mybatis全局XML文件的配置/" itemprop="url">
             
               <span itemprop="name">Mybatis 全局XML文件的配置</span>
             
           </a>
         
-      </h2>
+      </h3>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -475,14 +475,14 @@
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
 
-      <h2 class="post-title">
+      <h3 class="post-title">
           <a class="post-title-link" href="/2019/07/25/认识Mybatis/" itemprop="url">
             
               <span itemprop="name">认识MyBatis</span>
             
           </a>
         
-      </h2>
+      </h3>
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
@@ -604,7 +604,7 @@
       
         
       
-        <a href="https://github.com/LoverITer" title="GitHub &rarr; https://github.com/LoverITer" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0xvdmVySVRlcg==" title="GitHub &rarr; https://github.com/LoverITer"><i class="fa fa-fw fa-github"></i>GitHub</span>
       </span>
     
   </div>
@@ -624,11 +624,14 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-20</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Huangxin</span>
+        <div class="copyright">
+ &copy; 
+ <span itemprop="copyrightYear">2019</span> 
+ 
+ <span class="with-love" id="animate">
+  <i class="fa fa-heart"></i>
+ </span>
+<span class="author" itemprop="copyrightHolder">Huangxin</span>
 </div>
 
 
@@ -641,7 +644,7 @@
 <script>
     var now = new Date();
     function createtime() {
-        var grt= new Date("08/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        var grt= new Date("08/01/2019 00:00:00");   //此处修改你的建站时间或者网站上线时间
         now.setTime(now.getTime()+250);
         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
@@ -723,6 +726,7 @@ setInterval("createtime()",250);
 <script src="/js/next-boot.js?v=7.3.0"></script>
 
 
+  <script src="/js/exturl.js?v=7.3.0"></script>
 
 
 

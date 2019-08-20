@@ -100,7 +100,7 @@
   };
 </script>
 
-  <title>LoveITer</title>
+  <title>LoveITer - 欢迎访问我的个人博客</title>
   
 
 
@@ -162,7 +162,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">欢迎访问我的个人博客</p>
+        <h1 class="site-subtitle" itemprop="description">欢迎访问我的个人博客</h1>
       
   </div>
 
@@ -322,11 +322,11 @@
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">
+<h2 class="post-title" itemprop="name headline">
 
 <a href="/2019/08/01/认识Spring框架/" class="post-title-link" itemprop="url">认识Spring框架</a>
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -453,11 +453,11 @@ Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而�
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">
+<h2 class="post-title" itemprop="name headline">
 
 <a href="/2019/07/28/深理解MyBatis高级结果映射/" class="post-title-link" itemprop="url">深入理解MyBatis高级结果映射</a>
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -579,11 +579,11 @@ Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而�
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">
+<h2 class="post-title" itemprop="name headline">
 
 <a href="/2019/07/28/MyBatis缓存配置/" class="post-title-link" itemprop="url">MyBatis缓存配置</a>
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -710,11 +710,11 @@ Spring 框架是 Java 应用最广的框架，它的成功来源于理念，而�
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">
+<h2 class="post-title" itemprop="name headline">
 
 <a href="/2019/07/27/Mybatis XML映射文件的配置/" class="post-title-link" itemprop="url">Mybatis XML映射文件的配置</a>
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -835,11 +835,11 @@ MyBatis中的SQL 映射文件只有很少的几个顶级元素（按照它们应
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">
+<h2 class="post-title" itemprop="name headline">
 
 <a href="/2019/07/26/Mybatis动态SQL/" class="post-title-link" itemprop="url">Mybatis 动态SQL</a>
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -958,11 +958,11 @@ MyBatis中的SQL 映射文件只有很少的几个顶级元素（按照它们应
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">
+<h2 class="post-title" itemprop="name headline">
 
 <a href="/2019/07/26/Mybatis全局XML文件的配置/" class="post-title-link" itemprop="url">Mybatis 全局XML文件的配置</a>
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -1085,11 +1085,11 @@ properties提供了一个通过外部配置文件(例如数据库配置文件)�
 <header class="post-header">
 
 
-<h1 class="post-title" itemprop="name headline">
+<h2 class="post-title" itemprop="name headline">
 
 <a href="/2019/07/25/认识Mybatis/" class="post-title-link" itemprop="url">认识MyBatis</a>
 
-</h1>
+</h2>
 
 
 <div class="post-meta">
@@ -1299,7 +1299,7 @@ properties提供了一个通过外部配置文件(例如数据库配置文件)�
       
         
       
-        <a href="https://github.com/LoverITer" title="GitHub &rarr; https://github.com/LoverITer" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0xvdmVySVRlcg==" title="GitHub &rarr; https://github.com/LoverITer"><i class="fa fa-fw fa-github"></i>GitHub</span>
       </span>
     
   </div>
@@ -1319,11 +1319,14 @@ properties提供了一个通过外部配置文件(例如数据库配置文件)�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019-08-20</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Huangxin</span>
+        <div class="copyright">
+ &copy; 
+ <span itemprop="copyrightYear">2019</span> 
+ 
+ <span class="with-love" id="animate">
+  <i class="fa fa-heart"></i>
+ </span>
+<span class="author" itemprop="copyrightHolder">Huangxin</span>
 </div>
 
 
@@ -1336,7 +1339,7 @@ properties提供了一个通过外部配置文件(例如数据库配置文件)�
 <script>
     var now = new Date();
     function createtime() {
-        var grt= new Date("08/01/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        var grt= new Date("08/01/2019 00:00:00");   //此处修改你的建站时间或者网站上线时间
         now.setTime(now.getTime()+250);
         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
@@ -1418,6 +1421,7 @@ setInterval("createtime()",250);
 <script src="/js/next-boot.js?v=7.3.0"></script>
 
 
+  <script src="/js/exturl.js?v=7.3.0"></script>
 
 
 
