@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://easyblog.top/2019/08/22/SSM%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/</loc>
+    
+    <lastmod>2019-08-23T08:27:29.884Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://easyblog.top/2019/07/29/MyBatis%E9%9B%86%E6%88%90EhCache%E7%BC%93%E5%AD%98%E6%A1%86%E6%9E%B6/</loc>
     
     <lastmod>2019-08-22T16:19:19.161Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://easyblog.top/2019/07/26/Mybatis%E5%85%A8%E5%B1%80XML%E6%96%87%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2019-08-22T16:16:45.379Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://easyblog.top/2019/08/22/SSM%E4%B8%89%E5%A4%A7%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/</loc>
-    
-    <lastmod>2019-08-22T07:56:40.763Z</lastmod>
     
   </url>
   
