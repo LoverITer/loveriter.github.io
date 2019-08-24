@@ -30,8 +30,8 @@
     root: '/',
     scheme: 'Gemini',
     version: '7.3.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    sidebar: {"position":"right","width":300,"display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
@@ -244,19 +244,6 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">31</span></a>
 
   </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-sitemap">
-      
-    
-      
-    
-
-    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
-
-  </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
@@ -383,7 +370,7 @@
 
 
 <p>
-自定义视图解析器：package com.xzy.view;import org.springframework.core.Ordered;import org.springframework.web
+自定义视图解析器：package com.xzy.view;import org.springframework.core.Ordered;import org.springframework.web.servlet.View;import org.springframework.web.servlet.ViewResolver;import java.util.Locale;/** * 自定义视
 ...
 </p>
 <!--noindex-->
@@ -506,7 +493,7 @@
 
 
 <p>
-SpringMVC视图解析 &nbsp; &nbsp; &nbsp;对于控制器的目标方法，无论其返回值是String、View、ModelMap或是ModelAndView，SpringMVC都会在内
+SpringMVC视图解析 &nbsp; &nbsp; &nbsp;对于控制器的目标方法，无论其返回值是String、View、ModelMap或是ModelAndView，SpringMVC都会在内部将它们封装为一个ModelAndView对象进行返回。     &nbsp; &nbsp; &nbsp; Spring MVC 借助视图解析器（ViewResolver）得到最终的视图对象（View
 ...
 </p>
 <!--noindex-->
@@ -631,7 +618,7 @@ SpringMVC视图解析 &nbsp; &nbsp; &nbsp;对于控制器的目标方法，无�
 <p>
 SpringMVC 提供了以下几种途径输出模型数据:
 ModelAndView: 处理方法返回值类型为 ModelAndView时, 方法体即可通过该对象添加模型数据
-Map、Model以及Model
+Map、Model以及ModelMap:入参为org.springframework.ui.Model、org.springframework.ui.ModelMap 或 Java.uti.Map 时，处理方法返回时，Map中的数据
 ...
 </p>
 <!--noindex-->
@@ -755,7 +742,7 @@ Map、Model以及Model
 
 <p>
 第一种方式：方法的形参上给一个和请求参数同名的参数1.获得普通类型的参数值示例代码
-/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我
+/** * 第1种获得请求参数的方式：在方法的形参上给一个和请求参数同名的参数， *  之后SpringMVC会帮我们自动注入参数值 * @param username * @param model * @return */@RequestMapping(value = "/welcome")public Stri
 ...
 </p>
 <!--noindex-->
@@ -882,7 +869,11 @@ Ant风格的URL形式Ant风格的URL指的是URL的路径可以写成模糊路�
 
   ?：匹配一个字符
   *: 匹配多个字符以及一层URL路径
-  **:可以匹配
+  **:可以匹配多个字符以及多层路径
+ 匹配的规则：以最精确的路径为准，就是说当有多个路径可以匹配的时候，以最精确的路径为目标去访问
+
+示例代码：新建AntTestServlet.java
+package com.x
 ...
 </p>
 <!--noindex-->
@@ -1006,7 +997,11 @@ Ant风格的URL形式Ant风格的URL指的是URL的路径可以写成模糊路�
 
 <p>
 @RequestMapping注解是一个十分强大的注解，Spring MVC使用@RequestMapping注解为控制器指定可以处理那些URL请求，在控制器的类上或类中的方法上均可以使用这个注解：
+在类上使用可以提供初步的映射信息。相当于一个根路径
+ 在方法上使用提供更进一步的细分映射信息。
 
+这是一个只在方法上使用的例子：
+package com.xzy.controller;import o
 ...
 </p>
 <!--noindex-->
@@ -1141,7 +1136,7 @@ Spring MVC体系结构：SpringMVC 是基于 Model2 实现的技术框架
 
 
   一个请求在SpringMVC中经历的过程：
- 请求旅程的第一站是 Spring 的 Dispatcher
+ 请求旅程的第一站是 Spring 的 DispatcherServlet。与大多数基于 Java 的 Web 框架一样，Spring MVC 所有的请求都会通过一个前端控制器（front controller）Servlet。前端控制器是常用的 Web 应用
 ...
 </p>
 <!--noindex-->
@@ -1273,7 +1268,7 @@ Spring MVC体系结构：SpringMVC 是基于 Model2 实现的技术框架
 
 <p>
 AspectJ 通知类型
-AOP 联盟定义通知类型，AOP联盟的jar都是接口，必须要有实现类。AspectJ通知类型只定义类型名称，以及方法格式，总共有6种；1.brfore：前置通知(应用：各种校
+AOP 联盟定义通知类型，AOP联盟的jar都是接口，必须要有实现类。AspectJ通知类型只定义类型名称，以及方法格式，总共有6种；1.brfore：前置通知(应用：各种校验)      在方法执行前执行，如果通知抛出异常，将不会执行方法2.afterReturning：后置通知（应用：常规数据处理）      方法正常返回后执行，如果方法中抛出异常，通知将无法执行3.
 ...
 </p>
 <!--noindex-->
@@ -1397,7 +1392,7 @@ AOP 联盟定义通知类型，AOP联盟的jar都是接口，必须要有实现�
 
 <p>
 Spring AOP半自动编程
-核心步骤：1. 创建一个接口以及它的实现类2. 编写切面类，实现MethodInterceptor接口的invoke方法3. 配置Spring的配置文件，xml文件中的
+核心步骤：1. 创建一个接口以及它的实现类2. 编写切面类，实现MethodInterceptor接口的invoke方法3. 配置Spring的配置文件，xml文件中的配置重要是：【重要】   &nbsp;&nbsp; 1).配置目标类的bean    &nbsp;&nbsp;&nbsp;2).配置切面类的bean    &nbsp;&nbsp;&nbsp;3).配
 ...
 </p>
 <!--noindex-->
@@ -1529,7 +1524,7 @@ Spring AOP半自动编程
 
 <p>
 AOP概述（Spring AOP是什么?AOP有什么用？）
-1） 在软件行业，AOP为Aspect Oriented programming 的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理
+1） 在软件行业，AOP为Aspect Oriented programming 的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的同一维护的一种技术。2） AOP是OOP（面向对象编程）的延续，是软件开发的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生。3）利用AOP可以对业务逻辑的各个部分
 ...
 </p>
 <!--noindex-->
@@ -1687,6 +1682,13 @@ AOP概述（Spring AOP是什么?AOP有什么用？）
 
         </div>
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -1763,11 +1765,6 @@ setInterval("createtime()",250);
         
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
 
     
 
@@ -1806,6 +1803,15 @@ setInterval("createtime()",250);
 
 
   
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
 
 
 
