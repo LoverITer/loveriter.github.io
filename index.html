@@ -241,7 +241,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">36</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -295,6 +295,240 @@
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2019/08/28/Spring Boot—Thymeleaf模板引擎/" class="post-title-link" itemprop="url">Spring Boot—Thymeleaf模板引擎</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2019-08-28 14:56:25 / 修改时间：20:11:55" itemprop="dateCreated datePublished" datetime="2019-08-28T14:56:25+08:00">2019-08-28</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot框架/" itemprop="url" rel="index"><span itemprop="name">Spring Boot框架</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+&nbsp;&nbsp; 引言&nbsp;&nbsp;&nbsp;&nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2019/08/28/Spring Boot—Thymeleaf模板引擎/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  2k 字
+</span>
+
+<span title="post.min2read">
+  8 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/28/SpringBoot映射映射静态文件的规则/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2019/08/28/SpringBoot映射映射静态文件的规则/" class="post-title-link" itemprop="url">Spring Boot 对静态文件的默认映射规则</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2019-08-28 10:00:02 / 修改时间：20:11:55" itemprop="dateCreated datePublished" datetime="2019-08-28T10:00:02+08:00">2019-08-28</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot框架/" itemprop="url" rel="index"><span itemprop="name">Spring Boot框架</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+Webjars(官网：http://www.webjars.org/)​ webjars：以jar包的方式引入静态资源；Spring Boot中所有 /webjars/** ，都会去 classpath:/META-INF/resources/webjars/ 找资源。推荐使用Webjars的三大理由：
+
+将静态资源版本化，更利于升级和维护。
+剥离静态资源，提高编译速度和打包效率。
+实现资源共享，
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2019/08/28/SpringBoot映射映射静态文件的规则/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  601 字
+</span>
+
+<span title="post.min2read">
+  2 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/27/SpringBoot日志配置/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -327,11 +561,19 @@
 
 
 
-<time title="创建时间：2019-08-27 11:51:47 / 修改时间：21:10:16" itemprop="dateCreated datePublished" datetime="2019-08-27T11:51:47+08:00">2019-08-27</time>
+<time title="创建时间：2019-08-27 11:51:47" itemprop="dateCreated datePublished" datetime="2019-08-27T11:51:47+08:00">2019-08-27</time>
 </span>
 
 
 
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2019-08-28 09:42:01" itemprop="dateModified" datetime="2019-08-28T09:42:01+08:00">2019-08-28</time>
+</span>
 
 
 <span class="post-meta-item">
@@ -390,11 +632,11 @@ JCL（Apache Jakarta Commons Logging）SLF4J(Simple Loggin
 </footer>
 </div>
 <span title="post.wordcount">
-  4.2k 字
+  4.3k 字
 </span>
 
 <span title="post.min2read">
-  18 分钟
+  19 分钟
 </span>
 
 
@@ -1311,261 +1553,6 @@ ExceptionHandlerExceptionResolver &nbsp; &nbsp; &nbsp; &nbsp;继承自AbstractHa
 </article>
 
     
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/15/SpringMVC资源国际化/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2019/08/15/SpringMVC资源国际化/" class="post-title-link" itemprop="url">SpringMVC资源国际化</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2019-08-15 14:13:39 / 修改时间：14:21:10" itemprop="dateCreated datePublished" datetime="2019-08-15T14:13:39+08:00">2019-08-15</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring框架/" itemprop="url" rel="index"><span itemprop="name">Spring框架</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-<div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-<div class="post-gallery-row">
-<img src="https://i.loli.net/2019/08/15/U6fnrdCpxcP3Qot.png" itemprop="contentUrl">
-
-
-
-</div>
-</div>
-
-
-<p>
-国际化开发概述软件的国际化：软件开发时，要使它能同时应对世界不同地区和国家的访问，并针对不同地区和国家的访问，提供相应的、符合来访者阅读习惯的页面或数据。国际化(internationalization)又称为 i18n(读法为i 18 n，据说是因为internationalization(国际化)这个单词从i到n之间有18个英文字母，i18n的名字由此而来)
-国际化的基本规则国际化信息”也称为
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2019/08/15/SpringMVC资源国际化/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  2.4k 字
-</span>
-
-<span title="post.min2read">
-  10 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/14/SpringMVC拦截器(Interceptor)/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2019/08/14/SpringMVC拦截器(Interceptor)/" class="post-title-link" itemprop="url">SpringMVC拦截器</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2019-08-14 18:13:01" itemprop="dateCreated datePublished" datetime="2019-08-14T18:13:01+08:00">2019-08-14</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2019-08-16 14:30:10" itemprop="dateModified" datetime="2019-08-16T14:30:10+08:00">2019-08-16</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring框架/" itemprop="url" rel="index"><span itemprop="name">Spring框架</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-<div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-<div class="post-gallery-row">
-<img src="https://i.loli.net/2019/08/14/MAnGQhTV1tFCwZX.png" itemprop="contentUrl">
-
-
-
-</div>
-</div>
-
-
-<p>
-拦截器概述什么是拦截器？Spring MVC中的拦截器（Interceptor）类似于Servlet中的过滤器（Filter），但是比过滤器的功能更加强大，它主要用于拦截用户请求并作相应的处理。例如通过拦截器可以进行权限验证、记录请求信息的日志、判断用户是否登录等。要使用Spring MVC中的拦截器，就需要对拦截器类进行定义和配置。通常拦截器类可以通过两种方式来定义：1.通过实现HandlerI
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2019/08/14/SpringMVC拦截器(Interceptor)/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  2.1k 字
-</span>
-
-<span title="post.min2read">
-  9 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
   </section>
 
   
@@ -1606,7 +1593,7 @@ ExceptionHandlerExceptionResolver &nbsp; &nbsp; &nbsp; &nbsp;继承自AbstractHa
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
