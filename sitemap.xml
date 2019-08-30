@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://easyblog.top/2019/08/28/Spring%20Boot%E2%80%94Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</loc>
+    
+    <lastmod>2019-08-30T15:07:02.095Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://easyblog.top/2019/08/15/SpringMVC%E8%B5%84%E6%BA%90%E5%9B%BD%E9%99%85%E5%8C%96/</loc>
+    
+    <lastmod>2019-08-30T07:54:24.911Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://easyblog.top/2019/08/29/SpringBootMVC%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2019-08-29T15:10:46.239Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://easyblog.top/2019/08/28/SpringBoot%E6%98%A0%E5%B0%84%E6%98%A0%E5%B0%84%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%84%E5%88%99/</loc>
     
     <lastmod>2019-08-29T13:33:56.847Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://easyblog.top/2019/08/28/Spring%20Boot%E2%80%94Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</loc>
-    
-    <lastmod>2019-08-28T12:11:55.207Z</lastmod>
     
   </url>
   
@@ -208,13 +215,6 @@
     <loc>http://easyblog.top/2019/08/15/SpringMVC%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</loc>
     
     <lastmod>2019-08-15T16:11:00.149Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://easyblog.top/2019/08/15/SpringMVC%E8%B5%84%E6%BA%90%E5%9B%BD%E9%99%85%E5%8C%96/</loc>
-    
-    <lastmod>2019-08-15T06:21:10.210Z</lastmod>
     
   </url>
   
