@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://easyblog.top/2019/09/11/SpringBoot%E4%B8%8E%E7%BC%93%E5%AD%98%E4%B9%8B%E6%95%B4%E5%90%88Redis/</loc>
+    
+    <lastmod>2019-09-11T13:10:43.587Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://easyblog.top/2019/09/09/SpringBoot%E4%B8%8E%E7%BC%93%E5%AD%98%E6%B3%A8%E8%A7%A3/</loc>
     
-    <lastmod>2019-09-09T14:02:08.248Z</lastmod>
+    <lastmod>2019-09-11T13:08:33.502Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://easyblog.top/2019/09/07/SpirngBoot%E4%B9%8BMybatis%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2019-09-11T10:22:53.991Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://easyblog.top/2019/08/24/SpringBoot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2019-09-11T02:23:22.673Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://easyblog.top/2019/09/05/CentOS7%E9%85%8D%E7%BD%AEDocker/</loc>
+    
+    <lastmod>2019-09-10T12:22:01.019Z</lastmod>
     
   </url>
   
@@ -26,20 +54,6 @@
     <loc>http://easyblog.top/2019/09/04/SpringBoot%E9%85%8D%E7%BD%AE%E5%A4%96%E7%BD%AEServlet%E5%AE%B9%E5%99%A8/</loc>
     
     <lastmod>2019-09-08T04:27:04.607Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://easyblog.top/2019/09/05/CentOS7%E9%85%8D%E7%BD%AEDocker/</loc>
-    
-    <lastmod>2019-09-08T04:18:21.171Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://easyblog.top/2019/09/07/SpirngBoot%E4%B9%8BMybatis%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/</loc>
-    
-    <lastmod>2019-09-07T10:23:41.025Z</lastmod>
     
   </url>
   
@@ -152,13 +166,6 @@
     <loc>http://easyblog.top/2019/08/26/SpringBoot%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E5%8E%9F%E7%90%86/</loc>
     
     <lastmod>2019-08-26T10:48:07.717Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://easyblog.top/2019/08/24/SpringBoot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</loc>
-    
-    <lastmod>2019-08-25T05:52:22.070Z</lastmod>
     
   </url>
   
