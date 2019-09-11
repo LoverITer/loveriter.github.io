@@ -1162,6 +1162,16 @@ pre .javascript .function {
 .use-motion .collection-title {
   opacity: 0;
 }
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
+.post-body p a:hover {
+  color: #fc6423;
+  border-bottom: none;
+  border-bottom: 1px solid #0593d3;
+}
 .post-button {
   margin-top: 40px;
 }
@@ -1627,7 +1637,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #2fbfff;
+  background: #4e8fb5;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2295,7 +2305,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 .header-inner {
-  background: #fff;
+  background: rgba(255,255,255,0.1);
   border-radius: initial;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
   overflow: hidden;
@@ -2330,7 +2340,7 @@ ul.breadcrumb li+li:last-child {
   }
 }
 .content-wrap {
-  background: #fff;
+  background: rgba(255,255,255,0.1);
   border-radius: initial;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
   box-sizing: border-box;
@@ -2665,13 +2675,13 @@ ul.breadcrumb li+li:last-child {
   white-space: nowrap;
 }
 .content-wrap {
-  background: initial;
+  background: rgba(255,255,255,0.1);
   border-radius: initial;
   box-shadow: initial;
   padding: initial;
 }
 .post-block {
-  background: #fff;
+  background: rgba(255,255,255,0.1);
   border-radius: initial;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
   padding: 40px;
@@ -2682,7 +2692,7 @@ ul.breadcrumb li+li:last-child {
   margin-top: 12px;
 }
 .comments {
-  background: #fff;
+  background: rgba(255,255,255,0.1);
   border-radius: initial;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
   margin: auto;
@@ -2705,7 +2715,7 @@ ul.breadcrumb li+li:last-child {
   display: none;
 }
 .pagination {
-  background: #fff;
+  background: rgba(255,255,255,0.1);
   border-radius: initial;
   border-top: initial;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
