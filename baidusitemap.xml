@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://easyblog.top/2019/09/25/Redis%E6%8C%81%E4%B9%85%E5%8C%96RDB%E5%92%8CAOF/</loc>
+    <lastmod>2019-09-25</lastmod>
+  </url>  <url>
     <loc>http://easyblog.top/2019/09/24/Redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2019-09-24</lastmod>
+    <lastmod>2019-09-25</lastmod>
   </url>  <url>
     <loc>http://easyblog.top/2019/09/23/Redis%E4%BA%94%E5%A4%A7%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
     <lastmod>2019-09-23</lastmod>
