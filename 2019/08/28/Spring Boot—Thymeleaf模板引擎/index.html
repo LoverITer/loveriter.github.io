@@ -1,1 +1,953 @@
-<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta name="generator" content="Hexo 3.9.0"><meta name="google-site-verification" content="T-WbquSmDohrJtpvP3vffYeg3H44xSriCbbsPyDwUt0"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0"><link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222"><link rel="stylesheet" href="/css/main.css?v=7.3.0"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"><script src="/vendors/pace/pace.min.js?v=1.0.2"></script><link rel="stylesheet" href="/vendors/pace/pace-theme-minimal.min.css?v=1.0.2"><script id="hexo-configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"7.3.0",sidebar:{position:"right",width:240,display:"post",offset:12,onmobile:!1},back2top:{enable:!0,sidebar:!0,scrollpercent:!0},save_scroll:!1,copycode:{enable:!1,show_result:!1,style:null},fancybox:!1,mediumzoom:!1,lazyload:!1,pangu:!1,algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},localsearch:{enable:!0,trigger:"auto",top_n_per_article:1,unescape:!1,preload:!1},path:"search.xml",tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},translation:{copy_button:"复制",copy_success:"复制成功",copy_failure:"复制失败"}}</script><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#9fa6b3;height:2px}.pace .pace-progress-inner{box-shadow:0 0 10px #225cc7,0 0 5px #225cc7}.pace .pace-activity{border-top-color:#9fa6b3;border-left-color:#9fa6b3}</style><meta name="description" content="&amp;nbsp;&amp;nbsp; 引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，"><meta name="keywords" content="Spring Boot"><meta property="og:type" content="article"><meta property="og:title" content="Spring Boot—Thymeleaf模板引擎"><meta property="og:url" content="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/index.html"><meta property="og:site_name" content="LoveITer"><meta property="og:description" content="&amp;nbsp;&amp;nbsp; 引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg=="><meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg=="><meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg=="><meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg=="><meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg=="><meta property="og:updated_time" content="2019-09-02T06:53:25.045Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Spring Boot—Thymeleaf模板引擎"><meta name="twitter:description" content="&amp;nbsp;&amp;nbsp; 引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，"><meta name="twitter:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg=="><link rel="alternate" href="/atom.xml" title="LoveITer" type="application/atom+xml"><link rel="canonical" href="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/"><script id="page-configurations">CONFIG.page={sidebar:"",isHome:!1,isPost:!0,isPage:!1,isArchive:!1}</script><title>Spring Boot—Thymeleaf模板引擎 | LoveITer</title><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?3b26557457e046bcc561ba2a4b40401e";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-right"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">LoveITer</span><span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">欢迎访问我的个人博客</h1></div><div class="site-nav-toggle"><button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签<span class="badge">8</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类<span class="badge">5</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档<span class="badge">55</span></a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content page-post-detail"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="黄鑫"><meta itemprop="description" content="Talk is cheap. Show me the code"><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="LoveITer"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">Spring Boot—Thymeleaf模板引擎</h2><div class="post-meta"><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2019-08-28 14:56:25" itemprop="dateCreated datePublished" datetime="2019-08-28T14:56:25+08:00">2019-08-28</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">更新于</span> <time title="修改时间：2019-09-02 14:53:25" itemprop="dateModified" datetime="2019-09-02T14:53:25+08:00">2019-09-02</time></span><span class="post-meta-item"><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot框架/" itemprop="url" rel="index"><span itemprop="name">Spring Boot框架</span></a></span></span><span class="post-meta-item" title="阅读次数"><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span> <span class="post-meta-item-text">阅读次数：</span><span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body" itemprop="articleBody"><h4 id="nbsp-nbsp-引言"><a href="#nbsp-nbsp-引言" class="headerlink" title="&nbsp;&nbsp; 引言"></a><div style="line-height:35px"><span style="background-color:green;height:90%;line-height:35px">&nbsp;&nbsp;</span> <font color="black" size="5">引言</font></div></h4><p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，因此官方推荐我们使用Thymeleaf模板引擎来解决问题。目前而言，当然模板引擎有很多，比如Velocity、Freemarker、等等，但是我这一直感觉thymeleaf相对于其他的来说好用的还是不少的。在这里我们就来了解一下thymeleaf这个模板引擎的用法！</font></p><h4 id="nbsp-nbsp-什么是模板引擎？"><a href="#nbsp-nbsp-什么是模板引擎？" class="headerlink" title="&nbsp;&nbsp; 什么是模板引擎？"></a><div style="line-height:35px"><span style="background-color:green;height:90%;line-height:35px">&nbsp;&nbsp;</span> <font color="black" size="5">什么是模板引擎？</font></div></h4><p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;模板引擎是为了使<code>用户界面</code>与<code>业务数据</code>（内容）分离而产生的，它可以生成特定格式的文档。用于网站的模板引擎（比如Thymeleaf模板引擎）就是将模板文件和数据通过模板引擎生成一个HTML代码。</font></p><center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS82dE91VWNWbVdZU0xDQmc=" title="https://sm.ms/image/6tOuUcVmWYSLCBg"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/6tOuUcVmWYSLCBg.png"><i class="fa fa-external-link"></i></span></center><font color="black">简单说， Thymeleaf 是一个跟 Velocity、FreeMarker 类似的模板引擎，它可以完全替代 JSP 。<font><h4 id="nbsp-nbsp-Spring-Boot中使用Thymeleaf模板引擎"><a href="#nbsp-nbsp-Spring-Boot中使用Thymeleaf模板引擎" class="headerlink" title="&nbsp;&nbsp; Spring Boot中使用Thymeleaf模板引擎"></a><div style="line-height:35px"><span style="background-color:green;height:90%;line-height:35px">&nbsp;&nbsp;</span> <font color="black" size="5">Spring Boot中使用Thymeleaf模板引擎</font></div></h4><p><font color="black">使用的方法很简单，首先在pom.xml文件中引入thymeleaf的starter</font></p><h5 id="引入Thymeleaf"><a href="#引入Thymeleaf" class="headerlink" title="引入Thymeleaf"></a><font color="black" size="4">引入Thymeleaf</font></h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure><p><font color="black">一般Spring Boot引入的都是依赖文件的最新的版本，如果发现不是最新的依赖版本或者你想更改依赖的版本，可以在<code>&lt;properties&gt;</code>标签中修改，比如修改thymeleaf的版本为3.0.10版本</font></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--切换thymeleaf版本--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.10.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure><h5 id="使用Thymeleaf"><a href="#使用Thymeleaf" class="headerlink" title="使用Thymeleaf"></a><font color="black" size="4">使用Thymeleaf</font></h5><p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;引入Thymeleaf的依赖后，我们就可以使用了。在学习Spring Boot时无论是啥新东西，我们都可以打开<code>XxxxAutoConfigration</code>和<code>XxxxProperties</code>，从中我们可以基本了解Spring Boot对这个东西的默认配置。好了我们来看看Thymeleaf的配置类</font></p><center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9XSVJLb3lzeE5QRE9sTGU=" title="https://sm.ms/image/WIRKoysxNPDOlLe"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/WIRKoysxNPDOlLe.png"><i class="fa fa-external-link"></i></span></center><p><font color="black">当然，我们也可以在Spring Boot的主配置文件中进行thymeleaf相关配置：</font></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#thymeleaf有关设置</span><br><span class="line">spring.thymeleaf.prefix=classpath:/templates</span><br><span class="line">spring.thymeleaf.suffix=.html</span><br><span class="line">spring.thymeleaf.mode=HTML5</span><br><span class="line">spring.thymeleaf.encoding=UTF-8</span><br><span class="line">spring.thymeleaf.servlet.content-type=text/html</span><br><span class="line">#关闭模板缓存，避免更新无效</span><br><span class="line">spring.thymeleaf.cache=false</span><br></pre></td></tr></table></figure><h6 id="尝试使用"><a href="#尝试使用" class="headerlink" title="尝试使用"></a><font color="black" size="4"><strong>尝试使用</strong></font></h6><p><font color="black">1.在控制层写一个跳转到hello.html页面的处理器方法</font></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xust.iot.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toHello</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"msg"</span>,<span class="string">"Hello Thymeleaf!"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><font color="black">2.在html页面中导入thymeleaf名称空间，名称空间的导入不是必须的，但是导入后可以有提示，提示还是挺好用的。</font></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure><p><font color="black">3.然后在页面只用Thymeleaf语法获取服务器响应的数据</font><br><strong><code>hello.html</code></strong></p><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span></span></span></span><br><span class="line"><span class="xml">                xmlns:th="http://www.thymeleaf.org"&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--thymeleaf中的th:text 作用是将等号后面值写到标签体内，会覆盖原有的值--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">th:text</span>=<span class="string">"$&#123;msg&#125;"</span>&gt;</span>这里显示欢迎信息<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p><font color="black">测试结果：</font></p><center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9jdHBnUFRYdmhMRHI0VlM=" title="https://sm.ms/image/ctpgPTXvhLDr4VS"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/ctpgPTXvhLDr4VS.gif"><i class="fa fa-external-link"></i></span></center><h4 id="nbsp-nbsp-Thymelaf模板引擎的基本语法"><a href="#nbsp-nbsp-Thymelaf模板引擎的基本语法" class="headerlink" title="&nbsp;&nbsp; Thymelaf模板引擎的基本语法"></a><div style="line-height:35px"><span style="background-color:green;height:90%;line-height:35px">&nbsp;&nbsp;</span> <font color="black" size="5">Thymelaf模板引擎的基本语法</font></div></h4><h5 id="常用th属性"><a href="#常用th属性" class="headerlink" title="常用th属性"></a><font color="black" size="4">常用th属性</font></h5><p><font color="black">下面列举一些常用的th属性，全部的属性还请参考官方手册。th属性执行的优先级从1~8，数字越低优先级越高。</font></p><table><tr><td><font color="black">1、<strong>th:text</strong>：设置当前元素的文本内容，相同功能的还用<strong>th:utext</strong>,两者的区别是前者会转义特殊字符，后者不会。order=7</font></td></tr><tr><td><font color="black">2、<strong>th:value</strong>：设置当前元素的value值，类似修改指定属性的还有<strong>th:src、th:herf</strong>,order=6</font></td></tr><tr><td><font color="black">3、<strong>th:each</strong>：遍历循环元素，和th:value或th:value一起使用。order=2</font></td></tr><tr><td><font color="black">4、<strong>th:if</strong>：条件判断，类似的还有<strong>th:unless 、th:switch、th:case</strong> 。order=3</font></td></tr><tr><td><font color="black">5、<strong>th:insert</strong>：代码块引入，类似的还有<strong>th:replace、th:include</strong>，三者的区别较大，若使用不恰当会破坏html结构，常用于公共代码块提取的场景。优先级最高：order=1</font></td></tr><tr><td><font color="black">6、<strong>th:fragment</strong>：定义代码块，方便被<strong>th:insert、th:replace、th:include</strong>引用。优先级最低：order=8</font></td></tr><tr><td><font color="black">7、<strong>th:object</strong>：声明变量，一般和*{}一起配合使用，达到偷懒的效果。优先级一般：order=4</font></td></tr><tr><td><font color="black">8、<strong>th:attr</strong>：修改任意属性，实际开发中用的较少，因为有丰富的其他th属性帮忙，类似的还有<strong>th:attrappend，th:attrprepend</strong>。优先级一般：order=5</font></td></tr></table><h5 id="Thymeleaf标准表达式语法"><a href="#Thymeleaf标准表达式语法" class="headerlink" title="Thymeleaf标准表达式语法"></a><font color="black" size="4">Thymeleaf标准表达式语法</font></h5><ul><li><font color="black"><strong><code>${.....}</code></strong> 变量表达式（Variable Expressions）</font></li><li><font color="black"><strong><code>#{.....}</code></strong> 消息表达式（Message Expressions）</font></li><li><font color="black"><strong><code>@{.....}</code></strong> 链接表达式（Link URL Expressions）</font></li><li><font color="black"><strong><code>~{.....}</code></strong> 代码块表达式（Fragment Expressions）</font></li><li><font color="black"><strong><code>*{.....}</code></strong> 选择变量表达式（Selection Variable Expressions）</font></li></ul><h6 id="…-变量表达式"><a href="#…-变量表达式" class="headerlink" title="${…}变量表达式"></a><font color="black" size="4">${…}变量表达式</font></h6><p><font color="black">Thymeleaf的变量表达式使用的其实是OGNL表达式，这使得变量表达式的功能非常丰富。</font></p><ul><li><font color="black"><strong>1、可以获取对象的属性、调用方法等(OGNL可以做的事他都可以做)</strong></font></li><li><font color="black"><strong>2、可以使用内置对象</strong>。官方手册上给的可以使用的内置对象如下：</font></li></ul><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#ctx : the context object.     上下文对象</span><br><span class="line">#vars: the context variables.   上下文变量  </span><br><span class="line">#locale : the context locale.    本地区域信息</span><br><span class="line"><span class="comment">//下面的内置对象下web环境下才有效果的</span></span><br><span class="line">#request : (only in Web Contexts) the HttpServletRequest object.  request对象</span><br><span class="line">#response : (only in Web Contexts) the HttpServletResponse object. response对象  </span><br><span class="line">#session : (only in Web Contexts) the HttpSession object.          session对象</span><br><span class="line">#servletContext : (only in Web Contexts)the ServletContext object.   ServletContext对象</span><br></pre></td></tr></table></figure><ul><li><font color="black"><strong>3、可以使用一些内置的工具对象(方法)</strong>。</font></li></ul><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#execInfo : 正在处理的模板信息</span><br><span class="line">#messages : 获取外部信息的内部变量的一个实用方法，同时也可以用#&#123;...&#125;获取</span><br><span class="line">#uris : 针对URL或URI进行一些转码的方法</span><br><span class="line">#conversions : 根据配置执行一些转换方法</span><br><span class="line">#dates :  java.util.Date 的对象</span><br><span class="line">#calendars : java.util.Calendar 的对象</span><br><span class="line">#numbers : 数值格式化方法</span><br><span class="line">#strings : 字符串格式化方法，常用的Java方法它都有</span><br><span class="line">#objects : java中Object类的一些方法</span><br><span class="line">#bools : 布尔方法，常用的方法有：isTrue，isFalse等</span><br><span class="line">#arrays : 数组方法，常用的方法有：toArray，length，isEmpty，contains，containsAll等</span><br><span class="line">#lists ，#sets: 集合方法，常用的方法有：toList，size，isEmpty，contains，containsAll，sort等</span><br><span class="line">#maps : map对象方法，常用的方法有：size，isEmpty，containsKey，containsValue等</span><br><span class="line">#aggregates : 在数组或集合中创建聚合的一些实用方法.</span><br><span class="line">#ids : 用于处理可能重复的标识属性的使用方法，例如，作为迭代的变量。</span><br></pre></td></tr></table></figure><h6 id="…-选择表达式"><a href="#…-选择表达式" class="headerlink" title="*{…}选择表达式"></a><font color="black" size="4">*{…}选择表达式</font></h6><p><font color="black">对于变量我们还可以使用<code>*{...}</code>来处理，它和<code>${}</code>在功能上是一样的。但是有一个重要的区别：<code>*{}</code>评估所选对象上的表达式而不是整个上下文。 也就是说，只要没有选定的对象，<code>${}</code>和<code>*{}</code>语法就会完全相同。下面是官网给的一个例子，可以说明这个问题：</font></p><center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9MTzF5UXpzU1poRUk2Qkc=" title="https://sm.ms/image/LO1yQzsSZhEI6BG"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/LO1yQzsSZhEI6BG.png"><i class="fa fa-external-link"></i></span></center><h6 id="…-消息表达式"><a href="#…-消息表达式" class="headerlink" title="#{…}消息表达式"></a><font color="black" size="4">#{…}消息表达式</font></h6><p><font color="black">用于处理国际化信息,下面是一个支持中英文的国际化登录页面</font></p><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span></span></span></span><br><span class="line"><span class="xml">	  xmlns:th="http://www.thymeleaf.org"&gt;</span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, shrink-to-fit=no"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>[[#&#123;login.topic&#125;]]<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="comment">&lt;!-- Bootstrap core CSS --&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"bookmark"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"assert/css/bootstrap.min.css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/webjars/bootstrap/4.0.0/css/bootstrap.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/webjars/jquery/3.3.1-1/jquery.js&#125;"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"assert/css/signin.css"</span>  <span class="attr">th:href</span>=<span class="string">"@&#123;/assert/css/signin.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-signin"</span> <span class="attr">action</span>=<span class="string">"dashboard"</span> <span class="attr">th:action</span>=<span class="string">"@&#123;/checkLogin&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"mb-4"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/assert/img/bootstrap-solid.svg&#125;"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"72"</span> <span class="attr">height</span>=<span class="string">"72"</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"h3 mb-3 font-weight-normal"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.topic&#125;"</span>&gt;</span>Please sign in<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"color: red"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;msg&#125;"</span> <span class="attr">th:if</span>=<span class="string">"$&#123;not #strings.isEmpty(msg)&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"sr-only"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.username&#125;"</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.username&#125;"</span> <span class="attr">required</span>=<span class="string">""</span> <span class="attr">autofocus</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.password&#125;"</span> <span class="attr">required</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox mb-3"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		    <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"remember-me"</span>/&gt;</span> [[#&#123;login.remeberme&#125;]]</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-lg btn-primary btn-block"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.btn&#125;"</span>&gt;</span>Sign in<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"mt-5 mb-3 text-muted"</span>&gt;</span>© 2017-2018<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/index(locale=zh_CN)&#125;"</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/index(locale=en_US)&#125;"</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">	   <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p><font color="black">效果：</font></p><center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9sTmg2SFJ2T1hQUVZNMnA=" title="https://sm.ms/image/lNh6HRvOXPQVM2p"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/09/02/lNh6HRvOXPQVM2p.gif"><i class="fa fa-external-link"></i></span></center><h6 id="…-链接表达式"><a href="#…-链接表达式" class="headerlink" title="@{…}链接表达式"></a><font color="black" size="4">@{…}链接表达式</font></h6><p><font color="black">Thymeleaf中专门用于定义超链接的表达式。配合Thymeleaf中的th:href、th:src等凡是可以写链接、路径的标签一起使用(前缀th:)，下面是几个例子：</font></p><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--引入资源文件--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"bookmark"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"assert/css/bootstrap.min.css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/webjars/bootstrap/4.0.0/css/bootstrap.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"assert/js/popper.min.js"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;assert/js/popper.min.js&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--路径--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/emp/&#125;+$&#123;emp.id&#125;"</span> <span class="attr">class</span>=<span class="string">"btn btn-sm btn-primary"</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/emp/del/"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/emp/del/&#125;+$&#123;emp.id&#125;"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;emp.id&#125;"</span> <span class="attr">class</span>=<span class="string">"btn btn-sm btn-danger"</span> &gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"> <span class="comment">&lt;!--表单--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/emp/save"</span> <span class="attr">th:action</span>=<span class="string">"@&#123;/emp/save&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;emp.getId()&#125;"</span>/&gt;</span></span></span><br></pre></td></tr></table></figure><h6 id="…-代码块表达式"><a href="#…-代码块表达式" class="headerlink" title="~{…}代码块表达式"></a><font color="black" size="4">~{…}代码块表达式</font></h6><p><font color="black">Thymeleaf中专门用于引用代码片段的表达式。经常配合th:fragment和th:insert 、th:replace、th:include这四个属性使用（后三个属性中选一种，效果差不多，但是还是有细微的差别），例如：</font></p><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:fragement属性抽取公共页面：th:fragement="片段名"--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0"</span> <span class="attr">th:fragment</span>=<span class="string">"topbar"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand col-sm-3 col-md-2 mr-0 "</span> <span class="attr">style</span>=<span class="string">"align-content: center"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/main&#125;"</span> &gt;</span>[[$&#123;session.loggedUser&#125;]]<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control form-control-dark w-100"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;main.search&#125;"</span> <span class="attr">aria-label</span>=<span class="string">"Search"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"navbar-nav px-3"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item text-nowrap"</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"nav-link"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/signout&#125;"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;main.logout&#125;"</span>&gt;</span>退出<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p><font color="black">在别的页面中就可以使用th:insert 、th:replace、th:include引入公共片段</font><br><font color="black">引入的就要用到~{} 表达式，具体的语法有两种：</font></p><ul><li><font color="black"><strong>~{templatename::selector}====&gt;模板名::选择器</strong></font></li><li><font color="black"><strong>~{templatename::fragmentname}====&gt;模板名::片段名</strong></font></li></ul><p><font color="black">其中模板名就是你引用的片段在templates/目录下的HTML文件名</font></p><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:insert--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">"~&#123;template :: topbar&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:replace--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">"~&#123;template&#125; :: topbar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:inclue--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:include</span>=<span class="string">"~&#123;template :: topbar&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure><p><font color="black">使用th:insert 、th:replace、th:include都可以引入公共的代码片段，但是他们有一点细微的差别</font><br><font color>th:insert：按上面的代码来说就是会在&lt;div&gt;&lt;/div&gt;内把整个公共片段插入，这样一来原有的片段就会被套在&lt;div&gt;&lt;/div&gt;内部</font><br><font color>th:replace：在声明使用的地方替换原有的标签为要引入的代码片段（就是把原生的代码片段发在要插入的地方）</font><br><font color>th:include：将被引入的片段的内容包含进这个标签中</font></p></font></font></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong> 黄鑫</li><li class="post-copyright-link"><strong>本文链接：</strong> <a href="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/" title="Spring Boot—Thymeleaf模板引擎">http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/</a></li><li class="post-copyright-license"><strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/08/28/SpringBoot映射映射静态文件的规则/" rel="next" title="Spring Boot 对静态文件的默认映射规则"><i class="fa fa-chevron-left"></i> Spring Boot 对静态文件的默认映射规则</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/08/29/SpringBootMVC自动配置/" rel="prev" title="Spring Boot自动配置Spring MVC的原理">Spring Boot自动配置Spring MVC的原理<i class="fa fa-chevron-right"></i></a></div></div></footer></div><span title="post.wordcount">3k 字</span> <span title="post.min2read">13 分钟</span></article></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="黄鑫"><p class="site-author-name" itemprop="name">黄鑫</p><div class="site-description motion-element" itemprop="description">Talk is cheap. Show me the code</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">55</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/"><span class="site-state-item-count">5</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0xvdmVySVRlcg==" title="GitHub &rarr; https://github.com/LoverITer"><i class="fa fa-fw fa-github"></i> GitHub</span></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"><span class="exturl" data-url="aHR0cHM6Ly9kb2NzaG9tZS5naXRib29rcy5pby9zcHJpbmdib290L2NvbnRlbnQvcGFnZXMvdXNpbmctc3ByaW5nLWJvb3QuaHRtbCN1c2luZy1ib290LXN0YXJ0ZXI=" title="https://docshome.gitbooks.io/springboot/content/pages/using-spring-boot.html#using-boot-starter">SpringBoot中文文档</span></li><li class="links-of-blogroll-item"><span class="exturl" data-url="aHR0cDovL21pcnJvcnMuaHVzdC5lZHUuY24v" title="http://mirrors.hust.edu.cn/">华中科技大学开源镜像</span></li><li class="links-of-blogroll-item"><span class="exturl" data-url="aHR0cDovL3RyeS5yZWRpcy5pby8=" title="http://try.redis.io/">Redis在线测试</span></li></ul></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-引言"><span class="nav-number">1.</span> <span class="nav-text">   引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-什么是模板引擎？"><span class="nav-number">2.</span> <span class="nav-text">   什么是模板引擎？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-Spring-Boot中使用Thymeleaf模板引擎"><span class="nav-number">3.</span> <span class="nav-text">   Spring Boot中使用Thymeleaf模板引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#引入Thymeleaf"><span class="nav-number">3.1.</span> <span class="nav-text">引入Thymeleaf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用Thymeleaf"><span class="nav-number">3.2.</span> <span class="nav-text">使用Thymeleaf</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#尝试使用"><span class="nav-number">3.2.1.</span> <span class="nav-text">尝试使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-Thymelaf模板引擎的基本语法"><span class="nav-number">4.</span> <span class="nav-text">   Thymelaf模板引擎的基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常用th属性"><span class="nav-number">4.1.</span> <span class="nav-text">常用th属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Thymeleaf标准表达式语法"><span class="nav-number">4.2.</span> <span class="nav-text">Thymeleaf标准表达式语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#…-变量表达式"><span class="nav-number">4.2.1.</span> <span class="nav-text">${…}变量表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-选择表达式"><span class="nav-number">4.2.2.</span> <span class="nav-text">*{…}选择表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-消息表达式"><span class="nav-number">4.2.3.</span> <span class="nav-text">#{…}消息表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-链接表达式"><span class="nav-number">4.2.4.</span> <span class="nav-text">@{…}链接表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-代码块表达式"><span class="nav-number">4.2.5.</span> <span class="nav-text">~{…}代码块表达式</span></a></li></ol></li></ol></li></ol></div></div></div><div class="back-to-top motion-element"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2019</span><span class="with-love" id="animate"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">Huangxin</span></div><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>var now=new Date;function createtime(){var n=new Date("08/01/2019 00:00:00");now.setTime(now.getTime()+250),days=(now-n)/1e3/60/60/24,dnum=Math.floor(days),hours=(now-n)/1e3/60/60-24*dnum,hnum=Math.floor(hours),1==String(hnum).length&&(hnum="0"+hnum),minutes=(now-n)/1e3/60-1440*dnum-60*hnum,mnum=Math.floor(minutes),1==String(mnum).length&&(mnum="0"+mnum),seconds=(now-n)/1e3-86400*dnum-3600*hnum-60*mnum,snum=Math.round(seconds),1==String(snum).length&&(snum="0"+snum),document.getElementById("timeDate").innerHTML="网站已运行 "+dnum+" 天 ",document.getElementById("times").innerHTML=hnum+" 小时 "+mnum+" 分 "+snum+" 秒"}setInterval("createtime()",250)</script><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="post-meta-item-icon"><i class="fa fa-user"></i></span><span class="site-uv" title="总访客量"><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i></span><span class="site-pv" title="总访问量"><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer></div><script color="0,0,255" opacity="0.5" zindex="-1" count="100" src="/vendors/canvas-nest/canvas-nest.min.js"></script><script size="300" alpha="0.6" zindex="-1" src="/vendors/canvas-ribbon/canvas-ribbon.js"></script><script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script><script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script><script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script><script defer src="/vendors/three/three.min.js"></script><script defer src="/vendors/three/three-waves.min.js"></script><script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script><script src="/js/affix.js?v=7.3.0"></script><script src="/js/schemes/pisces.js?v=7.3.0"></script><script src="/js/next-boot.js?v=7.3.0"></script><script src="/js/exturl.js?v=7.3.0"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script src="/js/local-search.js?v=7.3.0"></script><style>.copy-btn{display:inline-block;padding:6px 12px;font-size:13px;font-weight:700;line-height:20px;color:#333;white-space:nowrap;vertical-align:middle;cursor:pointer;background-color:#eee;background-image:linear-gradient(#fcfcfc,#eee);border:1px solid #d5d5d5;border-radius:3px;user-select:none;outline:0}.highlight-wrap .copy-btn{transition:opacity .3s ease-in-out;opacity:0;padding:2px 6px;position:absolute;right:4px;top:8px}.highlight-wrap .copy-btn:focus,.highlight-wrap:hover .copy-btn{opacity:1}.highlight-wrap{position:relative}</style><script>$(".highlight").each(function(t,e){var n=$("<div>").addClass("highlight-wrap");$(e).after(n),n.append($("<button>").addClass("copy-btn").append("复制").on("click",function(t){var e=$(this).parent().find(".code").find(".line").map(function(t,e){return $(e).text()}).toArray().join("\n"),n=document.createElement("textarea");document.body.appendChild(n),n.style.position="absolute",n.style.top="0px",n.style.left="0px",n.value=e,n.select(),n.focus();var o=document.execCommand("copy");document.body.removeChild(n),o?$(this).text("复制成功"):$(this).text("复制失败"),$(this).blur()})).on("mouseleave",function(t){var e=$(this).find(".copy-btn");setTimeout(function(){e.text("复制")},300)}).append(e)})</script><script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script><script src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,model:{jsonPath:"/live2dw/assets/wanko.model.json"},display:{position:"left",width:150,height:300},mobile:{show:!1},log:!1})</script><script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)0<=(t=c[r].getBoundingClientRect()).top&&0<=t.left&&t.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n()},e.src=i}();var t}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this)</script></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="google-site-verification" content="T-WbquSmDohrJtpvP3vffYeg3H44xSriCbbsPyDwUt0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <script src="/vendors/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/vendors/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"right","width":240,"display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+
+
+</script>
+ <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #9fa6b3;   
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #225cc7, 0 0 5px #225cc7; 
+    }
+    .pace .pace-activity {
+        border-top-color: #9fa6b3;    
+        border-left-color: #9fa6b3;    
+    }
+</style>
+
+  <meta name="description" content="&amp;nbsp;&amp;nbsp; 引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，">
+<meta name="keywords" content="Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot—Thymeleaf模板引擎">
+<meta property="og:url" content="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/index.html">
+<meta property="og:site_name" content="LoveITer">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp; 引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
+<meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
+<meta property="og:updated_time" content="2019-09-02T06:53:25.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring Boot—Thymeleaf模板引擎">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp; 引言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，">
+<meta name="twitter:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
+  <link rel="alternate" href="/atom.xml" title="LoveITer" type="application/atom+xml">
+  <link rel="canonical" href="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Spring Boot—Thymeleaf模板引擎 | LoveITer</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3b26557457e046bcc561ba2a4b40401e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-right">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LoveITer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">欢迎访问我的个人博客</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">8</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">56</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+    </div>
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">Spring Boot—Thymeleaf模板引擎
+
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2019-08-28 14:56:25" itemprop="dateCreated datePublished" datetime="2019-08-28T14:56:25+08:00">2019-08-28</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2019-09-02 14:53:25" itemprop="dateModified" datetime="2019-09-02T14:53:25+08:00">2019-09-02</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot框架/" itemprop="url" rel="index"><span itemprop="name">Spring Boot框架</span></a></span>
+
+
+
+
+</span>
+
+
+
+<span class="post-meta-item" title="阅读次数">
+<span class="post-meta-item-icon">
+<i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">阅读次数：</span>
+<span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+</span>
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+<h4 id="nbsp-nbsp-引言"><a href="#nbsp-nbsp-引言" class="headerlink" title="&nbsp;&nbsp; 引言"></a><div style="line-height: 35px;"><span style="background-color: green;height: 90%;line-height: 35px;">&nbsp;&nbsp;</span><font color="black" size="5"> 引言</font></div></h4><p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;在做WEB开发的时候，我们不可避免的要在前端页面之间进行跳转，中间进行数据的查询等等操作。我们在使用Spring Boot之前包括我在内其实大部分都是用的是JSP页面，可以说使用的已经很熟悉。但是我们在使用Spring Boot开发框架以后我们会发现一个致命的问题，就是SpringBoot对Jsp的支持可以说是惨不忍睹，因此官方推荐我们使用Thymeleaf模板引擎来解决问题。目前而言，当然模板引擎有很多，比如Velocity、Freemarker、等等，但是我这一直感觉thymeleaf相对于其他的来说好用的还是不少的。在这里我们就来了解一下thymeleaf这个模板引擎的用法！</font></p>
+<h4 id="nbsp-nbsp-什么是模板引擎？"><a href="#nbsp-nbsp-什么是模板引擎？" class="headerlink" title="&nbsp;&nbsp; 什么是模板引擎？"></a><div style="line-height: 35px;"><span style="background-color: green;height: 90%;line-height: 35px;">&nbsp;&nbsp;</span><font color="black" size="5"> 什么是模板引擎？</font></div></h4><p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;模板引擎是为了使<code>用户界面</code>与<code>业务数据</code>（内容）分离而产生的，它可以生成特定格式的文档。用于网站的模板引擎（比如Thymeleaf模板引擎）就是将模板文件和数据通过模板引擎生成一个HTML代码。</font></p>
+<center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS82dE91VWNWbVdZU0xDQmc=" title="https://sm.ms/image/6tOuUcVmWYSLCBg"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/6tOuUcVmWYSLCBg.png"><i class="fa fa-external-link"></i></span></center>
+<font color="black">简单说， Thymeleaf 是一个跟 Velocity、FreeMarker 类似的模板引擎，它可以完全替代 JSP 。<font>
+
+<h4 id="nbsp-nbsp-Spring-Boot中使用Thymeleaf模板引擎"><a href="#nbsp-nbsp-Spring-Boot中使用Thymeleaf模板引擎" class="headerlink" title="&nbsp;&nbsp; Spring Boot中使用Thymeleaf模板引擎"></a><div style="line-height: 35px;"><span style="background-color: green;height: 90%;line-height: 35px;">&nbsp;&nbsp;</span><font color="black" size="5"> Spring Boot中使用Thymeleaf模板引擎</font></div></h4><p><font color="black">使用的方法很简单，首先在pom.xml文件中引入thymeleaf的starter</font></p>
+<h5 id="引入Thymeleaf"><a href="#引入Thymeleaf" class="headerlink" title="引入Thymeleaf"></a><font color="black" size="4">引入Thymeleaf</font></h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <font color="black">一般Spring Boot引入的都是依赖文件的最新的版本，如果发现不是最新的依赖版本或者你想更改依赖的版本，可以在<code>&lt;properties&gt;</code>标签中修改，比如修改thymeleaf的版本为3.0.10版本</font></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--切换thymeleaf版本--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.10.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="使用Thymeleaf"><a href="#使用Thymeleaf" class="headerlink" title="使用Thymeleaf"></a><font color="black" size="4">使用Thymeleaf</font></h5><p><font color="black">&nbsp;&nbsp;&nbsp;&nbsp;引入Thymeleaf的依赖后，我们就可以使用了。在学习Spring Boot时无论是啥新东西，我们都可以打开<code>XxxxAutoConfigration</code>和<code>XxxxProperties</code>，从中我们可以基本了解Spring Boot对这个东西的默认配置。好了我们来看看Thymeleaf的配置类</font></p>
+<center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9XSVJLb3lzeE5QRE9sTGU=" title="https://sm.ms/image/WIRKoysxNPDOlLe"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/WIRKoysxNPDOlLe.png"><i class="fa fa-external-link"></i></span></center>
+
+<p><font color="black">当然，我们也可以在Spring Boot的主配置文件中进行thymeleaf相关配置：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#thymeleaf有关设置</span><br><span class="line">spring.thymeleaf.prefix=classpath:/templates</span><br><span class="line">spring.thymeleaf.suffix=.html</span><br><span class="line">spring.thymeleaf.mode=HTML5</span><br><span class="line">spring.thymeleaf.encoding=UTF-8</span><br><span class="line">spring.thymeleaf.servlet.content-type=text/html</span><br><span class="line">#关闭模板缓存，避免更新无效</span><br><span class="line">spring.thymeleaf.cache=false</span><br></pre></td></tr></table></figure>
+
+<h6 id="尝试使用"><a href="#尝试使用" class="headerlink" title="尝试使用"></a><font color="black" size="4"><strong>尝试使用</strong></font></h6><p><font color="black">1.在控制层写一个跳转到hello.html页面的处理器方法</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xust.iot.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toHello</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"msg"</span>,<span class="string">"Hello Thymeleaf!"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color="black">2.在html页面中导入thymeleaf名称空间，名称空间的导入不是必须的，但是导入后可以有提示，提示还是挺好用的。</font></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black">3.然后在页面只用Thymeleaf语法获取服务器响应的数据</font><br><strong><code>hello.html</code></strong></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span></span></span></span><br><span class="line"><span class="xml">                xmlns:th="http://www.thymeleaf.org"&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--thymeleaf中的th:text 作用是将等号后面值写到标签体内，会覆盖原有的值--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">th:text</span>=<span class="string">"$&#123;msg&#125;"</span>&gt;</span>这里显示欢迎信息<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black">测试结果：</font></p>
+<center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9jdHBnUFRYdmhMRHI0VlM=" title="https://sm.ms/image/ctpgPTXvhLDr4VS"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/ctpgPTXvhLDr4VS.gif"><i class="fa fa-external-link"></i></span></center>
+
+
+<h4 id="nbsp-nbsp-Thymelaf模板引擎的基本语法"><a href="#nbsp-nbsp-Thymelaf模板引擎的基本语法" class="headerlink" title="&nbsp;&nbsp; Thymelaf模板引擎的基本语法"></a><div style="line-height: 35px;"><span style="background-color: green;height: 90%;line-height: 35px;">&nbsp;&nbsp;</span><font color="black" size="5"> Thymelaf模板引擎的基本语法</font></div></h4><h5 id="常用th属性"><a href="#常用th属性" class="headerlink" title="常用th属性"></a><font color="black" size="4">常用th属性</font></h5><p><font color="black">下面列举一些常用的th属性，全部的属性还请参考官方手册。th属性执行的优先级从1~8，数字越低优先级越高。</font></p>
+<table>
+<tr><td><font color="black">1、<strong>th:text</strong>：设置当前元素的文本内容，相同功能的还用<strong>th:utext</strong>,两者的区别是前者会转义特殊字符，后者不会。order=7</font></td></tr>
+<tr><td><font color="black">2、<strong>th:value</strong>：设置当前元素的value值，类似修改指定属性的还有<strong>th:src、th:herf</strong>,order=6</font></td></tr>
+<tr><td><font color="black">3、<strong>th:each</strong>：遍历循环元素，和th:value或th:value一起使用。order=2</font></td></tr>
+<tr><td><font color="black">4、<strong>th:if</strong>：条件判断，类似的还有<strong>th:unless 、th:switch、th:case </strong>。order=3</font></td></tr>
+<tr><td><font color="black">5、<strong>th:insert</strong>：代码块引入，类似的还有<strong>th:replace、th:include</strong>，三者的区别较大，若使用不恰当会破坏html结构，常用于公共代码块提取的场景。优先级最高：order=1</font></td></tr>
+<tr><td><font color="black">6、<strong>th:fragment</strong>：定义代码块，方便被<strong>th:insert、th:replace、th:include</strong>引用。优先级最低：order=8</font></td></tr>
+<tr><td><font color="black">7、<strong>th:object</strong>：声明变量，一般和*{}一起配合使用，达到偷懒的效果。优先级一般：order=4</font></td></tr>
+<tr><td><font color="black">8、<strong>th:attr</strong>：修改任意属性，实际开发中用的较少，因为有丰富的其他th属性帮忙，类似的还有<strong>th:attrappend，th:attrprepend</strong>。优先级一般：order=5</font></td></tr>
+</table>
+
+<h5 id="Thymeleaf标准表达式语法"><a href="#Thymeleaf标准表达式语法" class="headerlink" title="Thymeleaf标准表达式语法"></a><font color="black" size="4">Thymeleaf标准表达式语法</font></h5><ul>
+<li><font color="black"><strong><code>${.....}</code></strong> 变量表达式（Variable Expressions）</font></li>
+<li><font color="black"><strong><code>#{.....}</code> </strong>消息表达式（Message Expressions）</font></li>
+<li><font color="black"><strong><code>@{.....}</code> </strong>链接表达式（Link URL Expressions）</font></li>
+<li><font color="black"><strong><code>~{.....}</code> </strong>代码块表达式（Fragment Expressions）</font></li>
+<li><font color="black"><strong><code>*{.....}</code> </strong> 选择变量表达式（Selection Variable Expressions）</font></li>
+</ul>
+<h6 id="…-变量表达式"><a href="#…-变量表达式" class="headerlink" title="${…}变量表达式"></a><font color="black" size="4">${…}变量表达式</font></h6><p><font color="black">Thymeleaf的变量表达式使用的其实是OGNL表达式，这使得变量表达式的功能非常丰富。</font></p>
+<ul>
+<li><font color="black"><strong>1、可以获取对象的属性、调用方法等(OGNL可以做的事他都可以做)</strong></font></li>
+<li><font color="black"><strong>2、可以使用内置对象</strong>。官方手册上给的可以使用的内置对象如下：</font></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#ctx : the context object.     上下文对象</span><br><span class="line">#vars: the context variables.   上下文变量  </span><br><span class="line">#locale : the context locale.    本地区域信息</span><br><span class="line"><span class="comment">//下面的内置对象下web环境下才有效果的</span></span><br><span class="line">#request : (only in Web Contexts) the HttpServletRequest object.  request对象</span><br><span class="line">#response : (only in Web Contexts) the HttpServletResponse object. response对象  </span><br><span class="line">#session : (only in Web Contexts) the HttpSession object.          session对象</span><br><span class="line">#servletContext : (only in Web Contexts)the ServletContext object.   ServletContext对象</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><font color="black"><strong>3、可以使用一些内置的工具对象(方法)</strong>。</font></li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#execInfo : 正在处理的模板信息</span><br><span class="line">#messages : 获取外部信息的内部变量的一个实用方法，同时也可以用#&#123;...&#125;获取</span><br><span class="line">#uris : 针对URL或URI进行一些转码的方法</span><br><span class="line">#conversions : 根据配置执行一些转换方法</span><br><span class="line">#dates :  java.util.Date 的对象</span><br><span class="line">#calendars : java.util.Calendar 的对象</span><br><span class="line">#numbers : 数值格式化方法</span><br><span class="line">#strings : 字符串格式化方法，常用的Java方法它都有</span><br><span class="line">#objects : java中Object类的一些方法</span><br><span class="line">#bools : 布尔方法，常用的方法有：isTrue，isFalse等</span><br><span class="line">#arrays : 数组方法，常用的方法有：toArray，length，isEmpty，contains，containsAll等</span><br><span class="line">#lists ，#sets: 集合方法，常用的方法有：toList，size，isEmpty，contains，containsAll，sort等</span><br><span class="line">#maps : map对象方法，常用的方法有：size，isEmpty，containsKey，containsValue等</span><br><span class="line">#aggregates : 在数组或集合中创建聚合的一些实用方法.</span><br><span class="line">#ids : 用于处理可能重复的标识属性的使用方法，例如，作为迭代的变量。</span><br></pre></td></tr></table></figure>
+
+<h6 id="…-选择表达式"><a href="#…-选择表达式" class="headerlink" title="*{…}选择表达式"></a><font color="black" size="4">*{…}选择表达式</font></h6><p><font color="black">对于变量我们还可以使用<code>*{...}</code>来处理，它和<code>${}</code>在功能上是一样的。但是有一个重要的区别：<code>*{}</code>评估所选对象上的表达式而不是整个上下文。 也就是说，只要没有选定的对象，<code>${}</code>和<code>*{}</code>语法就会完全相同。下面是官网给的一个例子，可以说明这个问题：</font></p>
+<center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9MTzF5UXpzU1poRUk2Qkc=" title="https://sm.ms/image/LO1yQzsSZhEI6BG"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/08/28/LO1yQzsSZhEI6BG.png"><i class="fa fa-external-link"></i></span></center>
+
+<h6 id="…-消息表达式"><a href="#…-消息表达式" class="headerlink" title="#{…}消息表达式"></a><font color="black" size="4">#{…}消息表达式</font></h6><p><font color="black">用于处理国际化信息,下面是一个支持中英文的国际化登录页面</font></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span></span></span></span><br><span class="line"><span class="xml">	  xmlns:th="http://www.thymeleaf.org"&gt;</span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, shrink-to-fit=no"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>[[#&#123;login.topic&#125;]]<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="comment">&lt;!-- Bootstrap core CSS --&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"bookmark"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"assert/css/bootstrap.min.css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/webjars/bootstrap/4.0.0/css/bootstrap.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/webjars/jquery/3.3.1-1/jquery.js&#125;"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"assert/css/signin.css"</span>  <span class="attr">th:href</span>=<span class="string">"@&#123;/assert/css/signin.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-signin"</span> <span class="attr">action</span>=<span class="string">"dashboard"</span> <span class="attr">th:action</span>=<span class="string">"@&#123;/checkLogin&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"mb-4"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/assert/img/bootstrap-solid.svg&#125;"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"72"</span> <span class="attr">height</span>=<span class="string">"72"</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"h3 mb-3 font-weight-normal"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.topic&#125;"</span>&gt;</span>Please sign in<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"color: red"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;msg&#125;"</span> <span class="attr">th:if</span>=<span class="string">"$&#123;not #strings.isEmpty(msg)&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"sr-only"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.username&#125;"</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.username&#125;"</span> <span class="attr">required</span>=<span class="string">""</span> <span class="attr">autofocus</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.password&#125;"</span> <span class="attr">required</span>=<span class="string">""</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox mb-3"</span>&gt;</span></span></span><br><span class="line"><span class="xml">		    <span class="tag">&lt;<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"remember-me"</span>/&gt;</span> [[#&#123;login.remeberme&#125;]]</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-lg btn-primary btn-block"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.btn&#125;"</span>&gt;</span>Sign in<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"mt-5 mb-3 text-muted"</span>&gt;</span>© 2017-2018<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/index(locale=zh_CN)&#125;"</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/index(locale=en_US)&#125;"</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">	   <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black">效果：</font></p>
+<center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9sTmg2SFJ2T1hQUVZNMnA=" title="https://sm.ms/image/lNh6HRvOXPQVM2p"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/09/02/lNh6HRvOXPQVM2p.gif"><i class="fa fa-external-link"></i></span></center>
+
+
+<h6 id="…-链接表达式"><a href="#…-链接表达式" class="headerlink" title="@{…}链接表达式"></a><font color="black" size="4">@{…}链接表达式</font></h6><p><font color="black">Thymeleaf中专门用于定义超链接的表达式。配合Thymeleaf中的th:href、th:src等凡是可以写链接、路径的标签一起使用(前缀th:)，下面是几个例子：</font></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--引入资源文件--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"bookmark"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/favicon.ico&#125;"</span>/&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"assert/css/bootstrap.min.css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/webjars/bootstrap/4.0.0/css/bootstrap.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"assert/js/popper.min.js"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;assert/js/popper.min.js&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--路径--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/emp/&#125;+$&#123;emp.id&#125;"</span> <span class="attr">class</span>=<span class="string">"btn btn-sm btn-primary"</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/emp/del/"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/emp/del/&#125;+$&#123;emp.id&#125;"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;emp.id&#125;"</span> <span class="attr">class</span>=<span class="string">"btn btn-sm btn-danger"</span> &gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"> <span class="comment">&lt;!--表单--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/emp/save"</span> <span class="attr">th:action</span>=<span class="string">"@&#123;/emp/save&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;emp.getId()&#125;"</span>/&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h6 id="…-代码块表达式"><a href="#…-代码块表达式" class="headerlink" title="~{…}代码块表达式"></a><font color="black" size="4">~{…}代码块表达式</font></h6><p><font color="black">Thymeleaf中专门用于引用代码片段的表达式。经常配合th:fragment和th:insert 、th:replace、th:include这四个属性使用（后三个属性中选一种，效果差不多，但是还是有细微的差别），例如：</font></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:fragement属性抽取公共页面：th:fragement="片段名"--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0"</span> <span class="attr">th:fragment</span>=<span class="string">"topbar"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand col-sm-3 col-md-2 mr-0 "</span> <span class="attr">style</span>=<span class="string">"align-content: center"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/main&#125;"</span> &gt;</span>[[$&#123;session.loggedUser&#125;]]<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control form-control-dark w-100"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;main.search&#125;"</span> <span class="attr">aria-label</span>=<span class="string">"Search"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"navbar-nav px-3"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"nav-item text-nowrap"</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"nav-link"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/signout&#125;"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;main.logout&#125;"</span>&gt;</span>退出<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black">在别的页面中就可以使用th:insert 、th:replace、th:include引入公共片段</font><br><font color="black">引入的就要用到~{} 表达式，具体的语法有两种：</font></p>
+<ul>
+<li><font color="black"><strong>~{templatename::selector}====&gt;模板名::选择器</strong></font></li>
+<li><font color="black"><strong>~{templatename::fragmentname}====&gt;模板名::片段名</strong></font></li>
+</ul>
+<p><font color="black">其中模板名就是你引用的片段在templates/目录下的HTML文件名</font></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:insert--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">"~&#123;template :: topbar&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:replace--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">"~&#123;template&#125; :: topbar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--使用th:inclue--&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:include</span>=<span class="string">"~&#123;template :: topbar&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><font color="black">使用th:insert 、th:replace、th:include都可以引入公共的代码片段，但是他们有一点细微的差别</font><br><font color>th:insert：按上面的代码来说就是会在&lt;div&gt;&lt;/div&gt;内把整个公共片段插入，这样一来原有的片段就会被套在&lt;div&gt;&lt;/div&gt;内部</font><br><font color>th:replace：在声明使用的地方替换原有的标签为要引入的代码片段（就是把原生的代码片段发在要插入的地方）</font><br><font color>th:include：将被引入的片段的内容包含进这个标签中</font></p>
+</font></font>
+</div>
+
+
+
+
+<div>
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>黄鑫</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/" title="Spring Boot—Thymeleaf模板引擎">http://easyblog.top/2019/08/28/Spring Boot—Thymeleaf模板引擎/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+</div>
+
+<footer class="post-footer">
+
+
+<div class="post-tags">
+<a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
+
+</div>
+<div class="post-nav">
+<div class="post-nav-next post-nav-item">
+<a href="/2019/08/28/SpringBoot映射映射静态文件的规则/" rel="next" title="Spring Boot 对静态文件的默认映射规则">
+<i class="fa fa-chevron-left"></i> Spring Boot 对静态文件的默认映射规则
+</a>
+
+</div>
+
+<span class="post-nav-divider"></span>
+
+<div class="post-nav-prev post-nav-item">
+<a href="/2019/08/29/SpringBootMVC自动配置/" rel="prev" title="Spring Boot自动配置Spring MVC的原理">
+Spring Boot自动配置Spring MVC的原理 <i class="fa fa-chevron-right"></i>
+</a>
+
+</div>
+</div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3k 字
+</span>
+
+<span title="post.min2read">
+  13 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="黄鑫">
+  <p class="site-author-name" itemprop="name">黄鑫</p>
+  <div class="site-description motion-element" itemprop="description">Talk is cheap. Show me the code</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0xvdmVySVRlcg==" title="GitHub &rarr; https://github.com/LoverITer"><i class="fa fa-fw fa-github"></i>GitHub</span>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9kb2NzaG9tZS5naXRib29rcy5pby9zcHJpbmdib290L2NvbnRlbnQvcGFnZXMvdXNpbmctc3ByaW5nLWJvb3QuaHRtbCN1c2luZy1ib290LXN0YXJ0ZXI=" title="https://docshome.gitbooks.io/springboot/content/pages/using-spring-boot.html#using-boot-starter">SpringBoot中文文档</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL21pcnJvcnMuaHVzdC5lZHUuY24v" title="http://mirrors.hust.edu.cn/">华中科技大学开源镜像</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3RyeS5yZWRpcy5pby8=" title="http://try.redis.io/">Redis在线测试</span>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-引言"><span class="nav-number">1.</span> <span class="nav-text">   引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-什么是模板引擎？"><span class="nav-number">2.</span> <span class="nav-text">   什么是模板引擎？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-Spring-Boot中使用Thymeleaf模板引擎"><span class="nav-number">3.</span> <span class="nav-text">   Spring Boot中使用Thymeleaf模板引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#引入Thymeleaf"><span class="nav-number">3.1.</span> <span class="nav-text">引入Thymeleaf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用Thymeleaf"><span class="nav-number">3.2.</span> <span class="nav-text">使用Thymeleaf</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#尝试使用"><span class="nav-number">3.2.1.</span> <span class="nav-text">尝试使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-Thymelaf模板引擎的基本语法"><span class="nav-number">4.</span> <span class="nav-text">   Thymelaf模板引擎的基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常用th属性"><span class="nav-number">4.1.</span> <span class="nav-text">常用th属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Thymeleaf标准表达式语法"><span class="nav-number">4.2.</span> <span class="nav-text">Thymeleaf标准表达式语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#…-变量表达式"><span class="nav-number">4.2.1.</span> <span class="nav-text">${…}变量表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-选择表达式"><span class="nav-number">4.2.2.</span> <span class="nav-text">*{…}选择表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-消息表达式"><span class="nav-number">4.2.3.</span> <span class="nav-text">#{…}消息表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-链接表达式"><span class="nav-number">4.2.4.</span> <span class="nav-text">@{…}链接表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…-代码块表达式"><span class="nav-number">4.2.5.</span> <span class="nav-text">~{…}代码块表达式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+    </div>
+  </aside>
+  <div id="sidebar-dimmer">
+  </div>
+
+
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+ &copy; 
+ <span itemprop="copyrightYear">2019</span> 
+ 
+ <span class="with-love" id="animate">
+  <i class="fa fa-heart"></i>
+ </span>
+<span class="author" itemprop="copyrightHolder">Huangxin</span>
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("08/01/2019 00:00:00");   //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='100' src="/vendors/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/vendors/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  <script defer src="/vendors/three/three.min.js"></script>
+  <script defer src="/vendors/three/three-waves.min.js"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+  <script src="/js/exturl.js?v=7.3.0"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+    <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+
+        if(result)$(this).text('复制成功')
+        else $(this).text('复制失败')
+
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+</html>
