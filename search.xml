@@ -661,17 +661,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Java获取请求URL以及服务器根路径的方法]]></title>
-    <url>%2F2019%2F01%2F02%2FJava%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82URL%E4%BB%A5%E5%8F%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A0%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[一、 获取此次请求的URL123456String requestUrl = request.getScheme() //当前链接使用的协议 +"://" + request.getServerName()//服务器地址 + ":" + request.getServerPort() //端口号 + request.getContextPath() //应用名称，如果应用名称为 + request.getServletPath() //请求的相对url + "?" + request.getQueryString(); //请求参数 举例：http://127.0.0.1:8080/world/index.jsp?name=lilei&amp;sex=1 123456789101112131415161718&lt;Context path=&quot;world&quot; docBase=&quot;/home/webapps&quot; debug=&quot;0&quot; reloadable=&quot;true&quot;/&gt; request.getScheme() = &quot;http&quot;;request.getServerName() = &quot;127.0.0.1&quot;;request.getServerPort() = &quot;8080&quot;;request.getContextPath() = &quot;world&quot;;request.getServletPath() = &quot;index.jsp&quot;;request.getQueryString() = &quot;name=lilei&amp;sex=1&quot;; http://127.0.0.1:8080/world/index.jsp?name=lilei&amp;sex=1&lt;Context path=&quot;&quot; docBase=&quot;/home/webapps&quot; debug=&quot;0&quot; reloadable=&quot;true&quot;/&gt; request.getScheme() = &quot;http&quot;;request.getServerName() = &quot;127.0.0.1&quot;;request.getServerPort() = &quot;8080&quot;;request.getContextPath() = &quot;&quot;;request.getServletPath() = &quot;world/index.jsp&quot;;request.getQueryString() = &quot;name=lilei&amp;sex=1&quot;; 二、获取服务器根路径1234&lt;% String path = request.getContextPath(); String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; %&gt; 在JSP中使用方法如下： 123456789&lt;head&gt;&lt;link rel="stylesheet" type="text/css" href="&lt;%=basePath%&gt;static/css/framework/themes/default/easyui.css"&gt;&lt;link rel="stylesheet" type="text/css" href="&lt;%=basePath%&gt;static/css/framework/themes/icon.css"&gt;&lt;link rel="stylesheet" type="text/css" href="&lt;%=basePath%&gt;static/css/base.css"&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/jquery.min.js"&gt;&lt;/script&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/jquery.easyui.min.js"&gt;&lt;/script&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/easyui-lang-zh_CN.js"&gt;&lt;/script&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/easyui-util.js"&gt;&lt;/script&gt;&lt;/head&gt;]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[LeetCode 算法第16题]]></title>
     <url>%2F2019%2F01%2F02%2FLeetCode%20%E7%AC%AC16%E9%A2%98%2F</url>
     <content type="text"><![CDATA[给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。 例如，给定数组 nums = [-1，2，1，-4], 和 target = 1. 与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2). 解题思路：双指针法 ，具体看下面的图解1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 通过图解可以很清楚的看到本题的一个解决思路，先给给定的数组升序排序： 从头开始遍历数组，以遍历到的当前的下标为基准(i)，i+1定义为s(start)即双指针的开始，e初始在数组末尾； 当s和e没有重叠的时候，每次求nums[i]+nums[s]+nums[e]的和(sum)， 如果满足|target-ant|的差值大于|target-sum|的差值那就更新ant的值； 接下来判断当前sum和target的差距大小，如果sum&gt;target，那么就让尾指针-1（这样做又可以使得结果更好）否者让头指针s+1(同样的原因)。不断夹逼,最终当剩余的数&lt;3个的时候结束，并返回当前的ant的值。（无论第三步有没有执行这一步始终会执行） 源码实现：123456789101112131415161718192021222324class Solution &#123; public int threeSumClosest(int[] nums, int target) &#123; Arrays.sort(nums); int ant=nums[0]+nums[1]+nums[2]; //初始数据最前3个数的和 for(int i=0,len=nums.length;i&lt;len;i++)&#123; int s=i+1,e=len-1; while(s&lt;e)&#123; int sum=nums[i]+nums[s]+nums[e]; if(Math.abs(target-ant)&gt;Math.abs(target-sum))&#123; ant=sum; &#125; //根据结果计算下一步的操作是移动s指针还是移动e指针 if(sum&gt;target)&#123; e--; &#125;else if(sum&lt;target)&#123; s++; &#125;else&#123; return ant; &#125; &#125; &#125; return ant; &#125;&#125; 整个过程，对数组排序的时间复杂度是O(nlogn)，固定值为 n 次，双指针为 n 次，时间复杂度为 O(n^2)，总的时间复杂度是O(n^2)]]></content>
@@ -680,6 +669,17 @@
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java获取请求URL以及服务器根路径的方法]]></title>
+    <url>%2F2019%2F01%2F02%2FJava%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82URL%E4%BB%A5%E5%8F%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A0%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[一、 获取此次请求的URL123456String requestUrl = request.getScheme() //当前链接使用的协议 +"://" + request.getServerName()//服务器地址 + ":" + request.getServerPort() //端口号 + request.getContextPath() //应用名称，如果应用名称为 + request.getServletPath() //请求的相对url + "?" + request.getQueryString(); //请求参数 举例：http://127.0.0.1:8080/world/index.jsp?name=lilei&amp;sex=1 123456789101112131415161718&lt;Context path=&quot;world&quot; docBase=&quot;/home/webapps&quot; debug=&quot;0&quot; reloadable=&quot;true&quot;/&gt; request.getScheme() = &quot;http&quot;;request.getServerName() = &quot;127.0.0.1&quot;;request.getServerPort() = &quot;8080&quot;;request.getContextPath() = &quot;world&quot;;request.getServletPath() = &quot;index.jsp&quot;;request.getQueryString() = &quot;name=lilei&amp;sex=1&quot;; http://127.0.0.1:8080/world/index.jsp?name=lilei&amp;sex=1&lt;Context path=&quot;&quot; docBase=&quot;/home/webapps&quot; debug=&quot;0&quot; reloadable=&quot;true&quot;/&gt; request.getScheme() = &quot;http&quot;;request.getServerName() = &quot;127.0.0.1&quot;;request.getServerPort() = &quot;8080&quot;;request.getContextPath() = &quot;&quot;;request.getServletPath() = &quot;world/index.jsp&quot;;request.getQueryString() = &quot;name=lilei&amp;sex=1&quot;; 二、获取服务器根路径1234&lt;% String path = request.getContextPath(); String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; %&gt; 在JSP中使用方法如下： 123456789&lt;head&gt;&lt;link rel="stylesheet" type="text/css" href="&lt;%=basePath%&gt;static/css/framework/themes/default/easyui.css"&gt;&lt;link rel="stylesheet" type="text/css" href="&lt;%=basePath%&gt;static/css/framework/themes/icon.css"&gt;&lt;link rel="stylesheet" type="text/css" href="&lt;%=basePath%&gt;static/css/base.css"&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/jquery.min.js"&gt;&lt;/script&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/jquery.easyui.min.js"&gt;&lt;/script&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/easyui-lang-zh_CN.js"&gt;&lt;/script&gt;&lt;script src="&lt;%=basePath%&gt;static/javascript/framework/easyui-util.js"&gt;&lt;/script&gt;&lt;/head&gt;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
 </search>
