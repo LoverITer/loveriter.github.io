@@ -75,22 +75,22 @@
     }
 </style>
 
-  <meta name="description" content="嵌入式Servlet容器：将应用打成可执行的jar包  ​优点：简单、便携；  ​缺点：默认不支持JSP、优化定制比较复杂；   外置的Servlet容器：在外面安装Tomcat(或者使用外部已经安装好的Tomcat)，项目完成后把项目打包成war包，然后放到外部Tomcat容器中运行。 &amp;nbsp;&amp;nbsp; 配置步骤修改打包的方式修改的方法有两种：一种是在使用【Spring Initiali">
-<meta name="keywords" content="Spring Boot">
+  <meta name="description" content="1、Nginx负载均衡配置预期实现效果：  在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。  1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口">
+<meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot配置外部Servlet容器（Tomcat）">
-<meta property="og:url" content="http://easyblog.top/2019/09/04/SpringBoot配置外置Servlet容器/index.html">
+<meta property="og:title" content="Nginx配置实例—负载均衡">
+<meta property="og:url" content="http://easyblog.top/2019/09/30/Nginx配置实例—负载均衡/index.html">
 <meta property="og:site_name" content="LoveITer">
-<meta property="og:description" content="嵌入式Servlet容器：将应用打成可执行的jar包  ​优点：简单、便携；  ​缺点：默认不支持JSP、优化定制比较复杂；   外置的Servlet容器：在外面安装Tomcat(或者使用外部已经安装好的Tomcat)，项目完成后把项目打包成war包，然后放到外部Tomcat容器中运行。 &amp;nbsp;&amp;nbsp; 配置步骤修改打包的方式修改的方法有两种：一种是在使用【Spring Initiali">
+<meta property="og:description" content="1、Nginx负载均衡配置预期实现效果：  在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。  1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
-<meta property="og:updated_time" content="2019-09-08T04:27:04.607Z">
+<meta property="og:updated_time" content="2020-01-30T11:24:00.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot配置外部Servlet容器（Tomcat）">
-<meta name="twitter:description" content="嵌入式Servlet容器：将应用打成可执行的jar包  ​优点：简单、便携；  ​缺点：默认不支持JSP、优化定制比较复杂；   外置的Servlet容器：在外面安装Tomcat(或者使用外部已经安装好的Tomcat)，项目完成后把项目打包成war包，然后放到外部Tomcat容器中运行。 &amp;nbsp;&amp;nbsp; 配置步骤修改打包的方式修改的方法有两种：一种是在使用【Spring Initiali">
+<meta name="twitter:title" content="Nginx配置实例—负载均衡">
+<meta name="twitter:description" content="1、Nginx负载均衡配置预期实现效果：  在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。  1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口">
 <meta name="twitter:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==">
   <link rel="alternate" href="/atom.xml" title="LoveITer" type="application/atom+xml">
-  <link rel="canonical" href="http://easyblog.top/2019/09/04/SpringBoot配置外置Servlet容器/">
+  <link rel="canonical" href="http://easyblog.top/2019/09/30/Nginx配置实例—负载均衡/">
 
 
 <script id="page-configurations">
@@ -104,7 +104,7 @@
   };
 </script>
 
-  <title>Spring Boot配置外部Servlet容器（Tomcat） | LoveITer</title>
+  <title>Nginx配置实例—负载均衡 | LoveITer</title>
   
 
 
@@ -300,7 +300,7 @@
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/09/04/SpringBoot配置外置Servlet容器/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/09/30/Nginx配置实例—负载均衡/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -314,7 +314,7 @@
 <header class="post-header">
 
 
-<h2 class="post-title" itemprop="name headline">Spring Boot配置外部Servlet容器（Tomcat）
+<h2 class="post-title" itemprop="name headline">Nginx配置实例—负载均衡
 
 
 </h2>
@@ -331,7 +331,7 @@
 
 
 
-<time title="创建时间：2019-09-04 13:58:07" itemprop="dateCreated datePublished" datetime="2019-09-04T13:58:07+08:00">2019-09-04</time>
+<time title="创建时间：2019-09-30 21:01:59" itemprop="dateCreated datePublished" datetime="2019-09-30T21:01:59+08:00">2019-09-30</time>
 </span>
 
 
@@ -342,7 +342,7 @@
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2019-09-08 12:27:04" itemprop="dateModified" datetime="2019-09-08T12:27:04+08:00">2019-09-08</time>
+<time title="修改时间：2020-01-30 19:24:00" itemprop="dateModified" datetime="2020-01-30T19:24:00+08:00">2020-01-30</time>
 </span>
 
 
@@ -352,7 +352,7 @@
 </span>
 <span class="post-meta-item-text">分类于</span>
 
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot框架/" itemprop="url" rel="index"><span itemprop="name">Spring Boot框架</span></a></span>
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
 
 
 
@@ -379,29 +379,61 @@
 <div class="post-body" itemprop="articleBody">
 
 
-<p><font color="black">嵌入式Servlet容器：将应用打成可执行的jar包</font></p>
-<ul>
-<li><p>​<font color="black">优点：简单、便携；</font></p>
-</li>
-<li><p><font color="black">​缺点：默认不支持JSP、优化定制比较复杂；</font></p>
-</li>
-</ul>
-<p><font color="black">外置的Servlet容器：在外面安装Tomcat(或者使用外部已经安装好的Tomcat)，项目完成后把项目打包成war包，然后放到外部Tomcat容器中运行。</font></p>
-<h4 id="nbsp-nbsp-配置步骤"><a href="#nbsp-nbsp-配置步骤" class="headerlink" title="&nbsp;&nbsp; 配置步骤"></a><div style="line-height: 35px;"><span style="background-color: green;height: 90%;line-height: 35px;">&nbsp;&nbsp;</span><font color="black" size="5"> 配置步骤</font></div></h4><h5 id="修改打包的方式"><a href="#修改打包的方式" class="headerlink" title="修改打包的方式"></a><font color="black">修改打包的方式</font></h5><p><font color="black">修改的方法有两种：一种是在使用【Spring Initializr】新建项目的时候选择Packing为war；另一种是在Maven pom.xml文件中修改<code>&lt;packaging&gt;jar&lt;/packaging&gt;</code></font><br><font color="black"><strong>使用【Spring Initializr】新建项目的时候选择Packing为war</strong></font></p>
-<center><span class="exturl" data-url="aHR0cHM6Ly9zbS5tcy9pbWFnZS9BWFJkY0g2VHpPeUIzMVU=" title="https://sm.ms/image/AXRdcH6TzOyB31U"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2019/09/04/AXRdcH6TzOyB31U.png"><i class="fa fa-external-link"></i></span></center>
+<h4 id="1、Nginx负载均衡配置"><a href="#1、Nginx负载均衡配置" class="headerlink" title="1、Nginx负载均衡配置"></a>1、Nginx负载均衡配置</h4><p><strong>预期实现效果</strong>：</p>
+<blockquote>
+<p>在浏览器地址栏中输入：<span class="exturl" data-url="aHR0cDovL3d3dy4xMjMuY29t" title="http://www.123.com">http://www.123.com<i class="fa fa-external-link"></i></span> ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。</p>
+</blockquote>
+<h5 id="1-1-准备工作"><a href="#1-1-准备工作" class="headerlink" title="1.1 准备工作"></a>1.1 准备工作</h5><p>（1）首先在host文件中配置域名映射：<code>192.168.92.128     www.123.com</code><br>（2）准备两个tomcat服务器，分别监听8080和8081端口，并在各自目录下新建一个edu目录，并创建index.html测试页面，配置完成后启动，让两个tomcat跑起来。</p>
+<h5 id="1-2-nginx负载均衡配置"><a href="#1-2-nginx负载均衡配置" class="headerlink" title="1.2  nginx负载均衡配置"></a>1.2  nginx负载均衡配置</h5><p>在nginx的http模块下配置<code>upstream</code>模块，upstream的语法是：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> 自定义域名&#123;</span><br><span class="line">   [负载均衡策略;]</span><br><span class="line">   <span class="attribute">server</span>  xxx.xxx.xxx.xxx:port [weight=xx]  [down|backup|max_fails=xx|fail_timeout=xx]l];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><font color="black"><strong>pom.xml文件中修改</strong></font></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springboot_servlet_contanier<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--修改为war的打包方式--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：<code>[]</code>中的内容是可选的</strong>。<br>简单配置如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="comment">#配置负载均衡：默认使用轮询策略</span></span><br><span class="line">    <span class="attribute">upstream</span> myserver&#123;</span><br><span class="line">       <span class="attribute">server</span> <span class="number">192.168.92.128:8080</span>;</span><br><span class="line">       <span class="attribute">server</span> <span class="number">192.168.92.128:8081</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span>  <span class="number">192.168.92.128</span>;</span><br><span class="line">        <span class="attribute">charset</span> utf-<span class="number">8</span>;</span><br><span class="line">        <span class="attribute">location</span> /&#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">            <span class="attribute">proxy_pass</span> http://myserver;   </span><br><span class="line">            <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">            <span class="attribute">proxy_connect_timeout</span> <span class="number">600</span>;</span><br><span class="line">            <span class="attribute">proxy_read_timeout</span> <span class="number">600</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      </span><br><span class="line">         <span class="attribute">error_page</span>  <span class="number">404</span>              /<span class="number">404</span>.html;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="修改原有嵌入式的Tomcat的作用域为provided-lt-gt"><a href="#修改原有嵌入式的Tomcat的作用域为provided-lt-gt" class="headerlink" title="修改原有嵌入式的Tomcat的作用域为provided&lt;/&gt;"></a><font color="black">修改原有嵌入式的Tomcat的作用域为provided&lt;/&gt;</font></h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--provided的意思是告诉Spring Boot 外部提供了，使用外部提供的这个。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>测试结果</strong><br>在浏览器地址栏中输入<span class="exturl" data-url="aHR0cDovL3d3dy4xMjMuY29tL2VkdQ==" title="http://www.123.com/edu">www.123.com/edu<i class="fa fa-external-link"></i></span> ,结果和预期一样，nginx让两个tomcat轮询处理请求：</p>
+<center><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://i.loli.net/2020/01/30/6UD5b7Pv4RZMsq9.gif"><br>负载均衡配置运行结果</center>
 
-<h5 id="添加servlet-api依赖"><a href="#添加servlet-api依赖" class="headerlink" title="添加servlet-api依赖"></a><font color="black">添加servlet-api依赖</font></h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加原生tomcat依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--使用jsp还要添加下面对依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>taglibs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>standard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/javax.servlet/jstl --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet.jsp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet.jsp-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="编写一个SpringBootServletInitializer的子类，并调用configure方法【必须】"><a href="#编写一个SpringBootServletInitializer的子类，并调用configure方法【必须】" class="headerlink" title="编写一个SpringBootServletInitializer的子类，并调用configure方法【必须】"></a><font color="black">编写一个SpringBootServletInitializer的子类，并调用configure方法【必须】</font></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletInitializer</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder application)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//参数是当前项目的启动类的class</span></span><br><span class="line">        <span class="keyword">return</span> application.sources(SpringbootServletContanierApplication.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、upstream模块详解"><a href="#2、upstream模块详解" class="headerlink" title="2、upstream模块详解"></a>2、upstream模块详解</h4><p><code>upstream</code>是Nginx中配置负载均衡的关键模块，基本语法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> 自定义域名&#123;</span><br><span class="line"> ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><font color="black">如果使用的是【Spring Initializr】创建的项目，正常操作后就会自动生成这个类。</font></p>
-<p><font color="black">最后在项目中新建webapp目录，启动服务器就可以使用了。</font></p>
-<p><font color="black">注意：如果发生使用JSP EL表达式无法解析的情况时，可以在jsp页面写上<code>&lt;%@ page isELIgnored=&quot;false&quot; %&gt;</code>这条语句就可以了。</font></p>
+<p>upstream有关的参数如下：</p>
+<blockquote>
+<ol>
+<li>server：用于配置反向服务地址和端口，语法：<code>server address [parameters];</code></li>
+<li>weight：权重，语法：<code>weight=number</code>，默认是1</li>
+<li>max_conns：语法：<code>max_conns=number</code>，用于限制到代理服务器的同时活动连接的最大数量，默认是0</li>
+<li>max_fail：语法：<code>max_fails=number</code>，允许请求失败的次数。经常和<code>fail_timeout</code>参数配合使用。</li>
+<li>fail_timeout：语法：<code>fail_timeout=time</code>， 经过max_fails失败后，服务暂停的时间(默认10s)</li>
+<li>backup： 预留的备份服务器(当其他的节点挂掉，备份服务器启动)</li>
+<li>down：当前的server暂时不参与负载均衡(不对外提供服务) </li>
+<li>slow_start：语法：<code>slow_start=time</code>，设置服务器不正常运行时，或者在一段时间后服务器变为不可用时，服务器将其权重从零恢复到指定值的时间。 默认值为零，即禁用慢速启动。</li>
+<li>service：语法：<code>service=name</code>，启用DNS SRV记录的解析并设置服务名称。 为了使此参数起作用，必须为服务器指定resolve参数，并指定不带端口号的主机名。</li>
+<li>resolve：监视与服务器域名相对应的IP地址的更改，并自动修改upstream配置，而无需重新启动nginx。</li>
+</ol>
+</blockquote>
+<p><strong>配置示例</strong>：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> myserver&#123;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8080</span> max_fail=<span class="number">3</span> fail_timeout=<span class="number">100</span>;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8081</span> max_fail=<span class="number">3</span> fail_timeout=<span class="number">100</span>;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8082</span> backup;    <span class="comment">#备用服务器</span></span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8083</span> down;      <span class="comment">#不参与请求的服务器</span></span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8084</span> backup max_conns=<span class="number">1000</span>;   <span class="comment">#备用服务器，当启用后最大连接数是1000</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>max_fail=3 fail_timeout=100</code>的含义是：当一台服务器在100s内如果出现了3次请求失败，就会报机器的状态设置为down，并且会在100s后尝试重新启用这个服务器。</p>
+<h4 id="3、nginx负载均衡调度算法详解"><a href="#3、nginx负载均衡调度算法详解" class="headerlink" title="3、nginx负载均衡调度算法详解"></a>3、nginx负载均衡调度算法详解</h4><p>Nginx目前支持的调度策略有以下5种：</p>
+<h5 id="（1）轮询（默认）"><a href="#（1）轮询（默认）" class="headerlink" title="（1）轮询（默认）"></a>（1）轮询（默认）</h5><p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。 </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> myserver&#123;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8080</span>;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8081</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>#####（2）加权轮询<br>指定轮询权重，权重(weight)和访问比率成正比，用于后端服务器性能不均的情况。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> myserver&#123;</span><br><span class="line">   <span class="comment">#在server语句中加入weight参数指定一个权重就进入到加权轮询模式</span></span><br><span class="line">   <span class="comment">#8080获得的请求是8081的2倍</span></span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8080</span>  weight=<span class="number">10</span>;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8081</span>  weight=<span class="number">5</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>#####（3）ip_hash<br>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session共享的问题。应用场景：保持session 一至性</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> myserver&#123;</span><br><span class="line">   <span class="comment">#指定ip_hash，就进入到ip_hash模式 </span></span><br><span class="line">   ip_hash;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8080</span>;</span><br><span class="line">   <span class="attribute">server</span> <span class="number">192.168.92.128:8081</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>#####（4）url_hash（第三方）<br>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。  应用场景：静态资源缓存,节约存储，加快速度</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hash</span> <span class="variable">$request_uri</span>;</span><br><span class="line"><span class="attribute">hash_method</span> crc32; </span><br><span class="line"><span class="attribute">server</span> <span class="number">192.168.92.128:8080</span>;</span><br><span class="line"><span class="attribute">server</span> <span class="number">192.168.92.128:8081</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中，hash_method为使用的hash算法，需要注意的是：此时，server语句中不能加weight等参数。</p>
+<p>#####（5）fair（第三方）<br>按后端服务器的响应时间来分配请求，响应时间短的优先分配。</p>
+<pre><code class="nginx">fair;   #指定fair就会进入到fair模式
+<span class="attribute">server</span> <span class="number">192.168.92.128:8080</span>;
+<span class="attribute">server</span> <span class="number">192.168.92.128:8081</span>;</code></pre>
 
 </div>
 
@@ -416,7 +448,7 @@
     <strong>本文作者： </strong>黄鑫</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://easyblog.top/2019/09/04/SpringBoot配置外置Servlet容器/" title="Spring Boot配置外部Servlet容器（Tomcat）">http://easyblog.top/2019/09/04/SpringBoot配置外置Servlet容器/</a>
+    <a href="http://easyblog.top/2019/09/30/Nginx配置实例—负载均衡/" title="Nginx配置实例—负载均衡">http://easyblog.top/2019/09/30/Nginx配置实例—负载均衡/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -428,13 +460,13 @@
 
 
 <div class="post-tags">
-<a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
+<a href="/tags/Nginx/" rel="tag"><i class="fa fa-tag"></i> Nginx</a>
 
 </div>
 <div class="post-nav">
 <div class="post-nav-next post-nav-item">
-<a href="/2019/09/04/SpringBoot嵌入式Server容器/" rel="next" title="Spring Boot之嵌入式Servlet容器的配置、切换和启动原理">
-<i class="fa fa-chevron-left"></i> Spring Boot之嵌入式Servlet容器的配置、切换和启动原理
+<a href="/2019/09/30/Nginx入门-安装Nginx/" rel="next" title="Nginx快速入门—基本概念以及在Linux下安装">
+<i class="fa fa-chevron-left"></i> Nginx快速入门—基本概念以及在Linux下安装
 </a>
 
 </div>
@@ -442,8 +474,8 @@
 <span class="post-nav-divider"></span>
 
 <div class="post-nav-prev post-nav-item">
-<a href="/2019/09/07/Springboot配置druid监控/" rel="prev" title="Spring Boot 整合Druid数据源">
-Spring Boot 整合Druid数据源 <i class="fa fa-chevron-right"></i>
+<a href="/2019/09/30/Nginx配置文件详解（配置文件结构）/" rel="prev" title="Nginx配置文件详解（配置文件结构）">
+Nginx配置文件详解（配置文件结构） <i class="fa fa-chevron-right"></i>
 </a>
 
 </div>
@@ -451,11 +483,11 @@ Spring Boot 整合Druid数据源 <i class="fa fa-chevron-right"></i>
 </footer>
 </div>
 <span title="post.wordcount">
-  598 字
+  1.2k 字
 </span>
 
 <span title="post.min2read">
-  2 分钟
+  4 分钟
 </span>
 
 
@@ -646,7 +678,7 @@ Spring Boot 整合Druid数据源 <i class="fa fa-chevron-right"></i>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-配置步骤"><span class="nav-number">1.</span> <span class="nav-text">   配置步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改打包的方式"><span class="nav-number">1.1.</span> <span class="nav-text">修改打包的方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改原有嵌入式的Tomcat的作用域为provided-lt-gt"><span class="nav-number">1.2.</span> <span class="nav-text">修改原有嵌入式的Tomcat的作用域为provided&lt;/&gt;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加servlet-api依赖"><span class="nav-number">1.3.</span> <span class="nav-text">添加servlet-api依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编写一个SpringBootServletInitializer的子类，并调用configure方法【必须】"><span class="nav-number">1.4.</span> <span class="nav-text">编写一个SpringBootServletInitializer的子类，并调用configure方法【必须】</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Nginx负载均衡配置"><span class="nav-number">1.</span> <span class="nav-text">1、Nginx负载均衡配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 准备工作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-nginx负载均衡配置"><span class="nav-number">1.2.</span> <span class="nav-text">1.2  nginx负载均衡配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、upstream模块详解"><span class="nav-number">2.</span> <span class="nav-text">2、upstream模块详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、nginx负载均衡调度算法详解"><span class="nav-number">3.</span> <span class="nav-text">3、nginx负载均衡调度算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（1）轮询（默认）"><span class="nav-number">3.1.</span> <span class="nav-text">（1）轮询（默认）</span></a></li></ol></li></ol></div>
             
 
           </div>
