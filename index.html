@@ -242,7 +242,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">72</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -289,6 +289,122 @@
           <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/02/nginx常用命令/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/02/02/nginx常用命令/" class="post-title-link" itemprop="url">nginx常用命令</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-02-02 21:01:59 / 修改时间：18:49:54" itemprop="dateCreated datePublished" datetime="2020-02-02T21:01:59+08:00">2020-02-02</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+nginx常用命令在Linux系统中nginx的常用命令如下（执行下面的命令需要进入nginx安装目录（正常情况下Linux上的路径是/usr/local/nginx）下的sbin目录）：
+nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程     nginx -s stop          强制停止nginxnginx -s relo
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/02/02/nginx常用命令/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  166 字
+</span>
+
+<span title="post.min2read">
+  1 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
       
 
 <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -424,6 +540,125 @@
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—负载均衡/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/01/30/Nginx配置实例—负载均衡/" class="post-title-link" itemprop="url">Nginx配置实例—负载均衡</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:53:10" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1、Nginx负载均衡配置预期实现效果：
+
+在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。
+
+1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/01/30/Nginx配置实例—负载均衡/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.2k 字
+</span>
+
+<span title="post.min2read">
+  4 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并 k 个排序链表/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -522,125 +757,6 @@
 </div>
 <span title="post.wordcount">
   905 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—负载均衡/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/Nginx配置实例—负载均衡/" class="post-title-link" itemprop="url">Nginx配置实例—负载均衡</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:53:10" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、Nginx负载均衡配置预期实现效果：
-
-在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。
-
-1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/Nginx配置实例—负载均衡/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.2k 字
 </span>
 
 <span title="post.min2read">
@@ -2676,137 +2792,6 @@ expire key seconds&nbsp;为某个key设置过期时间，时间单位：
 </article>
 
     
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/09/20/docker进阶之数据卷/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2019/09/20/docker进阶之数据卷/" class="post-title-link" itemprop="url">Docker进阶之Dockerfile和容器数据卷（Volume）</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2019-09-20 18:47:43" itemprop="dateCreated datePublished" datetime="2019-09-20T18:47:43+08:00">2019-09-20</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2019-09-22 10:36:09" itemprop="dateModified" datetime="2019-09-22T10:36:09+08:00">2019-09-22</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-<div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-<div class="post-gallery-row">
-<img src="https://i.loli.net/2019/09/20/b6xPTJtns4o91u7.png" itemprop="contentUrl">
-
-
-
-</div>
-</div>
-
-
-<p>
-什么是数据卷？什么是容器数据卷？&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据卷就是一个文件或者文件夹。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Docker的理念之一是将应用与其运行的环境打包，docker容器的生命周期是与其运行的程序一致的，而对数据的要求是持久化，docker容器之间也需要有共享数据的渠道。&
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2019/09/20/docker进阶之数据卷/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.4k 字
-</span>
-
-<span title="post.min2read">
-  14 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
   </section>
 
   
@@ -2847,7 +2832,7 @@ expire key seconds&nbsp;为某个key设置过期时间，时间单位：
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
