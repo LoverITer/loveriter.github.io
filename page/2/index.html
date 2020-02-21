@@ -242,7 +242,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">80</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">81</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -289,6 +289,132 @@
           <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/02/记一次在云服务器上部署项目的实践经历/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/01/02/记一次在云服务器上部署项目的实践经历/" class="post-title-link" itemprop="url">记一次在云服务器上部署项目的实践经历</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-01-02 22:25:29" itemprop="dateCreated datePublished" datetime="2020-01-02T22:25:29+08:00">2020-01-02</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-01-04 13:33:12" itemprop="dateModified" datetime="2020-01-04T13:33:12+08:00">2020-01-04</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/运维/" itemprop="url" rel="index"><span itemprop="name">运维</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+一、Linux上Java的安装与配置由于使用 yum 或者 apt-get 命令 安装 openjdk 可能存在类库不全，从而导致用户在安装后运行相关工具时可能报错的问题，所以此处我们推荐采用手动解压安装的方式来安装 JDK。具体步骤如下：
+1.下载 JDK近入 Oracle 官方网站 下载载合适的 JDK 版本，准备安装。
+
+注意：不要下错了，需要下载 Linux 版本。这里以jdk-8u151
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/01/02/记一次在云服务器上部署项目的实践经历/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.9k 字
+</span>
+
+<span title="post.min2read">
+  7 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
       
 
 <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -1740,11 +1866,19 @@ expire key seconds&nbsp;为某个key设置过期时间，时间单位：
 
 
 
-<time title="创建时间：2019-09-16 11:25:42 / 修改时间：11:45:59" itemprop="dateCreated datePublished" datetime="2019-09-16T11:25:42+08:00">2019-09-16</time>
+<time title="创建时间：2019-09-16 11:25:42" itemprop="dateCreated datePublished" datetime="2019-09-16T11:25:42+08:00">2019-09-16</time>
 </span>
 
 
 
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-02-21 21:35:00" itemprop="dateModified" datetime="2020-02-21T21:35:00+08:00">2020-02-21</time>
+</span>
 
 
 <span class="post-meta-item">
@@ -1776,7 +1910,7 @@ expire key seconds&nbsp;为某个key设置过期时间，时间单位：
 
 <p>
 认证（Authentication）：建立声明主体的过程。一般也就是指用户登录，表示让系统知道你的存在。授权（Authorization）：确定一个主体是否允许在你的应用程序里执行一个运动的过程，也就是赋予你用户能干什么。
-&nbsp;&nbsp; 引入必要的pom文件这一步可以使用Spring Boot的初始化向导在新建工程的时候选上需要的starter，然后初始化向导就会自定引入选择的star
+引入必要的pom文件这一步可以使用Spring Boot的初始化向导在新建工程的时候选上需要的starter，然后初始化向导就会自定引入选择的starter。或者你也可以在你已
 ...
 </p>
 <!--noindex-->
@@ -1805,7 +1939,7 @@ expire key seconds&nbsp;为某个key设置过期时间，时间单位：
 </span>
 
 <span title="post.min2read">
-  9 分钟
+  10 分钟
 </span>
 
 
@@ -2693,135 +2827,11 @@ java实现的数据库连接池有很多，c3p0,dbcp等，还有号称速度最�
 </article>
 
     
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2019/09/04/SpringBoot嵌入式Server容器/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2019/09/04/SpringBoot嵌入式Server容器/" class="post-title-link" itemprop="url">Spring Boot之嵌入式Servlet容器的配置、切换和启动原理</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2019-09-04 11:34:34" itemprop="dateCreated datePublished" datetime="2019-09-04T11:34:34+08:00">2019-09-04</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2019-09-08 15:07:06" itemprop="dateModified" datetime="2019-09-08T15:07:06+08:00">2019-09-08</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring-Boot框架/" itemprop="url" rel="index"><span itemprop="name">Spring Boot框架</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-注意：以下的所有操作、原理、源码全部是建立在Spring Boot 2.1.7基础上的。
-&nbsp;&nbsp; 修改SpringBoot对嵌入式Server容器的默认配置&nbsp;&nbsp;&nbsp;&nbsp;Spring Boot默认使用Tomcat作为嵌入式的Servlet容器。实际应用中我们需要对他进行专门的定制。定制的方式不外乎两种：application.proeprties
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2019/09/04/SpringBoot嵌入式Server容器/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  4.4k 字
-</span>
-
-<span title="post.min2read">
-  20 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2857,7 +2867,7 @@ java实现的数据库连接池有很多，c3p0,dbcp等，还有号称速度最�
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
