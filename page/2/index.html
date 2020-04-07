@@ -1039,7 +1039,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并 k 个排序链表/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—负载均衡/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -1055,7 +1055,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/01/30/力扣：合并 k 个排序链表/" class="post-title-link" itemprop="url">力扣：合并k个有序链表</a>
+<a href="/2020/01/30/Nginx配置实例—负载均衡/" class="post-title-link" itemprop="url">Nginx配置实例—负载均衡</a>
 
 </h2>
 
@@ -1071,7 +1071,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：23:46:53" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
+<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:53:10" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
 </span>
 
 
@@ -1084,7 +1084,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 </span>
 <span class="post-meta-item-text">分类于</span>
 
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
 
 
 
@@ -1106,18 +1106,17 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <p>
-合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
-示例:
+1、Nginx负载均衡配置预期实现效果：
 
-输入:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
+在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。
 
-题解解法1：两两链表逐一比较这是我首先想到的方法，由于前几天刚做过一个类似的题目：合并两个有序链表。力扣的地址是：https:/
+1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/01/30/力扣：合并 k 个排序链表/#more" rel="contents">
+<a class="btn" href="/2020/01/30/Nginx配置实例—负载均衡/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -1136,7 +1135,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 </footer>
 </div>
 <span title="post.wordcount">
-  905 字
+  1.2k 字
 </span>
 
 <span title="post.min2read">
@@ -1282,7 +1281,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—负载均衡/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并 k 个排序链表/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -1298,7 +1297,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/01/30/Nginx配置实例—负载均衡/" class="post-title-link" itemprop="url">Nginx配置实例—负载均衡</a>
+<a href="/2020/01/30/力扣：合并 k 个排序链表/" class="post-title-link" itemprop="url">力扣：合并k个有序链表</a>
 
 </h2>
 
@@ -1314,7 +1313,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:53:10" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
+<time title="创建时间：2020-01-30 21:01:59 / 修改时间：23:46:53" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
 </span>
 
 
@@ -1327,7 +1326,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 </span>
 <span class="post-meta-item-text">分类于</span>
 
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
 
 
 
@@ -1349,17 +1348,18 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <p>
-1、Nginx负载均衡配置预期实现效果：
+合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
+示例:
 
-在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。
+输入:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
 
-1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口
+题解解法1：两两链表逐一比较这是我首先想到的方法，由于前几天刚做过一个类似的题目：合并两个有序链表。力扣的地址是：https:/
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/01/30/Nginx配置实例—负载均衡/#more" rel="contents">
+<a class="btn" href="/2020/01/30/力扣：合并 k 个排序链表/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -1378,7 +1378,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 </footer>
 </div>
 <span title="post.wordcount">
-  1.2k 字
+  905 字
 </span>
 
 <span title="post.min2read">
