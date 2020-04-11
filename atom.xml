@@ -395,31 +395,6 @@
   </entry>
   
   <entry>
-    <title>Docker常见异常处理（持续更新）</title>
-    <link href="http://easyblog.top/2020/03/18/Docker%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
-    <id>http://easyblog.top/2020/03/18/Docker常见异常处理（持续更新）/</id>
-    <published>2020-03-18T05:01:59.000Z</published>
-    <updated>2020-03-19T11:58:30.755Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="1-启动docker时映射到宿主机时出现-usr-bin-docker-current-Error-response-from-daemon-driver-failed…的解决方案"><a href="#1-启动docker时映射到宿主机时出现-usr-bin-docker-current-Error-response-from-daemon-driver-failed…的解决方案" class="headerlink" title="1.  启动docker时映射到宿主机时出现/usr/bin/docker-current: Error response from daemon: driver failed…的解决方案"></a>1.  启动docker时映射到宿主机时出现/usr/bin/docker-current: Error response from daemon: driver failed…的解决方案</h4><p>启动docker映射到宿主机时出现如下错误时：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/docker-current: Error response from daemon: driver failed programming external connectivity on endpoint jovial_saha (5f31b67b738bca942f993bbb75bd363dff460b2243dff5bd940991d2ffd1346c): Bind <span class="keyword">for</span> 0.0.0.0:8080 failed: port is already allocated.</span><br></pre></td></tr></table></figure><p>这是由于来自守护进程的错误响应，而致使外部连接失败。解决的办法就是将其docker进程 kill掉，然后再 清空掉iptables下nat表下的所有链（规则） 。最后，将 docker的网桥删除，并重启docker服务.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@7con ] pkill docker                       <span class="comment">#终止进程</span></span><br><span class="line">[root@7con ] iptables -t nat -F                 <span class="comment">#清空nat表的所有链</span></span><br><span class="line">[root@7con ] ifconfig docker0 down        <span class="comment">#停止docker默认网桥</span></span><br><span class="line">[root@7con ] yum install bridge-utils -y<span class="comment"># 部分机器是无法使用brctl，所以需要提前安装</span></span><br><span class="line">[root@7con ] brctl delbr docker0                <span class="comment">#删除网桥  </span></span><br><span class="line">[root@7con ] systemctl restart docker           <span class="comment">#重启docker</span></span><br></pre></td></tr></table></figure><p>重启后不出以意外的话就恢复正常了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;1-启动docker时映射到宿主机时出现-usr-bin-docker-current-Error-response-from-daemon-driver-failed…的解决方案&quot;&gt;&lt;a href=&quot;#1-启动docker时映射到宿主机时出现-usr-bin-d
-      
-    
-    </summary>
-    
-      <category term="Docker" scheme="http://easyblog.top/categories/Docker/"/>
-    
-    
-      <category term="Docker" scheme="http://easyblog.top/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
     <title>基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问</title>
     <link href="http://easyblog.top/2020/03/18/%E5%9F%BA%E4%BA%8ELinux%E5%B9%B3%E5%8F%B0%E7%9A%84Nginx%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91SSL%E8%AF%81%E4%B9%A6%E5%AE%9E%E7%8E%B0HTTPS%E8%AE%BF%E9%97%AE/"/>
     <id>http://easyblog.top/2020/03/18/基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问/</id>
@@ -441,6 +416,31 @@
     
     
       <category term="Nginx" scheme="http://easyblog.top/tags/Nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker常见异常处理（持续更新）</title>
+    <link href="http://easyblog.top/2020/03/18/Docker%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
+    <id>http://easyblog.top/2020/03/18/Docker常见异常处理（持续更新）/</id>
+    <published>2020-03-18T05:01:59.000Z</published>
+    <updated>2020-03-19T11:58:30.755Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-启动docker时映射到宿主机时出现-usr-bin-docker-current-Error-response-from-daemon-driver-failed…的解决方案"><a href="#1-启动docker时映射到宿主机时出现-usr-bin-docker-current-Error-response-from-daemon-driver-failed…的解决方案" class="headerlink" title="1.  启动docker时映射到宿主机时出现/usr/bin/docker-current: Error response from daemon: driver failed…的解决方案"></a>1.  启动docker时映射到宿主机时出现/usr/bin/docker-current: Error response from daemon: driver failed…的解决方案</h4><p>启动docker映射到宿主机时出现如下错误时：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/docker-current: Error response from daemon: driver failed programming external connectivity on endpoint jovial_saha (5f31b67b738bca942f993bbb75bd363dff460b2243dff5bd940991d2ffd1346c): Bind <span class="keyword">for</span> 0.0.0.0:8080 failed: port is already allocated.</span><br></pre></td></tr></table></figure><p>这是由于来自守护进程的错误响应，而致使外部连接失败。解决的办法就是将其docker进程 kill掉，然后再 清空掉iptables下nat表下的所有链（规则） 。最后，将 docker的网桥删除，并重启docker服务.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@7con ] pkill docker                       <span class="comment">#终止进程</span></span><br><span class="line">[root@7con ] iptables -t nat -F                 <span class="comment">#清空nat表的所有链</span></span><br><span class="line">[root@7con ] ifconfig docker0 down        <span class="comment">#停止docker默认网桥</span></span><br><span class="line">[root@7con ] yum install bridge-utils -y<span class="comment"># 部分机器是无法使用brctl，所以需要提前安装</span></span><br><span class="line">[root@7con ] brctl delbr docker0                <span class="comment">#删除网桥  </span></span><br><span class="line">[root@7con ] systemctl restart docker           <span class="comment">#重启docker</span></span><br></pre></td></tr></table></figure><p>重启后不出以意外的话就恢复正常了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1-启动docker时映射到宿主机时出现-usr-bin-docker-current-Error-response-from-daemon-driver-failed…的解决方案&quot;&gt;&lt;a href=&quot;#1-启动docker时映射到宿主机时出现-usr-bin-d
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="http://easyblog.top/categories/Docker/"/>
+    
+    
+      <category term="Docker" scheme="http://easyblog.top/tags/Docker/"/>
     
   </entry>
   
