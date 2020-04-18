@@ -242,7 +242,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">104</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">111</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -296,7 +296,7 @@
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）进阶篇/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/LockSupport深入源码剖析/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -312,7 +312,7 @@
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）进阶篇/" class="post-title-link" itemprop="url">深入理解JVM—垃圾回收器（Grabage Collector）进阶篇</a>
+<a href="/2020/04/01/LockSupport深入源码剖析/" class="post-title-link" itemprop="url">未命名</a>
 
 </h2>
 
@@ -328,7 +328,7 @@
 
 
 
-<time title="创建时间：2020-02-23 13:01:59" itemprop="dateCreated datePublished" datetime="2020-02-23T13:01:59+08:00">2020-02-23</time>
+<time title="创建时间：2020-04-01 22:52:06" itemprop="dateCreated datePublished" datetime="2020-04-01T22:52:06+08:00">2020-04-01</time>
 </span>
 
 
@@ -339,22 +339,9 @@
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-24 11:01:02" itemprop="dateModified" datetime="2020-02-24T11:01:02+08:00">2020-02-24</time>
+<time title="修改时间：2020-04-03 22:36:07" itemprop="dateModified" datetime="2020-04-03T22:36:07+08:00">2020-04-03</time>
 </span>
 
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-
-
-
-</span>
 
 
 
@@ -371,18 +358,475 @@
 
 
 <p>
-1、如何判断对象可以被回收1.1 引用计数法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给对象添加一个引用计数器，每当有一个地方引用该对象的时候此计数器+1；当一个引用失效后计数器-1，当计数器的值减为0了的对象就不在可能被使用了。
+LockSupport深入源码剖析与Object的wait()/notify()相比：
 
-优点： 实现简单，判定效率高。
-缺点：当对象之间的相互循环引用时，会导致GC失效，从而造成内存泄漏。
-
-public cla
+wait()、notify()、notifyAll()都必须配置Object monitor使用，而LockSupport的park()、unpark()方法不必
+park()、unpark()可以精确到一个线程来阻塞和唤醒它，但是notify()只能在Wait Set中随机唤醒一个，并且notifyAll(
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）进阶篇/#more" rel="contents">
+<a class="btn" href="/2020/04/01/LockSupport深入源码剖析/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.8k 字
+</span>
+
+<span title="post.min2read">
+  9 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/Java多线程和高并发总结（基础）/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/01/Java多线程和高并发总结（基础）/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-01 22:52:06" itemprop="dateCreated datePublished" datetime="2020-04-01T22:52:06+08:00">2020-04-01</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-04 20:36:13" itemprop="dateModified" datetime="2020-04-04T20:36:13+08:00">2020-04-04</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+Java多线程和高并发总结（基础）一、进程的概念？进程可以理解为一个应用程序执行的实例（比如在windows下打开Word就启动了一个进程），进程是资源分配的最小单位，每个进程都有自己独立的地址空间，每启动一个进程，系统就会为它分配地址空间，建立数据表来维护代码段、堆栈段和数据段。进程主要有数据、程序和程序控制块（PCB）组成，其中PCB是系统感知进程存在的唯一标志。
+二、线程的概念？线程是进程中
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/01/Java多线程和高并发总结（基础）/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  5.1k 字
+</span>
+
+<span title="post.min2read">
+  20 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/Java多线程和高并发常见面试题汇总/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/01/Java多线程和高并发常见面试题汇总/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-01 22:52:06" itemprop="dateCreated datePublished" datetime="2020-04-01T22:52:06+08:00">2020-04-01</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-06 12:20:36" itemprop="dateModified" datetime="2020-04-06T12:20:36+08:00">2020-04-06</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+Java多线程和高并发常见面试题汇总1、锁的四种状态和升级过程？不同锁状态下的对象头：
+
+Java SE1.6以后中锁有四种状态是：无锁状态、偏向锁状态、轻量级锁（自旋锁）状态、重量级锁状态。
+锁可以升级但是锁无法降级，这样设计的目的是为了提高获得锁和释放锁的效率。
+1.1 锁升级过程
+一个对象刚被创建的时处于无锁状态；
+
+当有一个线程访问同步块并获取锁时，将会上偏向锁，即会在对象和此线程的桟帧中
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/01/Java多线程和高并发常见面试题汇总/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  5.5k 字
+</span>
+
+<span title="post.min2read">
+  19 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/计算机网络/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/01/计算机网络/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-01 22:51:56" itemprop="dateCreated datePublished" datetime="2020-04-01T22:51:56+08:00">2020-04-01</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-03-22 18:05:31" itemprop="dateModified" datetime="2020-03-22T18:05:31+08:00">2020-03-22</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+计算机网络部分1、OSl七层模型和TCP/IP四层模型
+从上到下：
+
+应用层：通过应用进程之间的交互完成特定的网络应用。该层常见的协议有HTTP（80）、HTTPS（443）、DNS、SMTP（电子邮件）…..
+
+运输层：为应用进程之间提供端到端的逻辑通信。各种应用进程之间需要的“可靠或尽力而为”的两类服务，必须靠运输层以复用或分用的方式加载到网络层。
+
+
+运输层重要的两个协议：TCP和UDP协议
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/01/计算机网络/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  5.1k 字
+</span>
+
+<span title="post.min2read">
+  17 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/操作系统部分/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/01/操作系统部分/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-01 22:51:56" itemprop="dateCreated datePublished" datetime="2020-04-01T22:51:56+08:00">2020-04-01</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-03-25 23:46:28" itemprop="dateModified" datetime="2020-03-25T23:46:28+08:00">2020-03-25</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+操作系统部分1、什么是操作系统？​        操作系统是管理计算机软件和软件资源的程序，是计算机系统的内核和基石。它的本质是运行在计算机上的软件，为用户提供了一个和系统交互的操作页面。
+2、Linux操纵系统分类
+内核版本：Linux其实不是一个操作系统，严格来讲，Linux只是一个操作系统的内核。内核提供了计算机软件和硬件的交互平台，内核提供系统服务，比如文件管理、IO管理、设备管理……
+发
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/01/操作系统部分/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -405,7 +849,259 @@ public cla
 </span>
 
 <span title="post.min2read">
-  12 分钟
+  11 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/03/18/Docker常见异常处理（持续更新）/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/03/18/Docker常见异常处理（持续更新）/" class="post-title-link" itemprop="url">Docker常见异常处理（持续更新）</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-03-18 13:01:59" itemprop="dateCreated datePublished" datetime="2020-03-18T13:01:59+08:00">2020-03-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-03-19 19:58:30" itemprop="dateModified" datetime="2020-03-19T19:58:30+08:00">2020-03-19</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1.  启动docker时映射到宿主机时出现/usr/bin/docker-current: Error response from daemon: driver failed…的解决方案启动docker映射到宿主机时出现如下错误时：
+/usr/bin/docker-current: Error response from daemon: driver failed programming ext
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/03/18/Docker常见异常处理（持续更新）/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  238 字
+</span>
+
+<span title="post.min2read">
+  1 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/03/18/基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/03/18/基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问/" class="post-title-link" itemprop="url">基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-03-18 13:01:59" itemprop="dateCreated datePublished" datetime="2020-03-18T13:01:59+08:00">2020-03-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-03-19 19:56:03" itemprop="dateModified" datetime="2020-03-19T19:56:03+08:00">2020-03-19</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1、前提工作1.1 准备一台具有公网IP的Linux服务器1.2 申请一个域名，并将此域名和服务器的公网IP绑定1.3 在阿里开发者平台上申请并获取SSL证书（1）在开启SSL后，来到下图所示页面，选择一个证书类型后，不用管他上面的报价，点击申请。
+
+
+（2）在接下来的这个页面中，选择你想要的证书服务类型
+
+（3）购买成功之后，跟随系统的引导完成证书的签发之后点击下载SSL证书。这里我下载了Ngi
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/03/18/基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  886 字
+</span>
+
+<span title="post.min2read">
+  3 分钟
 </span>
 
 
@@ -544,6 +1240,134 @@ public cla
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）进阶篇/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）进阶篇/" class="post-title-link" itemprop="url">深入理解JVM—垃圾回收器（Grabage Collector）进阶篇</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-02-23 13:01:59" itemprop="dateCreated datePublished" datetime="2020-02-23T13:01:59+08:00">2020-02-23</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-02-24 11:01:02" itemprop="dateModified" datetime="2020-02-24T11:01:02+08:00">2020-02-24</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1、如何判断对象可以被回收1.1 引用计数法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给对象添加一个引用计数器，每当有一个地方引用该对象的时候此计数器+1；当一个引用失效后计数器-1，当计数器的值减为0了的对象就不在可能被使用了。
+
+优点： 实现简单，判定效率高。
+缺点：当对象之间的相互循环引用时，会导致GC失效，从而造成内存泄漏。
+
+public cla
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）进阶篇/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.2k 字
+</span>
+
+<span title="post.min2read">
+  12 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/20/前端UI自动联想功能/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -628,6 +1452,124 @@ public cla
 
 <span title="post.min2read">
   1 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—运行时数据区之程序计数器/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/" class="post-title-link" itemprop="url">深入理解JVM—运行时数据区之程序计数器</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-02-11 13:01:59 / 修改时间：19:07:19" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1、JVM内存模型概述Java虚拟机（JVM）在Java程序运行的过程中，会将它所管理的内存划分为若干个不同的数据区域，这些区域有的随着JVM的启动而创建，有的随着用户线程的启动和结束而建立和销毁。一个基本的JVM运行时内存模型如下所示：
+图 1 JVM运行时数据区
+
+上图是展示JDK8及以后的虚拟机规范对JVM运行时内存的划分。在JVM的运行时数据区中Java虚拟机桟、本地方法桟和程序计数器是每
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.3k 字
+</span>
+
+<span title="post.min2read">
+  4 分钟
 </span>
 
 
@@ -998,124 +1940,6 @@ pac
 
 <span title="post.min2read">
   8 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—运行时数据区之程序计数器/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/" class="post-title-link" itemprop="url">深入理解JVM—运行时数据区之程序计数器</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-02-11 13:01:59 / 修改时间：19:07:19" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、JVM内存模型概述Java虚拟机（JVM）在Java程序运行的过程中，会将它所管理的内存划分为若干个不同的数据区域，这些区域有的随着JVM的启动而创建，有的随着用户线程的启动和结束而建立和销毁。一个基本的JVM运行时内存模型如下所示：
-图 1 JVM运行时数据区
-
-上图是展示JDK8及以后的虚拟机规范对JVM运行时内存的划分。在JVM的运行时数据区中Java虚拟机桟、本地方法桟和程序计数器是每
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.3k 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
 </span>
 
 
@@ -1867,869 +2691,6 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 </article>
 
     
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/31/力扣：两两交换链表中的节点/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/31/力扣：两两交换链表中的节点/" class="post-title-link" itemprop="url">力扣：力扣：两两交换链表中的节点</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-31 21:01:59" itemprop="dateCreated datePublished" datetime="2020-01-31T21:01:59+08:00">2020-01-31</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-01 00:10:41" itemprop="dateModified" datetime="2020-02-01T00:10:41+08:00">2020-02-01</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-示例:
-
-给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.给定 1-&gt;2-&gt;3-&gt;4-&gt;5 ，你应该返回 2-&gt;1-&gt;4-&gt;3-&gt;5.
-
-题解只需要维护3个指针：prev、sta
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/31/力扣：两两交换链表中的节点/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  542 字
-</span>
-
-<span title="post.min2read">
-  2 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并两个有序链表/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/力扣：合并两个有序链表/" class="post-title-link" itemprop="url">力扣：合并两个有序链表</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:57:23" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
-示例：
-
-输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4
-
-题解设定一个哨兵节点 prehead ，这可以在最后让我们比较容易地返回合并后的链表。并且维护一个 preNode指针，我们需要做的是调整它的 next 指针。
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/力扣：合并两个有序链表/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  532 字
-</span>
-
-<span title="post.min2read">
-  2 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—动静分离/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/Nginx配置实例—动静分离/" class="post-title-link" itemprop="url">Nginx配置实例—动静分离</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-02 18:53:42" itemprop="dateModified" datetime="2020-02-02T18:53:42+08:00">2020-02-02</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、动静分离概念重温Nginx动静分离可以简单的理解为把动态跟静态分离开来，不能理解成只是单纯的把动态页面和静态页面物理上的分离。严格意义上来说应该是把动态请求和静态请求分离，即nginx处理静态请求，tomcat等应用服务器处理动态请求。动静分离从目前的实现角度来讲大致分为两类：一种是纯粹把静态文件放在一个独立的服务器上，有一个独立的域名，也是目前主流推崇的方案；另一种是动态文件和静态文件混在一
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/Nginx配置实例—动静分离/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.1k 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置文件详解（配置文件结构）/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/Nginx配置文件详解（配置文件结构）/" class="post-title-link" itemprop="url">Nginx配置文件详解（配置文件结构）</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-02 18:53:41" itemprop="dateModified" datetime="2020-02-02T18:53:41+08:00">2020-02-02</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-Nginx配置文件结构在nginx的安装目录下的conf目录下有一个nginx.conf,这个就是nginx默认的配置文件，默认的内容如下：
-#user  nobody;worker_processes  1;error_log  logs/error.log;#error_log  logs/error.log  notice;#error_log  logs/error.log  info;#
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/Nginx配置文件详解（配置文件结构）/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  2.3k 字
-</span>
-
-<span title="post.min2read">
-  9 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并 k 个排序链表/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/力扣：合并 k 个排序链表/" class="post-title-link" itemprop="url">力扣：合并k个有序链表</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：23:46:53" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
-示例:
-
-输入:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
-
-题解解法1：两两链表逐一比较这是我首先想到的方法，由于前几天刚做过一个类似的题目：合并两个有序链表。力扣的地址是：https:/
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/力扣：合并 k 个排序链表/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  905 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—负载均衡/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/Nginx配置实例—负载均衡/" class="post-title-link" itemprop="url">Nginx配置实例—负载均衡</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:53:10" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、Nginx负载均衡配置预期实现效果：
-
-在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。
-
-1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/Nginx配置实例—负载均衡/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.2k 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/27/Nginx入门-安装Nginx/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/27/Nginx入门-安装Nginx/" class="post-title-link" itemprop="url">Nginx快速入门—基本概念以及在Linux下安装</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-27 21:01:59" itemprop="dateCreated datePublished" datetime="2020-01-27T21:01:59+08:00">2020-01-27</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-01-30 19:53:08" itemprop="dateModified" datetime="2020-01-30T19:53:08+08:00">2020-01-30</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、什么是Nginx？百度百科：
-
-Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。
-
-我的理解：
-
-Nginx(engine x)是一个高性能的HTTP反向代理服
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/27/Nginx入门-安装Nginx/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.6k 字
-</span>
-
-<span title="post.min2read">
-  5 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
   </section>
 
   
@@ -2770,7 +2731,7 @@ Nginx(engine x)是一个高性能的HTTP反向代理服
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -242,7 +242,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">104</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">111</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -296,6 +296,785 @@
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/线程池ThreadPoolExecutor详解/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/线程池ThreadPoolExecutor详解/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-10 15:28:22" itemprop="dateModified" datetime="2020-04-10T15:28:22+08:00">2020-04-10</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+线程池ThreadPoolExecutor详解如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。
+那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？
+在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池，首先我们从最核心的T
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/线程池ThreadPoolExecutor详解/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  6.6k 字
+</span>
+
+<span title="post.min2read">
+  26 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-14 11:36:36" itemprop="dateModified" datetime="2020-04-14T11:36:36+08:00">2020-04-14</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap一、早期线程安全的集合JDK从1.0开始就提供了两个线程安全的集合类：Hashtable和Vector
+1、HashtableHashtable和HashMap有着同样的功能——提供key  value结构，但不同的是Hashtable是线程安全的，它给几乎所有public方法都加上了synchronized关键字，还有一个不同
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  616 字
+</span>
+
+<span title="post.min2read">
+  2 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/HashMap是如何工作的/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/HashMap是如何工作的/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-15 19:17:50" itemprop="dateModified" datetime="2020-04-15T19:17:50+08:00">2020-04-15</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+HashMap是如何工作的声明：基于jdk1.8源码。
+一、认识HashMapHashMap最早在jdk 1.2就出现了，直到jdk1.7都没有太大的改动：
+
+jdk1.7的采用的存储结构是采用了数组+链表，jdk1.8的存储结构数组+链表+红黑树
+
+HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可以），HashMap在多线程环境下没法保证对元素的操作是线程安全的。
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/HashMap是如何工作的/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  6.4k 字
+</span>
+
+<span title="post.min2read">
+  23 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入分析AQS实现原理/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/深入分析AQS实现原理/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-12 19:46:54" itemprop="dateModified" datetime="2020-04-12T19:46:54+08:00">2020-04-12</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+深入分析AQS实现原理概述AQS是 AbstractQueuedSynchorinizer的简写，中文名是队列同步器。AQS是Java实现阻塞式锁和同步工具的基石。它使用一个int类型的成员变量表示同步状态，通过内置的一个FIFO队列完成资源获取线程的排队工作。AQS是一个抽象类，主要是通过继承的方式来使用，它本身没有实现任何的同步接口，仅仅是定义了同步状态的获取以及释放的方法来提供自定义的同步组
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/深入分析AQS实现原理/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.3k 字
+</span>
+
+<span title="post.min2read">
+  11 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-14 10:33:32" itemprop="dateModified" datetime="2020-04-14T10:33:32+08:00">2020-04-14</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+面试常问的几个Java并发工具类你都GET到了吗？在JDK的并发中提供了几个非常有用的并发工具类。CountDwonLatch、CyclicBarrier、Semaphore以及Exchanger。下面我们就一起了解一下这些类的基本使用以及基本原理吧。
+PS：最起码你得知道它们是干什么用得，下面列出得代码也建议你跑跑。其实如果你理解AQS的设计原理的话，这些工具类的原理就不难理解了。
+一、闭锁 C
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  2.3k 字
+</span>
+
+<span title="post.min2read">
+  9 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解ForkJion框架/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/深入理解ForkJion框架/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-10 20:12:31" itemprop="dateModified" datetime="2020-04-10T20:12:31+08:00">2020-04-10</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+深入理解Fork/Join框架一、什么是Fork/Join框架ForkJ/Join框架是Java 7提供的一个新的线程池的实现，它体现的是一种分治思想，即：把一个大任务拆分成多个小任务，最终汇总每个小任务的的结果后得到大任务的结果的一种线程池实现。
+Fork/Join在分治法的基础上配合多线程技术，可以把每个任务的分解和合并嫁给不同的线程来执行，进一步提高了运算效率。Fork/Join默认会创建和
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/深入理解ForkJion框架/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.4k 字
+</span>
+
+<span title="post.min2read">
+  5 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解CnocurrentHashMap原理/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/深入理解CnocurrentHashMap原理/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57 / 修改时间：22:52:53" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+深入理解CnocurrentHashMap原理HashMap在多线程环境下有线程安全问题，因此在多线程环境下不要直接使用HashMap，而是使用下面几种不同的方式去代替：
+
+（1）使用ConcurrentHashMap
+（2）使用Hashtable
+（3）使用Collections.synchronizedMap(Map map)方法将HashMap包装成一个线程安全的集合
+
+不过鉴于要保证多线程
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/深入理解CnocurrentHashMap原理/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.9k 字
+</span>
+
+<span title="post.min2read">
+  17 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/09/深入源码剖析ReentrantLock/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -328,11 +1107,19 @@
 
 
 
-<time title="创建时间：2020-04-09 23:25:44 / 修改时间：21:53:36" itemprop="dateCreated datePublished" datetime="2020-04-09T23:25:44+08:00">2020-04-09</time>
+<time title="创建时间：2020-04-09 23:25:44" itemprop="dateCreated datePublished" datetime="2020-04-09T23:25:44+08:00">2020-04-09</time>
 </span>
 
 
 
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-13 00:03:43" itemprop="dateModified" datetime="2020-04-13T00:03:43+08:00">2020-04-13</time>
+</span>
 
 
 
@@ -350,8 +1137,8 @@
 
 
 <p>
-深入源码剖析ReentrantLock
-
+深入源码剖析ReentrantLock一、从Lock接口说起锁时用来控制多个线程范文共享资源，保证资源安全性的一种重要手段。在Lock接口出现以前，Java陈旭是靠synchorinzed关键字实现锁功能点的，在jdk1.5之前使用synchroinzed绝对是一个重量级的操作，因为synchroinzed是依赖对象锁实现的，而对象锁（ObjectMonitor）又依赖底层操作系统的mutex l
+...
 </p>
 <!--noindex-->
 
@@ -375,11 +1162,11 @@
 </footer>
 </div>
 <span title="post.wordcount">
-  7 字
+  2.9k 字
 </span>
 
 <span title="post.min2read">
-  1 分钟
+  11 分钟
 </span>
 
 
@@ -1667,830 +2454,6 @@ Thread和Runnable深入源码剖析一、Runnable的实现类Thread类本质是R
 </article>
 
     
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/LockSupport深入源码剖析/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/01/LockSupport深入源码剖析/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-01 22:52:06" itemprop="dateCreated datePublished" datetime="2020-04-01T22:52:06+08:00">2020-04-01</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-03 22:36:07" itemprop="dateModified" datetime="2020-04-03T22:36:07+08:00">2020-04-03</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-LockSupport深入源码剖析与Object的wait()/notify()相比：
-
-wait()、notify()、notifyAll()都必须配置Object monitor使用，而LockSupport的park()、unpark()方法不必
-park()、unpark()可以精确到一个线程来阻塞和唤醒它，但是notify()只能在Wait Set中随机唤醒一个，并且notifyAll(
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/01/LockSupport深入源码剖析/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.8k 字
-</span>
-
-<span title="post.min2read">
-  9 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/Java多线程和高并发总结（基础）/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/01/Java多线程和高并发总结（基础）/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-01 22:52:06" itemprop="dateCreated datePublished" datetime="2020-04-01T22:52:06+08:00">2020-04-01</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-03 16:20:35" itemprop="dateModified" datetime="2020-04-03T16:20:35+08:00">2020-04-03</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-Java多线程和高并发总结（基础）一、进程的概念？进程可以理解为一个应用程序执行的实例（比如在windows下打开Word就启动了一个进程），进程是资源分配的最小单位，每个进程都有自己独立的地址空间，每启动一个进程，系统就会为它分配地址空间，建立数据表来维护代码段、堆栈段和数据段。进程主要有数据、程序和程序控制块（PCB）组成，其中PCB是系统感知进程存在的唯一标志。
-二、线程的概念？线程是进程中
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/01/Java多线程和高并发总结（基础）/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  5.1k 字
-</span>
-
-<span title="post.min2read">
-  20 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/Java多线程和高并发常见面试题汇总/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/01/Java多线程和高并发常见面试题汇总/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-01 22:52:06" itemprop="dateCreated datePublished" datetime="2020-04-01T22:52:06+08:00">2020-04-01</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-03 00:48:14" itemprop="dateModified" datetime="2020-04-03T00:48:14+08:00">2020-04-03</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-Java多线程和高并发常见面试题汇总1、锁的四种状态和升级过程？不同锁状态下的对象头：
-
-Java SE1.6以后中锁有四种状态是：无锁状态、偏向锁状态、轻量级锁（自旋锁）状态、重量级锁状态。
-锁可以升级但是锁无法降级，这样设计的目的是为了提高获得锁和释放锁的效率。
-1.1 锁升级过程
-一个对象刚被创建的时处于无锁状态；
-
-当有一个线程访问同步块并获取锁时，将会上偏向锁，即会在对象和此线程的桟帧中
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/01/Java多线程和高并发常见面试题汇总/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  5.5k 字
-</span>
-
-<span title="post.min2read">
-  19 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/计算机网络/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/01/计算机网络/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-01 22:51:56" itemprop="dateCreated datePublished" datetime="2020-04-01T22:51:56+08:00">2020-04-01</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-03-22 18:05:31" itemprop="dateModified" datetime="2020-03-22T18:05:31+08:00">2020-03-22</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-计算机网络部分1、OSl七层模型和TCP/IP四层模型
-从上到下：
-
-应用层：通过应用进程之间的交互完成特定的网络应用。该层常见的协议有HTTP（80）、HTTPS（443）、DNS、SMTP（电子邮件）…..
-
-运输层：为应用进程之间提供端到端的逻辑通信。各种应用进程之间需要的“可靠或尽力而为”的两类服务，必须靠运输层以复用或分用的方式加载到网络层。
-
-
-运输层重要的两个协议：TCP和UDP协议
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/01/计算机网络/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  5.1k 字
-</span>
-
-<span title="post.min2read">
-  17 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/操作系统部分/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/01/操作系统部分/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-01 22:51:56" itemprop="dateCreated datePublished" datetime="2020-04-01T22:51:56+08:00">2020-04-01</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-03-25 23:46:28" itemprop="dateModified" datetime="2020-03-25T23:46:28+08:00">2020-03-25</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-操作系统部分1、什么是操作系统？​        操作系统是管理计算机软件和软件资源的程序，是计算机系统的内核和基石。它的本质是运行在计算机上的软件，为用户提供了一个和系统交互的操作页面。
-2、Linux操纵系统分类
-内核版本：Linux其实不是一个操作系统，严格来讲，Linux只是一个操作系统的内核。内核提供了计算机软件和硬件的交互平台，内核提供系统服务，比如文件管理、IO管理、设备管理……
-发
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/01/操作系统部分/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.2k 字
-</span>
-
-<span title="post.min2read">
-  11 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/03/18/基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/03/18/基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问/" class="post-title-link" itemprop="url">基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-03-18 13:01:59" itemprop="dateCreated datePublished" datetime="2020-03-18T13:01:59+08:00">2020-03-18</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-03-19 19:56:03" itemprop="dateModified" datetime="2020-03-19T19:56:03+08:00">2020-03-19</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、前提工作1.1 准备一台具有公网IP的Linux服务器1.2 申请一个域名，并将此域名和服务器的公网IP绑定1.3 在阿里开发者平台上申请并获取SSL证书（1）在开启SSL后，来到下图所示页面，选择一个证书类型后，不用管他上面的报价，点击申请。
-
-
-（2）在接下来的这个页面中，选择你想要的证书服务类型
-
-（3）购买成功之后，跟随系统的引导完成证书的签发之后点击下载SSL证书。这里我下载了Ngi
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/03/18/基于Linux平台的Nginx配置阿里云SSL证书实现HTTPS访问/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  886 字
-</span>
-
-<span title="post.min2read">
-  3 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/03/18/Docker常见异常处理（持续更新）/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/03/18/Docker常见异常处理（持续更新）/" class="post-title-link" itemprop="url">Docker常见异常处理（持续更新）</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-03-18 13:01:59" itemprop="dateCreated datePublished" datetime="2020-03-18T13:01:59+08:00">2020-03-18</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-03-19 19:58:30" itemprop="dateModified" datetime="2020-03-19T19:58:30+08:00">2020-03-19</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1.  启动docker时映射到宿主机时出现/usr/bin/docker-current: Error response from daemon: driver failed…的解决方案启动docker映射到宿主机时出现如下错误时：
-/usr/bin/docker-current: Error response from daemon: driver failed programming ext
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/03/18/Docker常见异常处理（持续更新）/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  238 字
-</span>
-
-<span title="post.min2read">
-  1 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
   </section>
 
   
@@ -2531,7 +2494,7 @@ Java SE1.6以后中锁有四种状态是：无锁状态、偏向锁状态、轻�
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
