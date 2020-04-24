@@ -242,7 +242,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">111</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">119</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -289,6 +289,905 @@
           <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/MySQL索引以及索引的优化/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/MySQL索引以及索引的优化/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:50" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:50+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-23 22:59:20" itemprop="dateModified" datetime="2020-04-23T22:59:20+08:00">2020-04-23</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+MySQL索引以及索引优化分析一、索引的概念1、什么是索引？MySQL 官方对索引的定义为：索引（Index）是帮助 MySQL 高效获取数据的数据结构。可以得到索引的本质：索引是数据结构。可以简单理解为排好序的快速查找数据结构，再简单索引就类似于一本书的目录，通过目录可以快速找到需要查找对类容。
+在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/MySQL索引以及索引的优化/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.6k 字
+</span>
+
+<span title="post.min2read">
+  12 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/MySQL逻辑架构简介/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/MySQL逻辑架构简介/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:50" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:50+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-23 15:25:19" itemprop="dateModified" datetime="2020-04-23T15:25:19+08:00">2020-04-23</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+MySQL逻辑架构简介1、整体架构图和其它数据库相比，MySQL 有点与众不同，它的架构可以在多种不同场景中应用并发挥良好作用。主要体现在存储引擎的架构上，插件式的存储引擎架构将查询处理和其它的系统任务以及数据的存储提取相分离。这种架构可以根据业务的需求和实际需要选择合适的存储引擎。MySQL官方给出的系统逻辑架构分为4层，如下图所示：
+
+
+
+
+这四层自顶向下分别是连接层，服务层（核心层），存储引
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/MySQL逻辑架构简介/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.8k 字
+</span>
+
+<span title="post.min2read">
+  6 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/JAVA集合总结，将知识点一网打尽！/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/JAVA集合总结，将知识点一网打尽！/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:32" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:32+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-22 23:34:39" itemprop="dateModified" datetime="2020-04-22T23:34:39+08:00">2020-04-22</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+JAVA集合总结，将知识点一网打尽！一、Java集合框架体系总览
+
+总的来说，Java集合框架以Collection接口为中心，下属是三个子接口，分别是：List（线性表）、Set、Queue（队列），以及还有一个非常重要的Map接口。下面我们分别总结一下每种类型集合下的知识点。
+Collection接口首先我们来看一下Collection接口中的方法：
+1. 添加元素的功能：/**添加元素*/b
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/JAVA集合总结，将知识点一网打尽！/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.6k 字
+</span>
+
+<span title="post.min2read">
+  14 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/深入理解CopyOnWriteArrayList—源码剖析/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/深入理解CopyOnWriteArrayList—源码剖析/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:05" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:05+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-20 17:21:40" itemprop="dateModified" datetime="2020-04-20T17:21:40+08:00">2020-04-20</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+线程安全的容器之CopyOnWriteArrayList—源码剖析
+
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/深入理解CopyOnWriteArrayList—源码剖析/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  13 字
+</span>
+
+<span title="post.min2read">
+  1 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/高并发编程之JAVA中的阻塞队列/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/高并发编程之JAVA中的阻塞队列/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:05" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:05+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-21 17:29:31" itemprop="dateModified" datetime="2020-04-21T17:29:31+08:00">2020-04-21</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+高并发编程之JAVA中的阻塞队列队列是一种数据结构，它有两个基本操作：在队列尾部加入元素和从队列头部移除元素。在我们日常开发中，经常用来并发操作数据。java中有一些应用比较广泛的特殊队列：一种是以ConcurrentLinkedQueue为代表的非阻塞队列；另一种是以BlockingQueue接口为代表的阻塞队列。通过这两种队列，我们保证了多线程操作数据的安全性。
+
+
+一、初识阻塞队列在J.U.
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/高并发编程之JAVA中的阻塞队列/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  5.4k 字
+</span>
+
+<span title="post.min2read">
+  22 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/高并发编程之CopyOnWriteArrayList—源码剖析/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/高并发编程之CopyOnWriteArrayList—源码剖析/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:05" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:05+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-20 18:34:53" itemprop="dateModified" datetime="2020-04-20T18:34:53+08:00">2020-04-20</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+高并发编程之CopyOnWriteArrayList—源码剖析CopyOnWriteArrayList是J.U.C包下的一个并发容器，它是线程安全且读操作无锁的ArrayList，写操作（增删改）则通过将底层数组拷贝一份，更改操作全部在新数组上进行，是一种读写分离的并发策略，我们也可以称这种容器为”写时复制器”，Java并发包中类似的容器还有CopyOnWriteArraySet。本文会对Copy
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/高并发编程之CopyOnWriteArrayList—源码剖析/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.3k 字
+</span>
+
+<span title="post.min2read">
+  5 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/高并发编程之ConcurrentLinkedQueue—源码剖析/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/高并发编程之ConcurrentLinkedQueue—源码剖析/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:05" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:05+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-20 17:42:17" itemprop="dateModified" datetime="2020-04-20T17:42:17+08:00">2020-04-20</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+高并发编程之ConcurrentLinkedQueue—源码剖析一、ConcurrentLinkedQueue简介在Java开发个过程中我们不可避免的会使用到一些集合类，比如ArrayList、HashMap等，这些集合类型在多线程环境下使用会有线程安全问题。虽然不同的集合类型都有他的线程安全版本，比如ArrayList不是线程安全的，Vector是线程安全。而保障Vector线程安全的方式，是非
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/高并发编程之ConcurrentLinkedQueue—源码剖析/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  2.5k 字
+</span>
+
+<span title="post.min2read">
+  9 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/24/高并发编程之CnocurrentHashMap—源码剖析/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/24/高并发编程之CnocurrentHashMap—源码剖析/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-24 22:59:05" itemprop="dateCreated datePublished" datetime="2020-04-24T22:59:05+08:00">2020-04-24</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-20 17:23:17" itemprop="dateModified" datetime="2020-04-20T17:23:17+08:00">2020-04-20</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+高并发编程之CnocurrentHashMap—源码剖析HashMap在多线程环境下有线程安全问题，因此在多线程环境下不要直接使用HashMap，而是使用下面几种不同的方式去代替：
+
+（1）使用ConcurrentHashMap
+（2）使用Hashtable
+（3）使用Collections.synchronizedMap(Map map)方法将HashMap包装成一个线程安全的集合
+
+不过鉴于要
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/24/高并发编程之CnocurrentHashMap—源码剖析/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  7.6k 字
+</span>
+
+<span title="post.min2read">
+  33 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
       
 
 <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -566,7 +1465,7 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-14 11:36:36" itemprop="dateModified" datetime="2020-04-14T11:36:36+08:00">2020-04-14</time>
+<time title="修改时间：2020-04-20 17:23:59" itemprop="dateModified" datetime="2020-04-20T17:23:59+08:00">2020-04-20</time>
 </span>
 
 
@@ -611,122 +1510,11 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 </footer>
 </div>
 <span title="post.wordcount">
-  616 字
+  591 字
 </span>
 
 <span title="post.min2read">
   2 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解ForkJion框架/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/18/深入理解ForkJion框架/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-10 20:12:31" itemprop="dateModified" datetime="2020-04-10T20:12:31+08:00">2020-04-10</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-深入理解Fork/Join框架一、什么是Fork/Join框架ForkJ/Join框架是Java 7提供的一个新的线程池的实现，它体现的是一种分治思想，即：把一个大任务拆分成多个小任务，最终汇总每个小任务的的结果后得到大任务的结果的一种线程池实现。
-Fork/Join在分治法的基础上配合多线程技术，可以把每个任务的分解和合并嫁给不同的线程来执行，进一步提高了运算效率。Fork/Join默认会创建和
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/18/深入理解ForkJion框架/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.4k 字
-</span>
-
-<span title="post.min2read">
-  5 分钟
 </span>
 
 
@@ -837,6 +1625,114 @@ Fork/Join在分治法的基础上配合多线程技术，可以把每个任务�
 
 <span title="post.min2read">
   11 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解CnocurrentHashMap原理/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/深入理解CnocurrentHashMap原理/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57 / 修改时间：22:52:53" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+深入理解CnocurrentHashMap原理HashMap在多线程环境下有线程安全问题，因此在多线程环境下不要直接使用HashMap，而是使用下面几种不同的方式去代替：
+
+（1）使用ConcurrentHashMap
+（2）使用Hashtable
+（3）使用Collections.synchronizedMap(Map map)方法将HashMap包装成一个线程安全的集合
+
+不过鉴于要保证多线程
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/深入理解CnocurrentHashMap原理/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.9k 字
+</span>
+
+<span title="post.min2read">
+  17 分钟
 </span>
 
 
@@ -967,7 +1863,7 @@ PS：最起码你得知道它们是干什么用得，下面列出得代码也建
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解CnocurrentHashMap原理/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解ForkJion框架/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -983,7 +1879,7 @@ PS：最起码你得知道它们是干什么用得，下面列出得代码也建
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/04/18/深入理解CnocurrentHashMap原理/" class="post-title-link" itemprop="url">未命名</a>
+<a href="/2020/04/18/深入理解ForkJion框架/" class="post-title-link" itemprop="url">未命名</a>
 
 </h2>
 
@@ -999,11 +1895,19 @@ PS：最起码你得知道它们是干什么用得，下面列出得代码也建
 
 
 
-<time title="创建时间：2020-04-18 23:00:57 / 修改时间：22:52:53" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
 </span>
 
 
 
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-10 20:12:31" itemprop="dateModified" datetime="2020-04-10T20:12:31+08:00">2020-04-10</time>
+</span>
 
 
 
@@ -1021,19 +1925,14 @@ PS：最起码你得知道它们是干什么用得，下面列出得代码也建
 
 
 <p>
-深入理解CnocurrentHashMap原理HashMap在多线程环境下有线程安全问题，因此在多线程环境下不要直接使用HashMap，而是使用下面几种不同的方式去代替：
-
-（1）使用ConcurrentHashMap
-（2）使用Hashtable
-（3）使用Collections.synchronizedMap(Map map)方法将HashMap包装成一个线程安全的集合
-
-不过鉴于要保证多线程
+深入理解Fork/Join框架一、什么是Fork/Join框架ForkJ/Join框架是Java 7提供的一个新的线程池的实现，它体现的是一种分治思想，即：把一个大任务拆分成多个小任务，最终汇总每个小任务的的结果后得到大任务的结果的一种线程池实现。
+Fork/Join在分治法的基础上配合多线程技术，可以把每个任务的分解和合并嫁给不同的线程来执行，进一步提高了运算效率。Fork/Join默认会创建和
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/04/18/深入理解CnocurrentHashMap原理/#more" rel="contents">
+<a class="btn" href="/2020/04/18/深入理解ForkJion框架/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -1052,11 +1951,11 @@ PS：最起码你得知道它们是干什么用得，下面列出得代码也建
 </footer>
 </div>
 <span title="post.wordcount">
-  3.9k 字
+  1.4k 字
 </span>
 
 <span title="post.min2read">
-  17 分钟
+  5 分钟
 </span>
 
 
@@ -1608,852 +2507,6 @@ volatile不能保证原子性，更加不能保证线程安全，要想保证原
 </article>
 
     
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/09/Java中的线程池/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/09/Java中的线程池/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-09 23:25:26 / 修改时间：22:25:59" itemprop="dateCreated datePublished" datetime="2020-04-09T23:25:26+08:00">2020-04-09</time>
-</span>
-
-
-
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-线程池ThreadPoolExecutor详解如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。
-那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？
-在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池，首先我们从最核心的T
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/09/Java中的线程池/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  6.6k 字
-</span>
-
-<span title="post.min2read">
-  26 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/07/深入理解CAS无锁机制/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/07/深入理解CAS无锁机制/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-07 16:46:30 / 修改时间：22:22:24" itemprop="dateCreated datePublished" datetime="2020-04-07T16:46:30+08:00">2020-04-07</time>
-</span>
-
-
-
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-深入理解CAS无锁机制一、什么是CAS?CAS（Compare And Sweap或者Compare And Set，比较替换），CAS和volatile的读写共同支撑起了整合JUC包。工作原理是：一个CAS操作有三个操作数，目标内存地址V，旧的预期值E和将要替换的新值B，在进行替换操作前比较当且仅当目标内存地址V中的值和旧的预期值E值相等的时候才会发生替换，否则什么都不做。
-CAS是乐观锁技术，
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/07/深入理解CAS无锁机制/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  4.5k 字
-</span>
-
-<span title="post.min2read">
-  17 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/07/深入理解Java魔法类Unsafe/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/07/深入理解Java魔法类Unsafe/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-07 16:46:02 / 修改时间：16:23:33" itemprop="dateCreated datePublished" datetime="2020-04-07T16:46:02+08:00">2020-04-07</time>
-</span>
-
-
-
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-深入理解Java魔法类Unsafe前言​        Unsafe为我们提供了访问底层的机制，这种机制仅供java核心类库使用，而不应该被普通用户使用。其实例一般情况是获取不到的，源码中的设计是采用单例模式，不是启动类加载器加载初始化就会抛SecurityException异常。
-​        这个类的提供了一些绕开JVM的更底层功能，基于它的实现可以提高效率。但是，它是一把双刃剑：正如它的
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/07/深入理解Java魔法类Unsafe/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.1k 字
-</span>
-
-<span title="post.min2read">
-  13 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/05/一文让你理解as-if-serila和happens-before语义/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/05/一文让你理解as-if-serila和happens-before语义/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-05 19:59:32 / 修改时间：19:59:57" itemprop="dateCreated datePublished" datetime="2020-04-05T19:59:32+08:00">2020-04-05</time>
-</span>
-
-
-
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-深入理解as-if-serial和happens-before语义概述本文大部分出自《Java并发编程的艺术》，温故而知新，加深对基础的理解程度。
-一、指令序列的重排序我们在编写代码的时候，通常自上而下编写，那么希望执行的顺序，理论上也是逐步串行执行，但是为了提高性能，编译器和处理器常常会对指令做重排序。从Java源码到最终实际的指令，需要经过三个阶段的重排序：
-
-
-1） 编译器优化的重排序。编译
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/05/一文让你理解as-if-serila和happens-before语义/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.2k 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/05/深入理解volatile关键字/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/05/深入理解volatile关键字/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-05 12:09:55 / 修改时间：12:00:35" itemprop="dateCreated datePublished" datetime="2020-04-05T12:09:55+08:00">2020-04-05</time>
-</span>
-
-
-
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-深入理解volatile关键字先给出结论：
-
-volatile可以保证不同线程对一个变量的可见性，即一个线程修改了被voaltile修饰的变量后，这新值对其他线程来说是立即可见的;
-volatile可以禁止指令重排序，保证了有序性；
-volatile不能保证原子性，更加不能保证线程安全，要想保证原子性和线程安全还是乖乖的使用锁吧！
-
-具体的原理且看我慢慢分析。
-一、Java内存模型JMM即Java
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/05/深入理解volatile关键字/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.4k 字
-</span>
-
-<span title="post.min2read">
-  12 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/03/作为Java工程师你真的理解synchronized吗/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/03/作为Java工程师你真的理解synchronized吗/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-03 23:39:06" itemprop="dateCreated datePublished" datetime="2020-04-03T23:39:06+08:00">2020-04-03</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-05 17:07:30" itemprop="dateModified" datetime="2020-04-05T17:07:30+08:00">2020-04-05</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-作为Java工程师你真的理解synchronized吗造成线程安全问题的诱因主要有两点：
-
-存在共享数据（临界区资源）
-存在多个线程对临界区资源的读写操作
-
-因此，为了保证临界区数据的安全，引入了互斥锁的概念，即一个共享数据只能被一个线程访问，其他线程需要等待（阻塞），直至当前线程处理完毕释放该锁。synchronized就保证了同一时刻只有一个线程对方法或者代码块的共享数据的操作。而且，sync
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/03/作为Java工程师你真的理解synchronized吗/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.6k 字
-</span>
-
-<span title="post.min2read">
-  12 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/03/等待通知机制/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/03/等待通知机制/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-03 17:56:01" itemprop="dateCreated datePublished" datetime="2020-04-03T17:56:01+08:00">2020-04-03</time>
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-一、什么是等待/通知机制？多个线程之间也可以实现通信，原因就是多个线程共同刚 访问同一个变量。但是这种通信机制不是 “等待/通知”，两个线程完全是主动地读取一个共享变量。简单的说，等待/通知机制就是一个【线程A】等待，一个【线程B】通知（线程A可以不用再等待了）。比如生产者和消费者模型，消费者等待生产者生产资源，这是等待，生产者生产好资源通知等待的消费者去消费，这是通知。
-等待/通知的相关方法是任
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/03/等待通知机制/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  2k 字
-</span>
-
-<span title="post.min2read">
-  7 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/01/Thread和Runnable深入源码剖析/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/01/Thread和Runnable深入源码剖析/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-01 22:52:06 / 修改时间：11:16:11" itemprop="dateCreated datePublished" datetime="2020-04-01T22:52:06+08:00">2020-04-01</time>
-</span>
-
-
-
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-Thread和Runnable深入源码剖析一、Runnable的实现类Thread类本质是Runnable的一个实现类，Runnable从jdk1.0就有了，并且在jdk1.8开始成为了一个函数式接口，这使得我么可以使用lambda简化线程的创建。
-
-二、 Thread类的构造方法
-所有构造方法都是调用init()方法来完成对一个线程的初始化，下面是init方法的jdk源码：
-
-从源码中可以看出下
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/01/Thread和Runnable深入源码剖析/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  2.9k 字
-</span>
-
-<span title="post.min2read">
-  12 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
   </section>
 
   
@@ -2494,7 +2547,7 @@ Thread和Runnable深入源码剖析一、Runnable的实现类Thread类本质是R
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2914,5 +2967,5 @@ setInterval("createtime()",250);
 
   <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
