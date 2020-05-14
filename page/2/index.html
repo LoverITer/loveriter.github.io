@@ -1966,126 +1966,6 @@ Java SE1.6以后中锁有四种状态是：无锁状态、偏向锁状态、轻�
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）基础篇/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）基础篇/" class="post-title-link" itemprop="url">深入理解JVM—垃圾回收器（Grabage Collector）基础篇</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-02-23 13:01:59 / 修改时间：10:46:27" itemprop="dateCreated datePublished" datetime="2020-02-23T13:01:59+08:00">2020-02-23</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、如何判断对象可以被回收1.1 引用计数法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给对象添加一个引用计数器，每当有一个地方引用该对象的时候此计数器+1；当一个引用失效后计数器-1，当计数器的值减为0了的对象就不在可能被使用了。
-
-优点： 实现简单，判定效率高。
-缺点：当对象之间的相互循环引用时，会导致GC失效，从而造成内存泄漏。
-
-public cla
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）基础篇/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.3k 字
-</span>
-
-<span title="post.min2read">
-  12 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）进阶篇/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2214,6 +2094,126 @@ public cla
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）基础篇/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）基础篇/" class="post-title-link" itemprop="url">深入理解JVM—垃圾回收器（Grabage Collector）基础篇</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-02-23 13:01:59 / 修改时间：10:46:27" itemprop="dateCreated datePublished" datetime="2020-02-23T13:01:59+08:00">2020-02-23</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1、如何判断对象可以被回收1.1 引用计数法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给对象添加一个引用计数器，每当有一个地方引用该对象的时候此计数器+1；当一个引用失效后计数器-1，当计数器的值减为0了的对象就不在可能被使用了。
+
+优点： 实现简单，判定效率高。
+缺点：当对象之间的相互循环引用时，会导致GC失效，从而造成内存泄漏。
+
+public cla
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/02/23/深入理解JVM—垃圾回收器（Grabage Collector）基础篇/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.3k 字
+</span>
+
+<span title="post.min2read">
+  12 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/20/前端UI自动联想功能/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2316,7 +2316,7 @@ public cla
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—运行时数据区之程序计数器/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—堆（Heap）/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -2332,125 +2332,7 @@ public cla
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/" class="post-title-link" itemprop="url">深入理解JVM—运行时数据区之程序计数器</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-02-11 13:01:59 / 修改时间：19:07:19" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、JVM内存模型概述Java虚拟机（JVM）在Java程序运行的过程中，会将它所管理的内存划分为若干个不同的数据区域，这些区域有的随着JVM的启动而创建，有的随着用户线程的启动和结束而建立和销毁。一个基本的JVM运行时内存模型如下所示：
-图 1 JVM运行时数据区
-
-上图是展示JDK8及以后的虚拟机规范对JVM运行时内存的划分。在JVM的运行时数据区中Java虚拟机桟、本地方法桟和程序计数器是每
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.3k 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—方法区/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/02/11/深入理解JVM—方法区/" class="post-title-link" itemprop="url">深入理解JVM—方法区</a>
+<a href="/2020/02/11/深入理解JVM—堆（Heap）/" class="post-title-link" itemprop="url">深入理解JVM—堆（Heap）</a>
 
 </h2>
 
@@ -2477,7 +2359,7 @@ public cla
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-21 21:33:50" itemprop="dateModified" datetime="2020-02-21T21:33:50+08:00">2020-02-21</time>
+<time title="修改时间：2020-02-21 21:31:51" itemprop="dateModified" datetime="2020-02-21T21:31:51+08:00">2020-02-21</time>
 </span>
 
 
@@ -2509,13 +2391,13 @@ public cla
 
 
 <p>
-1、方法区概述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法区（Method Area）和Java堆内存一样是线程共享的一块内存区域，它被主要用来存储已经被虚拟机加载的类信息（字段、方法、构造器的字节码）、常量、静态变量、JIT编译后的代码等等（说的再简单直白点就是用来存储每个已经记载的类的结构信息）。&nbsp;&nbsp;&nbsp;&nbsp;&nb
+1、堆（Heap）概述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java堆（Java Heap）是JVM所管理的最大的一块内存空间。Java堆是被所有线程共享的一块内存区域，在JVM启动的时候创建。堆的唯一目的就是存放对象实例的，Java中几乎所有的对象实例和数组都在对上分配内存。Java堆的容量可以是固定大小的，也可以随着程序执行的需求动态扩展，并在不需
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—方法区/#more" rel="contents">
+<a class="btn" href="/2020/02/11/深入理解JVM—堆（Heap）/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -2534,11 +2416,135 @@ public cla
 </footer>
 </div>
 <span title="post.wordcount">
-  2.2k 字
+  4.5k 字
 </span>
 
 <span title="post.min2read">
-  8 分钟
+  16 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—字符串常量池StringTable/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/02/11/深入理解JVM—字符串常量池StringTable/" class="post-title-link" itemprop="url">深入理解JVM—字符串常量池StringTable</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-02-11 13:01:59" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-02-21 21:38:15" itemprop="dateModified" datetime="2020-02-21T21:38:15+08:00">2020-02-21</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+深入理解JVM—字符串常量池StringTable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我们来看一道关于字符串的面试题，请大家先不要直接上机运行，自己先在脑子里运行一下这段程序，如果你可以很清晰的得到所有输出，那么恭喜你！这篇文章你就不要在浪费时间再看了；如果你在某一步还有不清楚的，那么这篇文章将会一网打尽所有你对String常量池的疑虑。
+pac
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/02/11/深入理解JVM—字符串常量池StringTable/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.5k 字
+</span>
+
+<span title="post.min2read">
+  13 分钟
 </span>
 
 
