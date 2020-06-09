@@ -1195,6 +1195,117 @@ Collection接口首先我们来看一下Collection接口中的方法：
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-20 17:23:59" itemprop="dateModified" datetime="2020-04-20T17:23:59+08:00">2020-04-20</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap一、早期线程安全的集合JDK从1.0开始就提供了两个线程安全的集合类：Hashtable和Vector
+1、HashtableHashtable和HashMap有着同样的功能——提供key  value结构，但不同的是Hashtable是线程安全的，它给几乎所有public方法都加上了synchronized关键字，还有一个不同
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  591 字
+</span>
+
+<span title="post.min2read">
+  2 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/HashMap是如何工作的/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1422,7 +1533,7 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -1438,7 +1549,7 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/" class="post-title-link" itemprop="url">未命名</a>
+<a href="/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/" class="post-title-link" itemprop="url">未命名</a>
 
 </h2>
 
@@ -1465,7 +1576,7 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-20 17:23:59" itemprop="dateModified" datetime="2020-04-20T17:23:59+08:00">2020-04-20</time>
+<time title="修改时间：2020-04-14 10:33:32" itemprop="dateModified" datetime="2020-04-14T10:33:32+08:00">2020-04-14</time>
 </span>
 
 
@@ -1484,14 +1595,15 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 
 
 <p>
-谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap一、早期线程安全的集合JDK从1.0开始就提供了两个线程安全的集合类：Hashtable和Vector
-1、HashtableHashtable和HashMap有着同样的功能——提供key  value结构，但不同的是Hashtable是线程安全的，它给几乎所有public方法都加上了synchronized关键字，还有一个不同
+面试常问的几个Java并发工具类你都GET到了吗？在JDK的并发中提供了几个非常有用的并发工具类。CountDwonLatch、CyclicBarrier、Semaphore以及Exchanger。下面我们就一起了解一下这些类的基本使用以及基本原理吧。
+PS：最起码你得知道它们是干什么用得，下面列出得代码也建议你跑跑。其实如果你理解AQS的设计原理的话，这些工具类的原理就不难理解了。
+一、闭锁 C
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/#more" rel="contents">
+<a class="btn" href="/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -1510,11 +1622,11 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 </footer>
 </div>
 <span title="post.wordcount">
-  591 字
+  2.3k 字
 </span>
 
 <span title="post.min2read">
-  2 分钟
+  9 分钟
 </span>
 
 
@@ -1844,118 +1956,6 @@ Fork/Join在分治法的基础上配合多线程技术，可以把每个任务�
 
 <span title="post.min2read">
   17 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-14 10:33:32" itemprop="dateModified" datetime="2020-04-14T10:33:32+08:00">2020-04-14</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-面试常问的几个Java并发工具类你都GET到了吗？在JDK的并发中提供了几个非常有用的并发工具类。CountDwonLatch、CyclicBarrier、Semaphore以及Exchanger。下面我们就一起了解一下这些类的基本使用以及基本原理吧。
-PS：最起码你得知道它们是干什么用得，下面列出得代码也建议你跑跑。其实如果你理解AQS的设计原理的话，这些工具类的原理就不难理解了。
-一、闭锁 C
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/18/面试常问的几个Java并发工具类你都GET到了吗？/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  2.3k 字
-</span>
-
-<span title="post.min2read">
-  9 分钟
 </span>
 
 
