@@ -296,7 +296,7 @@
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—Java虚拟机桟/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—方法区/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -312,7 +312,7 @@
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/02/11/深入理解JVM—Java虚拟机桟/" class="post-title-link" itemprop="url">深入理解JVM—Java虚拟机桟</a>
+<a href="/2020/02/11/深入理解JVM—方法区/" class="post-title-link" itemprop="url">深入理解JVM—方法区</a>
 
 </h2>
 
@@ -339,7 +339,7 @@
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-21 21:38:04" itemprop="dateModified" datetime="2020-02-21T21:38:04+08:00">2020-02-21</time>
+<time title="修改时间：2020-02-21 21:33:50" itemprop="dateModified" datetime="2020-02-21T21:33:50+08:00">2020-02-21</time>
 </span>
 
 
@@ -371,15 +371,13 @@
 
 
 <p>
-1、虚拟机桟概述由于跨平台性的设计，JVM的指令架构是基于桟的结构来设计的，这么做的优点：一是具有了跨平台性，其次使得指令集更小，编译器更容易实现，但缺点也很明显：实现同样的功能需要更多的指令和性能下降。栈是运行时的单位，堆是存储的单位
-栈解决的程序运行问题，即程序如何执行，或者说如何处理数据；堆解决的是数据存储问题，即就是数据如何放、放哪儿
-在java中一个线程就会相应有一个线程栈与之对应，因为
+1、方法区概述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法区（Method Area）和Java堆内存一样是线程共享的一块内存区域，它被主要用来存储已经被虚拟机加载的类信息（字段、方法、构造器的字节码）、常量、静态变量、JIT编译后的代码等等（说的再简单直白点就是用来存储每个已经记载的类的结构信息）。&nbsp;&nbsp;&nbsp;&nbsp;&nb
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—Java虚拟机桟/#more" rel="contents">
+<a class="btn" href="/2020/02/11/深入理解JVM—方法区/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -398,134 +396,11 @@
 </footer>
 </div>
 <span title="post.wordcount">
-  6.2k 字
+  2.2k 字
 </span>
 
 <span title="post.min2read">
-  23 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—堆（Heap）/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/02/11/深入理解JVM—堆（Heap）/" class="post-title-link" itemprop="url">深入理解JVM—堆（Heap）</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-02-11 13:01:59" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-21 21:31:51" itemprop="dateModified" datetime="2020-02-21T21:31:51+08:00">2020-02-21</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、堆（Heap）概述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java堆（Java Heap）是JVM所管理的最大的一块内存空间。Java堆是被所有线程共享的一块内存区域，在JVM启动的时候创建。堆的唯一目的就是存放对象实例的，Java中几乎所有的对象实例和数组都在对上分配内存。Java堆的容量可以是固定大小的，也可以随着程序执行的需求动态扩展，并在不需
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—堆（Heap）/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  4.5k 字
-</span>
-
-<span title="post.min2read">
-  16 分钟
+  8 分钟
 </span>
 
 
@@ -644,6 +519,131 @@
 
 <span title="post.min2read">
   4 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—Java虚拟机桟/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/02/11/深入理解JVM—Java虚拟机桟/" class="post-title-link" itemprop="url">深入理解JVM—Java虚拟机桟</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-02-11 13:01:59" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-02-21 21:38:04" itemprop="dateModified" datetime="2020-02-21T21:38:04+08:00">2020-02-21</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1、虚拟机桟概述由于跨平台性的设计，JVM的指令架构是基于桟的结构来设计的，这么做的优点：一是具有了跨平台性，其次使得指令集更小，编译器更容易实现，但缺点也很明显：实现同样的功能需要更多的指令和性能下降。栈是运行时的单位，堆是存储的单位
+栈解决的程序运行问题，即程序如何执行，或者说如何处理数据；堆解决的是数据存储问题，即就是数据如何放、放哪儿
+在java中一个线程就会相应有一个线程栈与之对应，因为
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/02/11/深入理解JVM—Java虚拟机桟/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  6.2k 字
+</span>
+
+<span title="post.min2read">
+  23 分钟
 </span>
 
 
@@ -1405,6 +1405,126 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并 k 个排序链表/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/01/30/力扣：合并 k 个排序链表/" class="post-title-link" itemprop="url">力扣：合并k个有序链表</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-01-30 21:01:59 / 修改时间：23:46:53" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
+示例:
+
+输入:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
+
+题解解法1：两两链表逐一比较这是我首先想到的方法，由于前几天刚做过一个类似的题目：合并两个有序链表。力扣的地址是：https:/
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/01/30/力扣：合并 k 个排序链表/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  905 字
+</span>
+
+<span title="post.min2read">
+  4 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—动静分离/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1625,126 +1745,6 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 </div>
 <span title="post.wordcount">
   1.2k 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并 k 个排序链表/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/力扣：合并 k 个排序链表/" class="post-title-link" itemprop="url">力扣：合并k个有序链表</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：23:46:53" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
-示例:
-
-输入:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
-
-题解解法1：两两链表逐一比较这是我首先想到的方法，由于前几天刚做过一个类似的题目：合并两个有序链表。力扣的地址是：https:/
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/力扣：合并 k 个排序链表/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  905 字
 </span>
 
 <span title="post.min2read">
