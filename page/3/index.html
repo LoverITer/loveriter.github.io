@@ -421,7 +421,7 @@
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—字符串常量池StringTable/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—运行时数据区之程序计数器/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -437,7 +437,7 @@
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/02/11/深入理解JVM—字符串常量池StringTable/" class="post-title-link" itemprop="url">深入理解JVM—字符串常量池StringTable</a>
+<a href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/" class="post-title-link" itemprop="url">深入理解JVM—运行时数据区之程序计数器</a>
 
 </h2>
 
@@ -453,19 +453,11 @@
 
 
 
-<time title="创建时间：2020-02-11 13:01:59" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
+<time title="创建时间：2020-02-11 13:01:59 / 修改时间：19:07:19" itemprop="dateCreated datePublished" datetime="2020-02-11T13:01:59+08:00">2020-02-11</time>
 </span>
 
 
 
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-21 21:38:15" itemprop="dateModified" datetime="2020-02-21T21:38:15+08:00">2020-02-21</time>
-</span>
 
 
 <span class="post-meta-item">
@@ -496,14 +488,16 @@
 
 
 <p>
-深入理解JVM—字符串常量池StringTable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我们来看一道关于字符串的面试题，请大家先不要直接上机运行，自己先在脑子里运行一下这段程序，如果你可以很清晰的得到所有输出，那么恭喜你！这篇文章你就不要在浪费时间再看了；如果你在某一步还有不清楚的，那么这篇文章将会一网打尽所有你对String常量池的疑虑。
-pac
+1、JVM内存模型概述Java虚拟机（JVM）在Java程序运行的过程中，会将它所管理的内存划分为若干个不同的数据区域，这些区域有的随着JVM的启动而创建，有的随着用户线程的启动和结束而建立和销毁。一个基本的JVM运行时内存模型如下所示：
+图 1 JVM运行时数据区
+
+上图是展示JDK8及以后的虚拟机规范对JVM运行时内存的划分。在JVM的运行时数据区中Java虚拟机桟、本地方法桟和程序计数器是每
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—字符串常量池StringTable/#more" rel="contents">
+<a class="btn" href="/2020/02/11/深入理解JVM—运行时数据区之程序计数器/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -522,11 +516,11 @@ pac
 </footer>
 </div>
 <span title="post.wordcount">
-  3.5k 字
+  1.3k 字
 </span>
 
 <span title="post.min2read">
-  13 分钟
+  4 分钟
 </span>
 
 
@@ -1411,125 +1405,6 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—负载均衡/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/Nginx配置实例—负载均衡/" class="post-title-link" itemprop="url">Nginx配置实例—负载均衡</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:53:10" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、Nginx负载均衡配置预期实现效果：
-
-在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。
-
-1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/Nginx配置实例—负载均衡/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  1.2k 字
-</span>
-
-<span title="post.min2read">
-  4 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—动静分离/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1773,6 +1648,130 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置文件详解（配置文件结构）/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/01/30/Nginx配置文件详解（配置文件结构）/" class="post-title-link" itemprop="url">Nginx配置文件详解（配置文件结构）</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-01-30 21:01:59" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-02-02 18:53:41" itemprop="dateModified" datetime="2020-02-02T18:53:41+08:00">2020-02-02</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+Nginx配置文件结构在nginx的安装目录下的conf目录下有一个nginx.conf,这个就是nginx默认的配置文件，默认的内容如下：
+#user  nobody;worker_processes  1;error_log  logs/error.log;#error_log  logs/error.log  notice;#error_log  logs/error.log  info;#
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/01/30/Nginx配置文件详解（配置文件结构）/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  2.3k 字
+</span>
+
+<span title="post.min2read">
+  9 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并两个有序链表/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1893,7 +1892,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置文件详解（配置文件结构）/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—负载均衡/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -1909,7 +1908,7 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/01/30/Nginx配置文件详解（配置文件结构）/" class="post-title-link" itemprop="url">Nginx配置文件详解（配置文件结构）</a>
+<a href="/2020/01/30/Nginx配置实例—负载均衡/" class="post-title-link" itemprop="url">Nginx配置实例—负载均衡</a>
 
 </h2>
 
@@ -1925,19 +1924,11 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 
-<time title="创建时间：2020-01-30 21:01:59" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
+<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:53:10" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
 </span>
 
 
 
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-02 18:53:41" itemprop="dateModified" datetime="2020-02-02T18:53:41+08:00">2020-02-02</time>
-</span>
 
 
 <span class="post-meta-item">
@@ -1968,14 +1959,17 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <p>
-Nginx配置文件结构在nginx的安装目录下的conf目录下有一个nginx.conf,这个就是nginx默认的配置文件，默认的内容如下：
-#user  nobody;worker_processes  1;error_log  logs/error.log;#error_log  logs/error.log  notice;#error_log  logs/error.log  info;#
+1、Nginx负载均衡配置预期实现效果：
+
+在浏览器地址栏中输入：http://www.123.com ，nginx收到请求后把请求平均分匹配到Linux服务器上监听8080和8081端口的两个tomcat服务器上。
+
+1.1 准备工作（1）首先在host文件中配置域名映射：192.168.92.128     www.123.com（2）准备两个tomcat服务器，分别监听8080和8081端口
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/01/30/Nginx配置文件详解（配置文件结构）/#more" rel="contents">
+<a class="btn" href="/2020/01/30/Nginx配置实例—负载均衡/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -1994,11 +1988,11 @@ Nginx配置文件结构在nginx的安装目录下的conf目录下有一个nginx.
 </footer>
 </div>
 <span title="post.wordcount">
-  2.3k 字
+  1.2k 字
 </span>
 
 <span title="post.min2read">
-  9 分钟
+  4 分钟
 </span>
 
 
@@ -3227,5 +3221,5 @@ setInterval("createtime()",250);
 
   <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
+<script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
