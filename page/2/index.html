@@ -2316,7 +2316,7 @@ public cla
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—字符串常量池StringTable/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—方法区/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -2332,7 +2332,7 @@ public cla
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/02/11/深入理解JVM—字符串常量池StringTable/" class="post-title-link" itemprop="url">深入理解JVM—字符串常量池StringTable</a>
+<a href="/2020/02/11/深入理解JVM—方法区/" class="post-title-link" itemprop="url">深入理解JVM—方法区</a>
 
 </h2>
 
@@ -2359,7 +2359,7 @@ public cla
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-21 21:38:15" itemprop="dateModified" datetime="2020-02-21T21:38:15+08:00">2020-02-21</time>
+<time title="修改时间：2020-02-21 21:33:50" itemprop="dateModified" datetime="2020-02-21T21:33:50+08:00">2020-02-21</time>
 </span>
 
 
@@ -2391,14 +2391,13 @@ public cla
 
 
 <p>
-深入理解JVM—字符串常量池StringTable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我们来看一道关于字符串的面试题，请大家先不要直接上机运行，自己先在脑子里运行一下这段程序，如果你可以很清晰的得到所有输出，那么恭喜你！这篇文章你就不要在浪费时间再看了；如果你在某一步还有不清楚的，那么这篇文章将会一网打尽所有你对String常量池的疑虑。
-pac
+1、方法区概述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法区（Method Area）和Java堆内存一样是线程共享的一块内存区域，它被主要用来存储已经被虚拟机加载的类信息（字段、方法、构造器的字节码）、常量、静态变量、JIT编译后的代码等等（说的再简单直白点就是用来存储每个已经记载的类的结构信息）。&nbsp;&nbsp;&nbsp;&nbsp;&nb
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—字符串常量池StringTable/#more" rel="contents">
+<a class="btn" href="/2020/02/11/深入理解JVM—方法区/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -2417,11 +2416,11 @@ pac
 </footer>
 </div>
 <span title="post.wordcount">
-  3.5k 字
+  2.2k 字
 </span>
 
 <span title="post.min2read">
-  13 分钟
+  8 分钟
 </span>
 
 
