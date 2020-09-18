@@ -1195,117 +1195,6 @@ Collection接口首先我们来看一下Collection接口中的方法：
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-20 17:23:59" itemprop="dateModified" datetime="2020-04-20T17:23:59+08:00">2020-04-20</time>
-</span>
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap一、早期线程安全的集合JDK从1.0开始就提供了两个线程安全的集合类：Hashtable和Vector
-1、HashtableHashtable和HashMap有着同样的功能——提供key  value结构，但不同的是Hashtable是线程安全的，它给几乎所有public方法都加上了synchronized关键字，还有一个不同
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  591 字
-</span>
-
-<span title="post.min2read">
-  2 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/线程池ThreadPoolExecutor详解/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1533,7 +1422,7 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解CnocurrentHashMap原理/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -1549,115 +1438,7 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/04/18/深入理解CnocurrentHashMap原理/" class="post-title-link" itemprop="url">未命名</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-04-18 23:00:57 / 修改时间：22:52:53" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
-</span>
-
-
-
-
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-深入理解CnocurrentHashMap原理HashMap在多线程环境下有线程安全问题，因此在多线程环境下不要直接使用HashMap，而是使用下面几种不同的方式去代替：
-
-（1）使用ConcurrentHashMap
-（2）使用Hashtable
-（3）使用Collections.synchronizedMap(Map map)方法将HashMap包装成一个线程安全的集合
-
-不过鉴于要保证多线程
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/04/18/深入理解CnocurrentHashMap原理/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.9k 字
-</span>
-
-<span title="post.min2read">
-  17 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解ForkJion框架/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/04/18/深入理解ForkJion框架/" class="post-title-link" itemprop="url">未命名</a>
+<a href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/" class="post-title-link" itemprop="url">未命名</a>
 
 </h2>
 
@@ -1684,7 +1465,7 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-04-10 20:12:31" itemprop="dateModified" datetime="2020-04-10T20:12:31+08:00">2020-04-10</time>
+<time title="修改时间：2020-04-20 17:23:59" itemprop="dateModified" datetime="2020-04-20T17:23:59+08:00">2020-04-20</time>
 </span>
 
 
@@ -1703,14 +1484,14 @@ HashMap允许存储一个键和值都为null的元素（这一点Hashtable不可
 
 
 <p>
-深入理解Fork/Join框架一、什么是Fork/Join框架ForkJ/Join框架是Java 7提供的一个新的线程池的实现，它体现的是一种分治思想，即：把一个大任务拆分成多个小任务，最终汇总每个小任务的的结果后得到大任务的结果的一种线程池实现。
-Fork/Join在分治法的基础上配合多线程技术，可以把每个任务的分解和合并嫁给不同的线程来执行，进一步提高了运算效率。Fork/Join默认会创建和
+谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap一、早期线程安全的集合JDK从1.0开始就提供了两个线程安全的集合类：Hashtable和Vector
+1、HashtableHashtable和HashMap有着同样的功能——提供key  value结构，但不同的是Hashtable是线程安全的，它给几乎所有public方法都加上了synchronized关键字，还有一个不同
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/04/18/深入理解ForkJion框架/#more" rel="contents">
+<a class="btn" href="/2020/04/18/谈谈线程安全的集合类以及深入源码剖析ConcurrentHashMap/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -1729,11 +1510,11 @@ Fork/Join在分治法的基础上配合多线程技术，可以把每个任务�
 </footer>
 </div>
 <span title="post.wordcount">
-  1.4k 字
+  591 字
 </span>
 
 <span title="post.min2read">
-  5 分钟
+  2 分钟
 </span>
 
 
@@ -1864,6 +1645,117 @@ PS：最起码你得知道它们是干什么用得，下面列出得代码也建
 
 
 <div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解ForkJion框架/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/深入理解ForkJion框架/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-04-10 20:12:31" itemprop="dateModified" datetime="2020-04-10T20:12:31+08:00">2020-04-10</time>
+</span>
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+深入理解Fork/Join框架一、什么是Fork/Join框架ForkJ/Join框架是Java 7提供的一个新的线程池的实现，它体现的是一种分治思想，即：把一个大任务拆分成多个小任务，最终汇总每个小任务的的结果后得到大任务的结果的一种线程池实现。
+Fork/Join在分治法的基础上配合多线程技术，可以把每个任务的分解和合并嫁给不同的线程来执行，进一步提高了运算效率。Fork/Join默认会创建和
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/深入理解ForkJion框架/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  1.4k 字
+</span>
+
+<span title="post.min2read">
+  5 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入分析AQS实现原理/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1956,6 +1848,114 @@ PS：最起码你得知道它们是干什么用得，下面列出得代码也建
 
 <span title="post.min2read">
   11 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/04/18/深入理解CnocurrentHashMap原理/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/04/18/深入理解CnocurrentHashMap原理/" class="post-title-link" itemprop="url">未命名</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-04-18 23:00:57 / 修改时间：22:52:53" itemprop="dateCreated datePublished" datetime="2020-04-18T23:00:57+08:00">2020-04-18</time>
+</span>
+
+
+
+
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+深入理解CnocurrentHashMap原理HashMap在多线程环境下有线程安全问题，因此在多线程环境下不要直接使用HashMap，而是使用下面几种不同的方式去代替：
+
+（1）使用ConcurrentHashMap
+（2）使用Hashtable
+（3）使用Collections.synchronizedMap(Map map)方法将HashMap包装成一个线程安全的集合
+
+不过鉴于要保证多线程
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/04/18/深入理解CnocurrentHashMap原理/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.9k 字
+</span>
+
+<span title="post.min2read">
+  17 分钟
 </span>
 
 
