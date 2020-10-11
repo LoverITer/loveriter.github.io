@@ -2316,7 +2316,7 @@ public cla
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—方法区/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—Java虚拟机桟/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -2332,7 +2332,7 @@ public cla
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/02/11/深入理解JVM—方法区/" class="post-title-link" itemprop="url">深入理解JVM—方法区</a>
+<a href="/2020/02/11/深入理解JVM—Java虚拟机桟/" class="post-title-link" itemprop="url">深入理解JVM—Java虚拟机桟</a>
 
 </h2>
 
@@ -2359,7 +2359,7 @@ public cla
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-21 21:33:50" itemprop="dateModified" datetime="2020-02-21T21:33:50+08:00">2020-02-21</time>
+<time title="修改时间：2020-02-21 21:38:04" itemprop="dateModified" datetime="2020-02-21T21:38:04+08:00">2020-02-21</time>
 </span>
 
 
@@ -2391,13 +2391,15 @@ public cla
 
 
 <p>
-1、方法区概述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法区（Method Area）和Java堆内存一样是线程共享的一块内存区域，它被主要用来存储已经被虚拟机加载的类信息（字段、方法、构造器的字节码）、常量、静态变量、JIT编译后的代码等等（说的再简单直白点就是用来存储每个已经记载的类的结构信息）。&nbsp;&nbsp;&nbsp;&nbsp;&nb
+1、虚拟机桟概述由于跨平台性的设计，JVM的指令架构是基于桟的结构来设计的，这么做的优点：一是具有了跨平台性，其次使得指令集更小，编译器更容易实现，但缺点也很明显：实现同样的功能需要更多的指令和性能下降。栈是运行时的单位，堆是存储的单位
+栈解决的程序运行问题，即程序如何执行，或者说如何处理数据；堆解决的是数据存储问题，即就是数据如何放、放哪儿
+在java中一个线程就会相应有一个线程栈与之对应，因为
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—方法区/#more" rel="contents">
+<a class="btn" href="/2020/02/11/深入理解JVM—Java虚拟机桟/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -2416,11 +2418,11 @@ public cla
 </footer>
 </div>
 <span title="post.wordcount">
-  2.2k 字
+  6.2k 字
 </span>
 
 <span title="post.min2read">
-  8 分钟
+  23 分钟
 </span>
 
 
