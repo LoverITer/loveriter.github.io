@@ -414,7 +414,7 @@
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—字符串常量池StringTable/">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/11/深入理解JVM—堆（Heap）/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
 <meta itemprop="name" content="黄鑫">
@@ -430,7 +430,7 @@
 
 <h2 class="post-title" itemprop="name headline">
 
-<a href="/2020/02/11/深入理解JVM—字符串常量池StringTable/" class="post-title-link" itemprop="url">深入理解JVM—字符串常量池StringTable</a>
+<a href="/2020/02/11/深入理解JVM—堆（Heap）/" class="post-title-link" itemprop="url">深入理解JVM—堆（Heap）</a>
 
 </h2>
 
@@ -457,7 +457,7 @@
   <i class="fa fa-calendar-check-o"></i>
 </span>
 <span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-21 21:38:15" itemprop="dateModified" datetime="2020-02-21T21:38:15+08:00">2020-02-21</time>
+<time title="修改时间：2020-02-21 21:31:51" itemprop="dateModified" datetime="2020-02-21T21:31:51+08:00">2020-02-21</time>
 </span>
 
 
@@ -489,14 +489,13 @@
 
 
 <p>
-深入理解JVM—字符串常量池StringTable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我们来看一道关于字符串的面试题，请大家先不要直接上机运行，自己先在脑子里运行一下这段程序，如果你可以很清晰的得到所有输出，那么恭喜你！这篇文章你就不要在浪费时间再看了；如果你在某一步还有不清楚的，那么这篇文章将会一网打尽所有你对String常量池的疑虑。
-pac
+1、堆（Heap）概述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java堆（Java Heap）是JVM所管理的最大的一块内存空间。Java堆是被所有线程共享的一块内存区域，在JVM启动的时候创建。堆的唯一目的就是存放对象实例的，Java中几乎所有的对象实例和数组都在对上分配内存。Java堆的容量可以是固定大小的，也可以随着程序执行的需求动态扩展，并在不需
 ...
 </p>
 <!--noindex-->
 
 <div class="post-button text-center">
-<a class="btn" href="/2020/02/11/深入理解JVM—字符串常量池StringTable/#more" rel="contents">
+<a class="btn" href="/2020/02/11/深入理解JVM—堆（Heap）/#more" rel="contents">
 阅读全文 &raquo;
 </a>
 </div>
@@ -515,11 +514,11 @@ pac
 </footer>
 </div>
 <span title="post.wordcount">
-  3.5k 字
+  4.5k 字
 </span>
 
 <span title="post.min2read">
-  13 分钟
+  16 分钟
 </span>
 
 
@@ -643,6 +642,132 @@ pac
 
 <span title="post.min2read">
   8 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/09/深入理解JVM—虚拟机类加载机制/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/02/09/深入理解JVM—虚拟机类加载机制/" class="post-title-link" itemprop="url">深入理解JVM—虚拟机类加载机制</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-02-09 23:01:59" itemprop="dateCreated datePublished" datetime="2020-02-09T23:01:59+08:00">2020-02-09</time>
+</span>
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+  <i class="fa fa-calendar-check-o"></i>
+</span>
+<span class="post-meta-item-text">更新于</span>
+<time title="修改时间：2020-02-10 23:58:52" itemprop="dateModified" datetime="2020-02-10T23:58:52+08:00">2020-02-10</time>
+</span>
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+1、JVM内存结构概述JVM是Java技术的核心，因为任何Java程序最终都需要运行在JVM上。构成JVM的主要三分部分有：类加载子系统、运行时数据区和执行引擎。他们各自发挥着各自的本领，构建起强大的JVM。JVM的具体组成如下图所示：
+图1 JVM整体结构示意（详）图
+
+看完这个图，我想大家对于JVM应该会有一个基本的认识，最起码知道了JVM最重要的三大组成部分的位置以及他们内部的大致结构，并且
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/02/09/深入理解JVM—虚拟机类加载机制/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  3.4k 字
+</span>
+
+<span title="post.min2read">
+  12 分钟
 </span>
 
 
@@ -893,132 +1018,6 @@ TCP（传
 
 <span title="post.min2read">
   17 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/02/09/深入理解JVM—虚拟机类加载机制/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/02/09/深入理解JVM—虚拟机类加载机制/" class="post-title-link" itemprop="url">深入理解JVM—虚拟机类加载机制</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-02-09 23:01:59" itemprop="dateCreated datePublished" datetime="2020-02-09T23:01:59+08:00">2020-02-09</time>
-</span>
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-  <i class="fa fa-calendar-check-o"></i>
-</span>
-<span class="post-meta-item-text">更新于</span>
-<time title="修改时间：2020-02-10 23:58:52" itemprop="dateModified" datetime="2020-02-10T23:58:52+08:00">2020-02-10</time>
-</span>
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-1、JVM内存结构概述JVM是Java技术的核心，因为任何Java程序最终都需要运行在JVM上。构成JVM的主要三分部分有：类加载子系统、运行时数据区和执行引擎。他们各自发挥着各自的本领，构建起强大的JVM。JVM的具体组成如下图所示：
-图1 JVM整体结构示意（详）图
-
-看完这个图，我想大家对于JVM应该会有一个基本的认识，最起码知道了JVM最重要的三大组成部分的位置以及他们内部的大致结构，并且
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/02/09/深入理解JVM—虚拟机类加载机制/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  3.4k 字
-</span>
-
-<span title="post.min2read">
-  12 分钟
 </span>
 
 
@@ -1404,126 +1403,6 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 
 <div class="post-block">
-<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并两个有序链表/">
-
-<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-<meta itemprop="name" content="黄鑫">
-<meta itemprop="description" content="Talk is cheap. Show me the code">
-<meta itemprop="image" content="/images/avatar.png">
-</span>
-
-<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="LoveITer">
-</span>
-<header class="post-header">
-
-
-<h2 class="post-title" itemprop="name headline">
-
-<a href="/2020/01/30/力扣：合并两个有序链表/" class="post-title-link" itemprop="url">力扣：合并两个有序链表</a>
-
-</h2>
-
-
-<div class="post-meta">
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-calendar-o"></i>
-</span>
-<span class="post-meta-item-text">发表于</span>
-
-
-
-
-
-<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:57:23" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
-</span>
-
-
-
-
-
-<span class="post-meta-item">
-<span class="post-meta-item-icon">
-<i class="fa fa-folder-o"></i>
-</span>
-<span class="post-meta-item-text">分类于</span>
-
-<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
-
-
-
-
-</span>
-
-
-
-
-</div>
-</header>
-
-
-
-
-<div class="post-body" itemprop="articleBody">
-
-
-
-
-<p>
-将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
-示例：
-
-输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4
-
-题解设定一个哨兵节点 prehead ，这可以在最后让我们比较容易地返回合并后的链表。并且维护一个 preNode指针，我们需要做的是调整它的 next 指针。
-...
-</p>
-<!--noindex-->
-
-<div class="post-button text-center">
-<a class="btn" href="/2020/01/30/力扣：合并两个有序链表/#more" rel="contents">
-阅读全文 &raquo;
-</a>
-</div>
-
-<!--/noindex-->
-
-
-</div>
-
-
-
-
-
-<footer class="post-footer">
-<div class="post-eof"></div>
-</footer>
-</div>
-<span title="post.wordcount">
-  532 字
-</span>
-
-<span title="post.min2read">
-  2 分钟
-</span>
-
-
-
-
-
-
-
-</article>
-
-    
-      
-
-<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-
-
-
-<div class="post-block">
 <link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/Nginx配置实例—动静分离/">
 
 <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1629,6 +1508,126 @@ nginx -s quit         优雅停止nginx，有连接时会等连接请求完成�
 
 <span title="post.min2read">
   4 分钟
+</span>
+
+
+
+
+
+
+
+</article>
+
+    
+      
+
+<article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+<div class="post-block">
+<link itemprop="mainEntityOfPage" href="http://easyblog.top/2020/01/30/力扣：合并两个有序链表/">
+
+<span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="黄鑫">
+<meta itemprop="description" content="Talk is cheap. Show me the code">
+<meta itemprop="image" content="/images/avatar.png">
+</span>
+
+<span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="LoveITer">
+</span>
+<header class="post-header">
+
+
+<h2 class="post-title" itemprop="name headline">
+
+<a href="/2020/01/30/力扣：合并两个有序链表/" class="post-title-link" itemprop="url">力扣：合并两个有序链表</a>
+
+</h2>
+
+
+<div class="post-meta">
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+<time title="创建时间：2020-01-30 21:01:59 / 修改时间：19:57:23" itemprop="dateCreated datePublished" datetime="2020-01-30T21:01:59+08:00">2020-01-30</time>
+</span>
+
+
+
+
+
+<span class="post-meta-item">
+<span class="post-meta-item-icon">
+<i class="fa fa-folder-o"></i>
+</span>
+<span class="post-meta-item-text">分类于</span>
+
+<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LetCode/" itemprop="url" rel="index"><span itemprop="name">LetCode</span></a></span>
+
+
+
+
+</span>
+
+
+
+
+</div>
+</header>
+
+
+
+
+<div class="post-body" itemprop="articleBody">
+
+
+
+
+<p>
+将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+示例：
+
+输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4
+
+题解设定一个哨兵节点 prehead ，这可以在最后让我们比较容易地返回合并后的链表。并且维护一个 preNode指针，我们需要做的是调整它的 next 指针。
+...
+</p>
+<!--noindex-->
+
+<div class="post-button text-center">
+<a class="btn" href="/2020/01/30/力扣：合并两个有序链表/#more" rel="contents">
+阅读全文 &raquo;
+</a>
+</div>
+
+<!--/noindex-->
+
+
+</div>
+
+
+
+
+
+<footer class="post-footer">
+<div class="post-eof"></div>
+</footer>
+</div>
+<span title="post.wordcount">
+  532 字
+</span>
+
+<span title="post.min2read">
+  2 分钟
 </span>
 
 
